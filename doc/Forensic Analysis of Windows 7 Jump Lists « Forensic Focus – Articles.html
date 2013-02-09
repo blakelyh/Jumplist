@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/ -->
+<html lang="en"><!--<![endif]--><!--
+	generated in 0.573 seconds
+	93098 bytes batcached for 300 seconds
+--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/application-2f2778024ea8b68b9d7f2f0aa3c80652.js"></script>
+<meta charset="UTF-8">
+<title>Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="stylesheet" href="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/style.css" type="text/css" media="screen">
+<link rel="pingback" href="http://articles.forensicfocus.com/xmlrpc.php">
+		<script src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/quant.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/tags.js"></script><script src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/remote-login.php" type="text/javascript"></script>
+		<script type="text/javascript">
+		/* <![CDATA[ */
+			if ( 'function' === typeof WPRemoteLogin ) {
+				document.cookie = "wordpress_test_cookie=test; path=/";
+				if ( document.cookie.match( /(;|^)\s*wordpress_test_cookie\=/ ) ) {
+					WPRemoteLogin();
+				}
+			}
+		/* ]]> */
+		</script>
+		<link rel="alternate" type="application/rss+xml" title="Forensic Focus - Articles » Feed" href="http://articles.forensicfocus.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Forensic Focus - Articles » Comments Feed" href="http://articles.forensicfocus.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Forensic Focus - Articles » Forensic Analysis of Windows 7 Jump Lists Comments Feed" href="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/feed/">
+<script type="text/javascript">
+/* <![CDATA[ */
+function addLoadEvent(func){var oldonload=window.onload;if(typeof window.onload!='function'){window.onload=func;}else{window.onload=function(){oldonload();func();}}}
+/* ]]> */
+</script>
+<link rel="stylesheet" id="all-css-0" href="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/saved_resource" type="text/css" media="all">
+<link rel="stylesheet" id="print-css-0" href="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/global-print.css" type="text/css" media="print">
+<script type="text/javascript">
+/* <![CDATA[ */
+var LoggedOutFollow = {"invalid_email":"Your subscription did not succeed, please try again with a valid email address."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/saved_resource(1)"></script>
+<link rel="stylesheet" id="all-css-0" href="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/style(1).css" type="text/css" media="all">
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='http://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563g&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://forensicfocus.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://forensicfocus.wordpress.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Why SSD Drives Destroy Court Evidence, and What Can Be Done About It" href="http://articles.forensicfocus.com/2012/10/23/why-ssd-drives-destroy-court-evidence-and-what-can-be-done-about-it/">
+<link rel="next" title="Unacceptable Acceptable Use Policy" href="http://articles.forensicfocus.com/2012/11/27/unacceptable-acceptable-use-policy/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles.html">
+<link rel="shortlink" href="http://wp.me/p1F8Sz-wN">
+<link rel="alternate" type="application/json+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=json&url=http%3A%2F%2Farticles.forensicfocus.com%2F2012%2F10%2F30%2Fforensic-analysis-of-windows-7-jump-lists%2F&for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=xml&url=http%3A%2F%2Farticles.forensicfocus.com%2F2012%2F10%2F30%2Fforensic-analysis-of-windows-7-jump-lists%2F&for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Forensic Analysis of Windows 7 Jump Lists">
+<meta property="og:url" content="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/">
+<meta property="og:description" content="Forensic Analysis of Windows 7 Jump Lists Abstract The release of Microsoft Windows 7 introduced a new feature known as Jump Lists which present the user with links to recently accessed files group...">
+<meta property="og:site_name" content="Forensic Focus - Articles">
+<meta property="og:image" content="http://i2.wp.com/forensicfocus.files.wordpress.com/2012/10/fig1.jpg?fit=400%2C400">
+<meta property="og:image" content="http://i1.wp.com/forensicfocus.files.wordpress.com/2012/10/fig2.jpg?fit=400%2C400">
+<meta property="og:image" content="http://i2.wp.com/forensicfocus.files.wordpress.com/2012/10/fig3.jpg?fit=400%2C400">
+<meta property="og:image" content="http://i2.wp.com/forensicfocus.files.wordpress.com/2012/10/fig4.jpg?fit=400%2C400">
+<meta property="og:image" content="http://i2.wp.com/forensicfocus.files.wordpress.com/2012/10/fig5.jpg?fit=400%2C400">
+<meta property="og:image" content="http://i1.wp.com/forensicfocus.files.wordpress.com/2012/10/move1.jpg?fit=400%2C400">
+<meta property="og:image" content="http://i0.wp.com/forensicfocus.files.wordpress.com/2012/10/move2.jpg?fit=400%2C400">
+<meta property="og:image" content="http://i1.wp.com/forensicfocus.files.wordpress.com/2012/10/pin.jpg?fit=400%2C400">
+<meta property="og:image" content="http://i2.wp.com/forensicfocus.files.wordpress.com/2012/10/2.jpg?fit=400%2C400">
+<meta property="og:image" content="http://i1.wp.com/forensicfocus.files.wordpress.com/2012/10/1.jpg?fit=400%2C400">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:image" content="http://i2.wp.com/forensicfocus.files.wordpress.com/2012/10/fig1.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="shortcut icon" type="image/x-icon" href="http://s2.wp.com/i/favicon.ico?m=1311975824g" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="http://s2.wp.com/i/favicon.ico?m=1311975824g" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="http://s0.wp.com/i/webclip.png?m=1355642671g">
+<link rel="openid.server" href="http://forensicfocus.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="http://forensicfocus.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="http://articles.forensicfocus.com/osd.xml" title="Forensic Focus - Articles">
+<link rel="search" type="application/opensearchdescription+xml" href="http://wordpress.com/opensearch.xml" title="WordPress.com">
+		<style>
+		/* <![CDATA[ */
+		/* Block: reblog */
+		
+		.reblog-from img                   { margin: 0 10px 0 0; vertical-align: middle; padding: 0; border: 0; }
+		.reblogger-note img.avatar         { float: left; padding: 0; border: 0; }
+		.reblogger-note-content            { margin: 0 0 20px; }
+		.reblog-post .wpcom-enhanced-excerpt-content { border-left: 3px solid #eee; padding-left: 15px; }
+		.reblog-post ul.thumb-list         { display: block; list-style: none; margin: 2px 0; padding: 0; clear: both; }
+		.reblog-post ul.thumb-list li      { display: inline; margin: 0; padding: 0 1px; border: 0; }
+		.reblog-post ul.thumb-list li a    { margin: 0; padding: 0; border: 0; }
+		.reblog-post ul.thumb-list li img  { margin: 0; padding: 0; border: 0; }
+		
+		.reblog-post .wpcom-enhanced-excerpt { clear: both; }
+		
+		.reblog-post .wpcom-enhanced-excerpt address,
+		.reblog-post .wpcom-enhanced-excerpt li,
+		.reblog-post .wpcom-enhanced-excerpt h1,
+		.reblog-post .wpcom-enhanced-excerpt h2,
+		.reblog-post .wpcom-enhanced-excerpt h3,
+		.reblog-post .wpcom-enhanced-excerpt h4,
+		.reblog-post .wpcom-enhanced-excerpt h5,
+		.reblog-post .wpcom-enhanced-excerpt h6,
+		.reblog-post .wpcom-enhanced-excerpt p { font-size: 100% !important; }
+		
+		.reblog-post .wpcom-enhanced-excerpt blockquote,
+		.reblog-post .wpcom-enhanced-excerpt pre,
+		.reblog-post .wpcom-enhanced-excerpt code,
+		.reblog-post .wpcom-enhanced-excerpt q { font-size: 98% !important; }
+		
+
+		/* ]]> */		
+		</style>
+		<meta name="application-name" content="Forensic Focus - Articles"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Digital forensics articles and research papers"><meta name="msapplication-task" content="name=Subscribe;action-uri=http://articles.forensicfocus.com/feed/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="title" content="Forensic Analysis of Windows 7 Jump Lists | Forensic Focus - Articles on WordPress.com">
+<meta name="description" content="Forensic Analysis of Windows 7 Jump Lists Abstract The release of Microsoft Windows 7 introduced a new feature known as Jump Lists which present the user with links to recently accessed files grouped on a per application basis.  The records maintained by the feature have the potential to provide the forensic computing examiner with a…">
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #FFFFFF; }
+</style>
+
+		<script type="text/javascript" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/google_service.js"></script>
+		<script type="text/javascript">
+			GS_googleAddAdSenseService("ca-pub-3443918307802676");
+			GS_googleEnableAllServices();
+		</script><script src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/google_ads.js"></script>
+		<script type="text/javascript">
+		GA_googleAddAttr( 'WordAds', '1' );
+GA_googleAddAttr( 'BlogId', '24581919' );
+GA_googleAddAttr( 'Domain', 'articles.forensicfocus.com' );
+GA_googleAddAttr( 'WordAds-MI', '1' );
+GA_googleAddAttr( 'AdSafe', '1' );
+GA_googleAddAttr( 'NoNetFill', '0' );
+GA_googleAddAttr( 'LangId', '1' );
+GA_googleAddAttr( 'MarkupVer', '2' );
+GA_googleAddAttr( 'Autotag', 'technology' );
+GA_googleAddAttr( 'theme_bg', 'ffffff' );
+GA_googleAddAttr( 'theme_border', 'ebeff2' );
+GA_googleAddAttr( 'theme_text', '333333' );
+GA_googleAddAttr( 'theme_link', '3a6999' );
+GA_googleAddAttr( 'theme_url', 'a11b1b' );
+
+		</script>
+		<script type="text/javascript">
+			GA_googleAddSlot('ca-pub-3443918307802676', 'Wordads_MIS_Mrec_Below_adsafe');
+
+		</script>
+		<script type="text/javascript">
+			GA_googleFetchAds();
+		</script>
+		<script type="text/javascript">
+		jQuery( window ).load( function() {
+			jQuery( "a.wpadvert-about" ).text( "About these ads" );
+		} );
+		</script>
+				<link rel="stylesheet" id="custom-css-css" type="text/css" href="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/saved_resource(2)">
+		<script type="text/javascript"> 
+	window.google_analytics_uacct = "UA-52447-2"; 
+</script>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-52447-2']);
+	_gaq.push(['_setDomainName', 'none']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_initData']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/ga.js"></script>
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/services.css"><script type="text/javascript" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/osd.js"></script></head>
+
+<body class="single single-post postid-2033 single-format-standard custom-background typekit-enabled highlander-enabled highlander-light">
+
+	<div class="container">
+	
+		<div id="header" class="column full-width clear-fix">
+
+			<div id="logo" class="column first">
+				<div class="title">
+										<h3 class="site-title">
+						<a href="http://articles.forensicfocus.com/">Forensic Focus – Articles</a>
+					</h3>
+					<div class="site-description desc">Digital forensics articles and research papers</div>
+				</div>
+			</div><!-- end logo -->
+
+			<div id="search_menu" class="column border_left last">
+				<div id="search" class="column first">
+					<h3 class="mast4">Search</h3>
+
+					<div id="search-form">
+						<form method="get" id="searchform" action="http://articles.forensicfocus.com//">
+							<div class="clear-fix">
+								<label for="s" class="none">Search for:</label>
+								<input type="text" name="s" id="s" class="search_input" value="">
+								<label for="searchsubmit" class="none">Go</label>
+								<input type="submit" id="searchsubmit" class="submit_input" value="Search">
+							</div>
+						</form>
+					</div>
+				</div><!-- end #search -->
+				<ul id="menu" class="clear-fix">
+					<li><span class="home"><a href="http://articles.forensicfocus.com/">Home</a></span></li>
+<li><span class="subscribe"><a href="http://articles.forensicfocus.com/feed/rss/">Subscribe</a></span></li>
+				</ul>
+			</div><!-- end #search_menu -->
+
+		</div><!-- end #header -->
+
+		<div id="navigation" class="clear-fix">
+			<div class="menu-horizontal-menu-container"><ul id="menu-horizontal-menu" class="nav fl"><li id="menu-item-1281" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1281"><a href="http://www.forensicfocus.com/">News</a></li>
+<li id="menu-item-1280" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1280"><a href="http://www.forensicfocus.com/forums">Forums</a></li>
+<li id="menu-item-1282" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1282"><a href="http://articles.forensicfocus.com/">Articles</a></li>
+<li id="menu-item-1283" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1283"><a href="http://www.forensicfocus.com/interviews">Interviews</a></li>
+<li id="menu-item-1284" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1284"><a href="http://www.forensicfocus.com/jobs">Job Vacancies</a></li>
+<li id="menu-item-1285" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1285"><a href="http://www.forensicfocus.com/education">Education</a></li>
+<li id="menu-item-1286" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1286"><a href="http://www.forensicfocus.com/webinars">Webinars</a></li>
+<li id="menu-item-1287" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1287"><a href="http://www.forensicfocus.com/newsletter">Newsletter</a></li>
+<li id="menu-item-1288" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1288"><a href="http://www.forensicfocus.com/events">Events</a></li>
+<li id="menu-item-1289" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1289"><a href="http://www.forensicfocus.com/blog">Blog</a></li>
+</ul></div>							<ul class="rss fr">
+					<li class="sub-rss"><a href="http://articles.forensicfocus.com/feed/rss/">Subscribe to RSS</a></li>
+				</ul>
+					</div><!-- #navigation -->
+
+
+<div id="topbanner" class="column full-width" style="background-image:url()">
+
+		
+		</div>
+<div id="post_content" class="column full-width">
+
+	
+		<div class="column primary-content first">
+
+			<div class="post_cat"><a href="http://articles.forensicfocus.com/category/uncategorized/" title="View all posts in Uncategorized" rel="category tag">Uncategorized</a></div>
+
+			<h1 class="post_name" id="post-2033">Forensic Analysis of Windows 7 Jump&nbsp;Lists</h1>
+
+			<div class="post_meta">
+				<span class="byline">Posted by <a class="url fn n" href="http://articles.forensicfocus.com/author/roblyness/" title="View all posts by roblyness" rel="author">roblyness</a></span> <span class="entry-date"><span class="dot">⋅</span> <time class="entry-date" datetime="2012-10-30T22:51:59+00:00" pubdate="">October 30, 2012</time></span>									<span class="comment-link"><span class="dot">⋅</span> <a href="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/#comments" title="Comment on Forensic Analysis of Windows 7 Jump Lists">2 Comments</a></span>
+							</div>
+
+			<div class="post_meta">
+							</div>
+
+			<div class="post_text">
+				<div>
+<p>Forensic Analysis of Windows 7 Jump Lists</p>
+<p><span style="text-decoration:underline;"><strong>Abstract</strong></span></p>
+<p>The release of Microsoft Windows 7 introduced a new feature known as Jump Lists which present the user with links to recently accessed files grouped on a per application basis.&nbsp; The records maintained by the feature have the potential to provide the forensic computing examiner with a rich source of evidence during examinations of computers running the Microsoft Windows 7 Operating System.&nbsp; This paper explores the type and level of information recorded by the Jump List feature, the structure of those records and the user actions which result in them being updated.</p>
+<p><strong><span style="text-decoration:underline;">Introduction</span></strong></p>
+</div>
+<p>The content of this article is based upon an MSc Thesis submitted by the author to Cranfield University in February 2012 but has been supplemented with observations and findings from analysis of Jump List files in actual investigations.</p>
+<p>The article focuses primarily on artefacts relating to file accesses and although additional Jump List data relating to the use of individual programs has no focus in this paper, some work in this area has been conducted by Barnett (undated).</p>
+<p>The Jump List feature provides the user with a graphical interface associated with each installed application which lists files that have been previously accessed by that application.&nbsp; An example of that interface is shown at Fig. 1.</p>
+<p><a style="font-style:normal;line-height:18px;text-decoration:underline;" href="http://forensicfocus.files.wordpress.com/2012/10/fig1.jpg"><img id="i-2019" class="size-full wp-image aligncenter" alt="Image" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/fig1.jpg"></a></p>
+<p style="text-align:center;"><strong>Fig. 1 – Example of Jump List associated with Microsoft Paint.</strong></p>
+<p>As indicated in Fig. 1, it is also possible for a user to ‘pin’ items in order to retain them on a list.</p>
+<p>The feature is enabled as standard and the default setting is to show the 10 most recently accessed files per application, although it is possible to adjust that figure to a maximum of 60.</p>
+<p>Configuration changes can be achieved by a right mouse click on the Windows Logo button &gt; Properties which reveals a dialog box similar to that shown at Fig. 2 which can be used to enable/disable the Jump List feature.</p>
+<p><a href="http://forensicfocus.files.wordpress.com/2012/10/fig2.jpg"><img id="i-2020" class=" wp-image aligncenter" alt="Image" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/fig2.jpg" height="330" width="283"></a></p>
+<p style="text-align:center;"><strong>Fig. 2 – Example of Windows 7 ‘Taskbar and Start Menu Properties’ Dialog box.</strong></p>
+<p>The number of items to be displayed on a Jump List can be adjusted through clicking of the ‘Customize…’ button which reveals a second dialog box, similar to that shown at Fig. 3</p>
+<p><a href="http://forensicfocus.files.wordpress.com/2012/10/fig3.jpg"><img id="i-2021" class=" wp-image aligncenter" alt="Image" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/fig3.jpg" height="348" width="268"></a></p>
+<p style="text-align:center;"><strong>Fig. 3 – Example of Windows 7 ‘Customize Start Menu’ Dialog Box.</strong></p>
+<p><strong><span style="text-decoration:underline;">Background Information</span></strong></p>
+<p>During the initial stages of the original project research was conducted in an attempt to identify what was already known about the topic of Jump Lists.</p>
+<p>Whilst it was found that information available in the public domain was limited, some useful material was identified:</p>
+<ol>
+<li>Torres (2011) indicates that records of the items pinned to the Taskbar are stored in the directory ‘<i>C:\Users\%username%\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar</i>’.</li>
+<li>AccessData’s Registry Quick Find Chart (2010) indicated that details of applications that have been pinned to the Taskbar are also recorded in the Windows Registry values ‘<i>Favorites</i>’ and ‘<i>FavoritesResolve</i>’ at ‘<i>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband</i>’ and that details of applications subsequently removed are retained within those Registry values.</li>
+<li>Larson (undated) explains that details of accessed files are held within structured storage (Compound Binary) files which themselves are stored within the user’s profile at the location ‘<i>%systemdrive%\Users\%username%\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations</i>’ and notes the following:
+<ol>
+<li>The files are named with 16 hexadecimal digits, known as the AppID followed by the file extension ‘<i>automaticDestinations-ms</i>’.</li>
+<li>The AppID can be set by the application or by the OS at application runtime. (MSDN, 2011).
+<ol>
+<li>A list of known AppIDs can be found at <a href="http://www.forensicswiki.org/wiki/List_of_Jump_List_IDs">http://www.forensicswiki.org/wiki/List_of_Jump_List_IDs</a></li>
+</ol>
+</li>
+<li>The majority of records within the Compound Binary file are named with a hexadecimal numeric value and are structured in accordance with the shortcut (link) file specification.</li>
+<li>A further entry entitled&nbsp;<i>‘DestList’</i>, is also present and although this element is structured, there is little information available relating to that structure or the information contained within these elements although it was clear that they do not follow the Shortcut specification.</li>
+</ol>
+</li>
+<li>Carvey (2011) details a small proportion of the structure, including a 64 bit ’FILETIME’ object and indicates that there are further byte sequences present within the&nbsp;<i>‘DestList’</i>.</li>
+<li>The specifications for both Compound Binary (MSDN, 2010 (a)) and Shortcut files (MSDN, 2010 (b)) are documented online and a number of tools are available to extract the individual elements from Compound Binary files, for example SSView (<a href="http://www.mitec.cz/ssv.html">http://www.mitec.cz/ssv.html</a>), OffVis (<a href="http://download.microsoft.com/download/1/2/7/127ba59a-4fe1-4acd-ba47-513ceef85a85/OffVis.zip">http://download.microsoft.com/download/1/2/7/127ba59a-4fe1-4acd-ba47-513ceef85a85/OffVis.zip</a>) and JumpLister (<a href="http://www.woanware.co.uk/?page_id=266">http://www.woanware.co.uk/?page_id=266</a>), however, none of these tools will fully parse the&nbsp;<i>‘DestList’</i>&nbsp;element within a Jump List file.</li>
+<li>Ard (2007) states that Jump Lists record the number of times that a file is opened.</li>
+<li>Li (2011) reports that the number of items to be shown on a Jump List is stored within the Registry value ‘<i>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Start_JumpListItems</i>’.</li>
+</ol>
+<p><strong><span style="text-decoration:underline;">Experimental Setup and Program.</span></strong></p>
+<p>All experimentation was conducted in a virtual environment.&nbsp; Based upon available resources at the time of the research, this was achieved using VMWare Workstation 7.1.3 and a retail copy of Windows 7 Ultimate (x64) with no Service Packs.</p>
+<p>The virtual machine was created with two attached virtual disks formatted with the NTFS file system; the first to hold the Operating System and the second to store a series of specimen text, picture, music and video files.</p>
+<p>The date and time settings of the virtual machine and all clones made from it were deliberately maintained in British Summer Time (GMT+1) in order to assist in how dates and times are recorded by Jump Lists.</p>
+<p>The experiments that were conducted were designed to address specific points with a view to understanding the full structure of the records maintained by Jump Lists and were broken down into specific objectives.</p>
+<p><strong>Identify initial Jump List data.&nbsp; </strong></p>
+<p>The first stage in this process was to carry out a fresh installation of Windows 7.&nbsp; The virtualisation software was used to capture a snapshot at the completion of the installation, a second after an account was created and a third after being presented with the option to apply a password or not.&nbsp; Finally the process was allowed to complete by logging the newly created user on for the first time after which the VM was shut down without accessing any files.</p>
+<p>This experiment was carried out twice; once where a password was applied and once without.</p>
+<p>All further experimentation was based upon clones of the VM where a password was applied to the user account and various tests were conducted to change the configuration of the feature and update the records maintained by it.</p>
+<p><strong>Modify configuration settings.</strong></p>
+<p>This was achieved by accessing the ‘Customize Start Menu’ dialog box as depicted in Fig. 3 and changing the default values to 15 (for number of programs) and 20 (for number of recent Jump List items).</p>
+<p>The next step was to use the ‘regedit’ application to access the Registry key identified by Li (2011) before changing the data of the value ‘<i>Start_JumpListItems</i>’ to 25 (0×19) before closing regedit and accessing the relevant dialog box again to note the displayed values.</p>
+<p>Finally, the ‘Use Default Settings’ button was used to return both displayed values to 10.</p>
+<p><strong>Open files.</strong></p>
+<p>A number of the sample files held on the second virtual hard disk were opened using applications included with Windows 7; Notepad and WordPad for text, Windows Photo Viewer and Paint for picture files, Windows Media Player and Windows Media Centre for video, sound and pictures.</p>
+<p><strong>Pin and Unpin items to a Jump List, Taskbar and Start Menu.</strong></p>
+<p>One entry each from the Jump Lists for Notepad and Paint were pinned to their respective lists.</p>
+<p>The picture viewing program Irfanview (<a href="http://download.cnet.com/IrfanView/3000-2192_4-10021962.html?part=dl-IrfanView&subj=dl&tag=button">http://download.cnet.com/IrfanView/3000-2192_4-10021962.html?part=dl-IrfanView&amp;subj=dl&amp;tag=button</a>) and the productivity suite Microsoft Office 2007 were then installed using the default installation locations, before shortcuts to Irfanview, Microsoft Word, Notepad and Paint were pinned to the Taskbar and Start Menu.</p>
+<p>Irfanview and Microsoft Word were used to open two picture files and two Microsoft Word documents respectively.&nbsp; One entry from each of the displayed Jump Lists was pinned to the list; one from the Taskbar list and the other from the Start Menu List.</p>
+<p>Irfanview was then unpinned from the Taskbar and Start Menu and uninstalled using the relevant link found in the programs listing presented on the Start Menu.</p>
+<p>Microsoft Office 2007 was uninstalled via the Windows Control Panel without unpinning Microsoft Word from either the Taskbar or Start Menu.</p>
+<p><strong>Delete Jump List data.</strong></p>
+<p>A number of methods of deleting the entries from a Jump List were tested;</p>
+<ol>
+<li>Manually selecting each entry through a right mouse click &gt; ‘Remove from this list’ option.</li>
+<li>Deselecting the option to ‘Store and display recently opened items in the Start menu and the taskbar’ from the ‘Taskbar and Start Menu Properties’ dialog box (see Fig. 2).</li>
+<li>Navigating to the ‘AutomaticDestinations’ directory and deleting the Compound Binary Files through Windows Explorer.</li>
+<li>From a command prompt with the command ‘<i>del C:\Users\Win7x64JL\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\* /Q</i>’.</li>
+</ol>
+<p><strong>Establish the order of file accesses.</strong></p>
+<p>This experiment consisted of three steps;</p>
+<ol>
+<li>Open a series of files in a known order</li>
+<li>Pin a selection of Jump List items in a known order</li>
+<li>Open all of the files again in a known order.</li>
+</ol>
+<p><strong>Identify pinned entries.</strong></p>
+<p>No additional experimentation was required for this step as previous experiments had already included the action of pinning individual entries to various Jump Lists.</p>
+<p><strong>Determine how often a file has been accessed.</strong></p>
+<p>Although it had previously been noted by Ard (2007) that Jump Lists record the number of times that a file has been opened, no information was identified to indicate whether other types of file access are also counted.&nbsp; The experimentation at this stage was intended to address this knowledge deficit.</p>
+<p>Due to time constraints associated with the original project, all further experimentation focused on the use of the applications Notepad and Microsoft Paint.</p>
+<p>A number of steps were taken to investigate this aspect of Jump Lists;</p>
+<ol>
+<li>Two sample files (one picture and one text) were opened a total of five times each by navigating to them through Windows Explorer and a double left mouse click.</li>
+<li>The various context menu options (with and without the use of the Shift key) available for picture and text files were each used to perform a function, i.e Print.</li>
+<li>Shortcut files were created on the Desktop and used to open sample files.</li>
+<li>The various options within the application toolbars were each used to perform a function.</li>
+<li>Entries appearing in the Jump List were used to re-open files and the additional options available through a right mouse click on an entry were also selected in turn.</li>
+<li>Sample files were opened from the Command Prompt with commands such as ‘<i>notepad D:\somefile.txt</i>’.</li>
+</ol>
+<p><strong>Identify whether the date/time of file access is recorded.</strong></p>
+<p>It has been noted previously at Section 2 above that Carvey (2011) identified the presence of a ‘FILETIME’ object within the structure of an entry recorded in the <i>‘DestList’</i> element of a Jump List, although the purpose of this value was unknown.&nbsp; Analysis of changes to these byte sequences was performed on the various Jump List files which had been generated and updated as a result of the experiments conducted in order to determine the purpose of that object.</p>
+<p><strong>Establish any differences in how file accesses are recorded.</strong></p>
+<p>The various Jump List files generated throughout the testing phase were analysed in an effort to identify any differences in the way that certain actions are recorded.</p>
+<p><strong>Delete, move and rename Jump List target&nbsp; files.</strong></p>
+<p>Experimentation was conducted to investigate the impact of these types of user actions on the records within a Jump List.&nbsp; The experiments involved opening a number of sample files to generate an entry in a Jump List before testing the following actions;</p>
+<ol>
+<li>Moving the target within the same volume.</li>
+<li>Moving the target to a different volume.</li>
+<li>Deleting the target to the Recycle Bin.</li>
+<li>Deleting the target to the Recycle Bin and then deleting it from that location.</li>
+<li>Deleting the target, but bypassing the Recycle Bin by use of the Shift key.</li>
+<li>Renaming the target file on the original volume.</li>
+</ol>
+<p><strong><span style="text-decoration:underline;">Install a known application to a non-default location.</span></strong></p>
+<p>The purpose of this experiment was to identify any differences in the value of the AppID generated by Windows 7 by installing an application to a non-standard location.</p>
+<p>In this case, this was achieved by installing the program Irfanview to the path ‘<i>C:\Irfanview</i>’ instead of the default ‘<em>C:\Program Files(x86)\Irfanview</em>‘. &nbsp;Following the installation two sample picture files were opened.</p>
+<p><strong><span style="text-decoration:underline;">Results and Observations</span></strong></p>
+<p>This Section provides a summary of the experimental results and observations made.&nbsp; For ease of reference the information is grouped into areas of interest.</p>
+<p><strong>Data present at first login.</strong></p>
+<p style="text-align:left;">The areas of the folder structure and the Windows Registry that are used to store data relevant to Jump Lists are created within a user account at the point that account first logs in.</p>
+<p style="text-align:left;">A fresh install of Windows 7 resulted in the applications ‘Internet Explorer’, ‘Windows Explorer’ and ‘Windows Media Player’ being automatically pinned to the Taskbar without any user interaction as shown in Fig. 4 below.<br>
+<a href="http://forensicfocus.files.wordpress.com/2012/10/fig4.jpg"><img id="i-2022" class="size-full wp-image aligncenter" alt="Image" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/fig4.jpg"></a></p>
+<p style="text-align:center;"><strong>Fig. 4 – Screen capture of Windows 7 Start Menu and Taskbar at first login</strong></p>
+<p>The directory ‘<i>C:\Users\%username%\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar</i>’ was found to contain three shortcut (.lnk) files relating to those three applications.</p>
+<p>References to those pinned applications were also found in the Windows Registry values ‘<i>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband\Favorites and FavoritesResolve</i>’.</p>
+<p>The Windows Registry value ‘<i>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Start_JumpListItems’ </i>did not exist at this stage<i>.</i></p>
+<p>It was found that irrespective of whether the system was configured to show hidden files and folders or not, the ‘<i>AutomaticDestinations</i>’ directory could not be seen when attempting to navigate to it through Windows Explorer.</p>
+<p>If, however, the full path was typed into the address bar, then the contents of the directory could be seen.&nbsp; Navigating to it from a Command Prompt had no such problems.&nbsp; Further analysis using forensic software did not show the ‘<i>AutomaticDestinations</i>’ directory to have the ‘Hidden’ attribute set.</p>
+<p>One Jump List, named ‘<i>1b4dd67f29cb1962.automaticDestinations–ms</i>’ exists within the ‘<i>AutomaticDestinations</i>’ directory at first login which contains four entries relating to the ‘Libraries’ available through Windows Explorer.</p>
+<p><strong>Jump List Configuration Settings</strong></p>
+<p>Changing the number of Jump List items to display using the ‘Customize Start Menu’ dialog box resulted in the creation of the Registry value ‘<i>HKCU\Software\Microsoft\Windows\CurrentVersion\</i><i>Explorer\Advanced\Start_JumpListItems</i>’.</p>
+<p>Similarly, changing the number of recent programs to display resulted in the creation of a value named ‘<i>Start_MinMFU</i>’ in the same Registry key.</p>
+<p>After deselecting the option to ‘Store and display recently opened items in the Start menu and the taskbar’ from the ‘Taskbar and Start Menu Properties’ dialog box, a new value entitled ‘<i>Start_TrackDocs</i>’ was created within the same Registry key.&nbsp; Additional experimentation identified that the data in this value is either ‘0’ when the feature is disabled or ‘1’ when enabled.</p>
+<p><i>None of these values were present at first login.</i></p>
+<p>Using regedit to alter the date in the Registry values resulted in immediate updates to the respective checkboxes in the ‘Customize Start Menu’ dialog box.</p>
+<p>The installation path of a program is taken into account by the OS when AppIDs are automatically generated.</p>
+<p>Whilst it was found that uninstalling a program removed traces of items pinned to the Start Menu and Taskbar, it was also found that Jump Lists relating to that application remained intact.</p>
+<p><strong>Accessing files</strong></p>
+<p>There are numerous options available to a user in respect of file manipulation through Windows Explorer, context menus, application file menus and Jump Lists themselves.</p>
+<p>Testing revealed that providing a period of at least 30 seconds elapsed between repeated instances of opening the same file, a counter in the <i>‘DestList’</i> entry would increment by 1.</p>
+<p>Accessing files in a serial manner, i.e. one after the other, resulted in entries being made in the Jump List irrespective of the amount of time elapsed between each access.</p>
+<p>The FILETIME object only changed when a user action caused the entry access counter incremented.</p>
+<p>The only actions that were found to cause such updates to the FILETIME object and the access counter were those that resulted in the content of the target file being made available to the user, i.e. displaying a picture file on screen or printing it.</p>
+<p>Table 1 below shows only the various user actions which resulted in an update to the access count of a Jump List.&nbsp; It should be noted that the options ‘From Scanner or camera’ and Send in Email’ present in the file menu associated with Paint were not tested</p>
+<p><i>Analysis of Jump List files in relation to live case work has shown that some applications including the Microsoft Office suite, Windows Explorer and Windows Media Player may record non whole numbers in the access count.&nbsp; The reason for this difference has not been identified and experimentation has failed to identify a method to replicate the issue.</i></p>
+<div>
+<div>
+<table border="1">
+<tbody>
+<tr>
+<td colspan="2"><span style="text-decoration:underline;">Left/Right mouse button</span></td>
+<td colspan="2"><span style="text-decoration:underline;">Action</span></td>
+</tr>
+<tr>
+<td colspan="4"><strong><span style="text-decoration:underline;">Paint</span></strong></td>
+</tr>
+<tr>
+<td colspan="2">Left</td>
+<td colspan="2">Double click</td>
+</tr>
+<tr>
+<td colspan="2">Left</td>
+<td colspan="2">Link file</td>
+</tr>
+<tr>
+<td colspan="2">Right</td>
+<td colspan="2">Preview</td>
+</tr>
+<tr>
+<td colspan="2">Right</td>
+<td colspan="2">Set as background</td>
+</tr>
+<tr>
+<td colspan="2">Right</td>
+<td colspan="2">Edit</td>
+</tr>
+<tr>
+<td colspan="2">Right</td>
+<td colspan="2">Print</td>
+</tr>
+<tr>
+<td colspan="2">Right</td>
+<td colspan="2">Open With</td>
+</tr>
+<tr>
+<td colspan="4"><strong><span style="text-decoration:underline;">Notepad</span></strong></td>
+</tr>
+<tr>
+<td colspan="2">Left</td>
+<td colspan="2">Double click target</td>
+</tr>
+<tr>
+<td colspan="2">Left</td>
+<td colspan="2">Double click Link file</td>
+</tr>
+<tr>
+<td colspan="2">Right</td>
+<td colspan="2">Open</td>
+</tr>
+<tr>
+<td colspan="2">Right</td>
+<td colspan="2">Print</td>
+</tr>
+<tr>
+<td colspan="2">Right</td>
+<td colspan="2">Edit</td>
+</tr>
+<tr>
+<td colspan="2">Right</td>
+<td colspan="2">Open With</td>
+</tr>
+<tr>
+<td colspan="4"><strong><span style="text-decoration:underline;">File Menu</span></strong></td>
+</tr>
+<tr>
+<td>Option</td>
+<td colspan="2">Jump List Updated</td>
+<td>Remarks</td>
+</tr>
+<tr>
+<td colspan="4"><strong>Paint</strong></td>
+</tr>
+<tr>
+<td>Open</td>
+<td colspan="2">Paint + Explorer</td>
+<td></td>
+</tr>
+<tr>
+<td>Save</td>
+<td colspan="2">Paint + Explorer</td>
+<td>Initial Save only</td>
+</tr>
+<tr>
+<td>Save As</td>
+<td colspan="2">Paint + Explorer</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="4"><strong>Notepad</strong></td>
+</tr>
+<tr>
+<td>Open</td>
+<td colspan="2">Notepad + Explorer</td>
+<td></td>
+</tr>
+<tr>
+<td>Save</td>
+<td colspan="2">Notepad + Explorer</td>
+<td>Initial Save only</td>
+</tr>
+<tr>
+<td>Save As</td>
+<td colspan="2">Notepad + Explorer</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="4"><strong><span style="text-decoration:underline;">Jump List Menu</span></strong></td>
+</tr>
+<tr>
+<td colspan="2"><span style="text-decoration:underline;">Action/Option</span></td>
+<td colspan="2"><span style="text-decoration:underline;">Jump List Updated</span></td>
+</tr>
+<tr>
+<td colspan="4"><strong>Paint</strong></td>
+</tr>
+<tr>
+<td colspan="2">Click Entry</td>
+<td colspan="2">Paint + Explorer</td>
+</tr>
+<tr>
+<td colspan="2">Edit</td>
+<td colspan="2">Paint + Explorer</td>
+</tr>
+<tr>
+<td colspan="2">Print</td>
+<td colspan="2">Paint + Explorer</td>
+</tr>
+<tr>
+<td colspan="4"><strong>Notepad</strong></td>
+</tr>
+<tr>
+<td colspan="2">Click Entry</td>
+<td colspan="2">Notepad + Explorer</td>
+</tr>
+<tr>
+<td colspan="2">Open</td>
+<td colspan="2">Notepad + Explorer</td>
+</tr>
+<tr>
+<td colspan="2">Print</td>
+<td colspan="2">Notepad + Explorer</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="text-align:center;"><strong>Table 1 – User actions resulting in access count update</strong></p>
+</div>
+<div>
+<p>Experimentation failed to identify any method to identify specifically which action caused the count value to increase.</p>
+<p>The testing conducted indicates that files opened via a command prompt do not cause the access count to rise.</p>
+<p>It was found that the Windows 7 default picture viewing program (Windows Photo Viewer) did not record the details of files accessed in a Jump List and nor was one created when that program was used.</p>
+<p>Most of the generated Jump Lists recorded the file paths to their respective target files in clear text with Unicode encoding, which can be read with relative ease.</p>
+<p>Windows Media Player, however, did not follow this trend but rather uses a series of alphanumeric (hexadecimal) characters to document this information as illustrated in Fig. 5 below:</p>
+<p><a href="http://forensicfocus.files.wordpress.com/2012/10/fig5.jpg"><img id="i-2023" class="size-full wp-image aligncenter" alt="Image" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/fig5.jpg"></a></p>
+<p style="text-align:center;"><b>Fig. </b><b>5</b><b> – Example of file path recorded by Windows Media Player</b></p>
+<p>The ‘link file’ elements in Windows Media Player are also different and point to the executable itself, with the file path of the target file recorded as a switch passed to the program when run.</p>
+<p><strong>It has been noted in a recent case, however, that Windows Media Player had recorded two entries for each file accessed, one with the file path stored as shown in Fig 5 and the other with the full path. &nbsp;The respective ‘link file’ elements replicated this, with one pointing to the executable and the other following the more traditional format associated with link files.&nbsp;</strong></p>
+<p>Not all applications use all of the fields available in a ‘DestList’ entry all of the time. &nbsp;Fig. 6 below shows the differences between the amount of data recoded in two entries taken from the same ‘DestList’.</p>
+<p>When target files are renamed on or moved between drives with the registered type ‘Fixed’ connected to the machine, subsequent opening of the target is from the Jump List entry is successful and results in the details recorded in the <i>‘DestList’</i> element being updated to reflect the change.</p>
+<p>Files that have been ‘deleted’ to the Recycle Bin on drives of the same type are also located correctly and the user is given the opportunity to restore the target to its original location (without opening it and therefore not updating the access count) or to delete the entry from the Jump List.</p>
+<p>For files that have been moved to a drive with the registered type ‘Removable’ such as USB devices or deleted from the Recycle Bin,&nbsp; any attempt to re–open a file subjected to such a move or deletion results in an error message being displayed on screen.</p>
+<p>The results of the experiments conducted in relation to this aspect of Jump List behaviour is shown at Table 2 below:</p>
+</div>
+<div>
+<div>
+<table border="1">
+<tbody>
+<tr>
+<td>Serial</td>
+<td>Action</td>
+<td>Result</td>
+<td>Remarks</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Cut and Paste to new&nbsp;Fixed Disk NTFS volume</td>
+<td>Opened.&nbsp; File path amended to new location.</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Cut and Paste to Removable Drive NTFS volume</td>
+<td>&nbsp;<a href="http://forensicfocus.files.wordpress.com/2012/10/move1.jpg"><img id="i-2024" class="size-full wp-image" alt="Image" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/move1.jpg"></a></td>
+<td>‘Yes’ removes the entry from the list.&nbsp; ‘No’ leaves it in the list.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Cut and Paste to same<p></p>
+<p>Fixed Disk NTFS volume</p></td>
+<td>Opened.&nbsp; File path amended to new location.</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Right Mouse click &gt; Delete (Sent to Recycle Bin)</td>
+<td>&nbsp;<a href="http://forensicfocus.files.wordpress.com/2012/10/move2.jpg"><img id="i-2025" class="size-full wp-image" alt="Image" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/move2.jpg"></a></td>
+<td>‘Restore’ returns the file to original location, but does not open it.<p></p>
+<p>‘Delete’ removes entry from list but leaves the file intact in the Recycle Bin</p></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Right Mouse click &gt; Delete &gt; Delete from Recycle Bin</td>
+<td>As Serial 2 result.</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Shift key + Delete key (Bypass Recycle Bin)</td>
+<td>As Serial 2 result.</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Rename</td>
+<td>Opened.&nbsp; File path amended to new name.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="text-align:center;"><strong>Table 2 – Results of renaming, moving or deleting files</strong></p>
+</div>
+<div>
+<p><strong>Order of Access</strong></p>
+<p>The list is presented on screen to the user and stored in the <i>‘DestList’</i> element in reverse order, i.e. the first entry at the bottom and the most recent at the top,&nbsp; with each subsequent entry being appended to the list above the preceding entry.</p>
+<p>Within the ‘Recent’ section of a Jump List, subsequent accesses to target files results in placing the entry for the most recently accessed at the top of that section when the list is presented on screen to the user and within the <i>‘DestList’</i> element.</p>
+<p>The ordering of presentation of items pinned to a Jump List differed, with the sequence reflecting the order in which they were pinned, i.e. the first at the top of the section and the last at the bottom.</p>
+<p>It was also found that when an entry is pinned, the data relating to it in the <i>‘DestList’</i> became static and was not re–ordered as further accesses occurred.&nbsp; This was also true within the list presented to the user on screen, i.e. the entries were not re–ordered.</p>
+<p><strong>Pinning/Unpinning Items</strong></p>
+<p>Individual files can be pinned to the Jump List and/or the Start Menu, but not to the Taskbar.</p>
+<p>At the point the first item is pinned to the Start Menu a new sub-directory named ‘<i>StartMenu</i>’ is created within ‘<i>C:\Users\%username%\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\’ </i>which is used to store a shortcut (.lnk) file relating to that item.</p>
+<p>Unpinning the item from the Start Menu results in the shortcut (.lnk) file being removed from the ‘<i>StartMenu</i>’ sub-directory.</p>
+<p>Unpinning all items from the Start Menu leaves the ‘<i>StartMenu</i>’ sub-directory intact.</p>
+<p>When an program is pinned to the Start Menu or the Taskbar a shortcut (.lnk) file is created and stored in the relevant sub-directory of ‘<i>C:\Users\%username%\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\</i>’ .</p>
+<p>A record of items pinned to the Taskbar is also added to the data in the values ‘<i>Favorites</i>’ and ‘<i>FavoritesResolve</i>’ within the Windows Registry key ‘<i>HKCU\Software\Microsoft\Windows\CurrentVersion\</i><i>Explorer\Taskband</i>’.&nbsp; If those shortcut files are removed from the respective locations, either manually or during an application uninstallation process, the corresponding traces within the folder structure and Windows Registry are also removed, but any Jump Lists generated from the use of that program remain intact.</p>
+<p>The testing conducted showed that the total number of items&nbsp;pinned to a Jump List is recorded in the header of the <i>‘DestList’,&nbsp;</i> with a hexadecimal count beginning at ‘<em>0×01 0×00 0×00 0×00′</em></p>
+<p>Pinning an entry to a Jump List results in an update to a 4 byte sequence in the ‘<i>DestList</i>’ record which acts as a counter and changes from the default value of ‘<i>0xFF 0xFF 0xFF 0xFF</i>’ to a hexadecimal numeric value. The count begins at hexadecimal ‘<em>0×00 0×00 0×00 0×00</em>’, i.e. 3 pinned entries will result in count values of ‘<em>0×00 0×00 0×00 0×00</em>’, ‘<em>0×01 0×00 0×00 0×00</em>’ and ‘<em>0×02 0×00 0×00 0×00</em>’.</p>
+<p>The changes to the ‘<i>DestList</i>’ header (at offset 8) and an entry (at offset 280 in this example) which occurred as a result of pinning a single entry to a Jump List are shown at Fig. 6 below:</p>
+<p><a href="http://forensicfocus.files.wordpress.com/2012/10/pin.jpg"><img id="i-2026" class="size-full wp-image aligncenter" alt="Image" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/pin.jpg"></a></p>
+<p style="text-align:center;"><strong>Fig. 6 – Changes to ‘DestList’ element of Paint Jump List after pinning a single entry</strong></p>
+<p><strong>Deleting Jump List Files</strong></p>
+<p>Input at the Command Prompt of ‘<i>del C:\Users\Win7x64JL\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\* /Q</i>’ resulted in the entire contents of the ‘<i>AutomaticDestinations</i>’ directory being deleted, irrespective of the pinned status of any element within the lists.</p>
+<p>By navigating to the ‘AutomaticDestinations’ folder, it was possible to select and delete all of the Compound Binary Files it contained, regardless of the pinned status of the entries.</p>
+<p>By expanding the Jump List and manually deleting the entries by using the ‘Remove from this list’ option, the following was noted:</p>
+<ol>
+<li>A pinned entry could not be deleted until after it had been unpinned.</li>
+<li>When the last remaining entry was removed from the list, the entire Jump List file was removed from the ‘<i>AutomaticDestinations</i>’ directory.</li>
+</ol>
+<p>The action of removing an entry via a Jump List caused changes to the header of the <i>‘DestList’</i> element, as depicted in Fig. 7 below which provides further insight into the structure of that part of the element.</p>
+<table border="1">
+<tbody>
+<tr>
+<td>
+<p style="text-align:center;"><strong>Before deletion – 2 entries in list</strong></p>
+</td>
+</tr>
+<tr>
+<td>&nbsp;<a href="http://forensicfocus.files.wordpress.com/2012/10/2.jpg"><img id="i-2027" class="size-full wp-image aligncenter" alt="Image" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/2.jpg"></a></td>
+</tr>
+<tr>
+<td>
+<p style="text-align:center;"><strong>After deletion – 1 entry in list</strong></p>
+</td>
+</tr>
+<tr>
+<td>&nbsp;<a href="http://forensicfocus.files.wordpress.com/2012/10/1.jpg"><img id="i-2028" class="size-full wp-image aligncenter" alt="Image" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/1.jpg"></a></td>
+</tr>
+</tbody>
+</table>
+<p style="text-align:center;"><strong>Fig. 7 – Changes to <i>‘DestList’</i> element after removing an entry via the Jump List</strong></p>
+<p>After deselecting the option to ‘Store and display recently opened items in the Start menu and the taskbar’ from the ‘Taskbar and Start Menu Properties’ dialog box the following was noted:</p>
+<ol>
+<li>All Jump List files which contained no pinned elements were removed from the ‘<i>AutomaticDestinations</i>’ directory.</li>
+<li>For those Jump Lists which did contain pinned items, all other entries were removed from the list, leaving only records relating to the pinned elements.</li>
+<li>The Jump List binary files can be extracted from the ‘<i>AutomaticDestinations</i>’ directory on a running machine without changing the data they contain.</li>
+</ol>
+<p><span style="text-decoration:underline;"><strong>‘<i>DestList</i>’ Structure</strong></span></p>
+<p>As a result of background research and the experimentation conducted, it was possible to identify the majority of the ‘<i>DestList’ </i>structure, however, it was found that the purpose of certain areas of the ‘<i>DestList</i>’ structure remained unknown.</p>
+<p>It appeared that the first 8 bytes of an entry were some kind of hash of the entry data. Minimal experimentation was conducted whereby a single byte in each of the identified byte sequences in the entry was amended in a hex editor.&nbsp; As a result the following observations were made:</p>
+<ol>
+<li>Any change in the entry data between the start of the unidentified 8 byte value and the last byte before the file path data would result in any entries in the list after the altered one not appearing in the Jump List displayed on screen.</li>
+<li>Changing the file path had no effect and the correct target file was opened when the entry in the list was clicked.&nbsp; In addition, the Jump List was re–written to amend the file path to show once again the correct information.</li>
+<li>These findings tended to support the theory that the first 8 bytes of an entry is some kind of hash.</li>
+</ol>
+<p>The full structure of the ‘<i>DestList</i>’ element is presented in Table 3 (header) and Table 4 (entry) below:</p>
+</div>
+<div>
+<div>
+<table border="1">
+<thead>
+<tr>
+<td></td>
+<td>Offset</td>
+<td>Description</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="6">DESTLIST HEADER</td>
+<td>0 – 3</td>
+<td>First Issued Entry ID.&nbsp; Naturally appears to always be 1</td>
+</tr>
+<tr>
+<td>4 – 7</td>
+<td>Total number of current entries in Jump List</td>
+</tr>
+<tr>
+<td>8 – 11</td>
+<td>Total number of pinned entries</td>
+</tr>
+<tr>
+<td>12 – 15</td>
+<td>Floating point value.&nbsp; Some kind of counter.&nbsp; Initial value is ‘0×00 0×00 0×80 0x3F’ (=1) (For Windows Explorer ‘0×66 0×66 0×76 0×41’ (=15.4)).&nbsp; Increments as new entries are added.&nbsp; Removing an entry from the Jump List causes the value to decrement.</td>
+</tr>
+<tr>
+<td>16 – 23</td>
+<td>Last issued Entry ID number</td>
+</tr>
+<tr>
+<td>24 – 31</td>
+<td>Number of add/delete actions – <em>Increments as entries are added. &nbsp;Also increments as individual entries are deleted.</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="text-align:center;"><strong>Table 3 – Structure of ‘<i>DestList</i>’ header</strong></p>
+<div>
+<table border="1">
+<tbody>
+<tr>
+<td></td>
+<td>Offset</td>
+<td>Description</td>
+</tr>
+<tr>
+<td rowspan="12">DESTLIST ENTRY</td>
+<td>0 – 7</td>
+<td>A checksum or hash of the entry.&nbsp; Not known what type.</td>
+</tr>
+<tr>
+<td>8 – 23</td>
+<td>New Volume ID</td>
+</tr>
+<tr>
+<td>24 – 39</td>
+<td>Object ID</td>
+</tr>
+<tr>
+<td>40 – 55</td>
+<td>Birth Volume ID</td>
+</tr>
+<tr>
+<td>56 – 71</td>
+<td>Object ID</td>
+</tr>
+<tr>
+<td>72 – 87</td>
+<td>NetBIOS name of volume where the target file is stored – May record names of network shares</td>
+</tr>
+<tr>
+<td>88 – 95</td>
+<td>Entry ID number</td>
+</tr>
+<tr>
+<td>96 – 99</td>
+<td>Floating point counter to record each time the file is accessed (not necessarily opened) – Can produce unusual results (partial numbers)</td>
+</tr>
+<tr>
+<td>100 – 107</td>
+<td>MSFILETIME of last recorded access</td>
+</tr>
+<tr>
+<td>108 – 111</td>
+<td>Entry ‘pin’ status. ‘0xFF 0xFF 0xFF 0xFF’ = Unpinned.&nbsp; Otherwise a counter starting at ‘0×00 0×00 0×00 0×00’.</td>
+</tr>
+<tr>
+<td>112 – 113</td>
+<td>Length of Unicode entry string data</td>
+</tr>
+<tr>
+<td>114 –</td>
+<td>Entry string data</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="text-align:center;"><strong>Table 4 – Structure of ‘<i>DestList</i>’ entry</strong></p>
+</div>
+<p><strong><span style="text-decoration:underline;">Summary</span></strong></p>
+<ol>
+<li>Configuration settings can be retrieved from the Windows Registry
+<ol>
+<li>ntuser.dat\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Start_JumpListItems
+<ol>
+<li>Number of items to display on Jump List</li>
+<li>Default value of 10</li>
+<li>Maximum value of 60</li>
+</ol>
+</li>
+<li>ntuser.dat\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\ Start_TrackDocs
+<ol>
+<li>Status of feature</li>
+<li>Switched on by default</li>
+<li>If present the feature has been turned off at some point (0 = Jump Lists off. 1 = Jump Lists on)</li>
+</ol>
+</li>
+<li>Only present if default values\state changed</li>
+</ol>
+</li>
+<li>Jump List data stored in Compound Binary files at %systemdrive%\Users\%username%\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations
+<ol>
+<li>Can be shortened to %AppData%\MicrosoftAppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations</li>
+<li>Most entries in Compound Binary files are named with a hexadecimal numeric value
+<ol>
+<li>Structured as link files</li>
+</ol>
+</li>
+<li>DestList records the order of access</li>
+</ol>
+</li>
+<li>Not all applications use Jump Lists to record file accesses.</li>
+<li>The individual entries in the ‘<i>DestList</i>’ element of a Jump List contain a wealth of information regarding the target files to which they relate including:
+<ol>
+<li>The Entry ID number, which can be used to ascertain the order in which the entries were added to the list and therefore the order in which files were first accessed.</li>
+<li>A count of file accesses which result in the contents being presented to the user.
+<ol>
+<li>Different applications may record this information in different ways.</li>
+</ol>
+</li>
+<li>The date and time (in GMT) of the last recorded access for each entry.</li>
+<li>A flag to indicate whether the file has been pinned to the list and, if it has, the order in which it was pinned.</li>
+<li>The full path of the target file.</li>
+</ol>
+</li>
+<li>It is possible to identify if entries have been deleted from a list through:
+<ol>
+<li>Disparity between the number of entries in the list as recorded in the ‘<i>DestList</i>’ header and the last issued Entry ID.</li>
+<li>Values missing from the numerical sequence used to name the individual entries.</li>
+</ol>
+</li>
+</ol>
+<p><i>_____________________________________________________________________________</i></p>
+<p><b>References</b></p>
+<p>AccessData (2010) <i>Registry Quick Find Chart</i>. [online] Available at: <a href="http://accessdata.com/media/en_us/print/papers/Registry_Quick_Find_Chart_9%E2%80%9327%E2%80%9310.pdf" rel="nofollow">http://accessdata.com/media/en_us/print/papers/Registry_Quick_Find_Chart_9–27–10.pdf</a> [Accessed: 21 Jul 2011].</p>
+<p>Ard, C. (2007) <em>Introduction to Windows 7</em>. [online] Available at: <a href="http://info.publicintelligence.net/WIN7%E2%80%93TWO%E2%80%93Hour%E2%80%93Talk.pdf" rel="nofollow">http://info.publicintelligence.net/WIN7–TWO–Hour–Talk.pdf</a> [Accessed: 17 Feb 2011].</p>
+<p>Barnett, A. (n.d.) <em>The Forensic Value of the Windows 7 Jump List</em>. [online] Available at: <a href="http://www.alexbarnett.com/jumplistforensics.pdf" rel="nofollow">http://www.alexbarnett.com/jumplistforensics.pdf</a> [Accessed: 13 Sep 2011].</p>
+<p>Carvey, H. ((a) 2011) Jump List DestList Structure. <em>Windows Incident Response</em>, [blog] 28 Jun 2011, Available at: <a href="http://windowsir.blogspot.com/2011/06/meetup%E2%80%93tools%E2%80%93and%E2%80%93other%E2%80%93stuff.html" rel="nofollow">http://windowsir.blogspot.com/2011/06/meetup–tools–and–other–stuff.html</a> [Accessed: 8 Sep 2011].</p>
+<p>Larson, T. (n.d.) <i>Forensic Examination of Windows 7 Jump Lists</i>. [online] Available at: <a href="http://www.slideshare.net/ctin/windows%E2%80%937%E2%80%93forensics%E2%80%93jump%E2%80%93listsrv3public" rel="nofollow">http://www.slideshare.net/ctin/windows–7–forensics–jump–listsrv3public</a> [Accessed: 7 Jun 2011].</p>
+<p>Li, N. (2011) <i>Change the Number of Recent Items Displayed in Windows 7 Jump List</i>. [online] Available at: <a href="http://blogs.technet.com/b/win7/archive/2011/05/10/change%E2%80%93the%E2%80%93number%E2%80%93of%E2%80%93recent%E2%80%93items%E2%80%93displayed%E2%80%93in%E2%80%93windows%E2%80%937%E2%80%93jump%E2%80%93list.aspx" rel="nofollow">http://blogs.technet.com/b/win7/archive/2011/05/10/change–the–number–of–recent–items–displayed–in–windows–7–jump–list.aspx</a> [Accessed: 21 Jul 2011].</p>
+<p>MSDN (2010) (a) <em>[MS–CFB]: Compound File Binary File Format</em>. [online] Available at: <a href="http://msdn.microsoft.com/en%E2%80%93us/library/dd942138.aspx" rel="nofollow">http://msdn.microsoft.com/en–us/library/dd942138.aspx</a> [Accessed: 26 Feb 2011].</p>
+<p>MSDN (2010) (b) <i>[MS–SHLLINK]: Shell Link (.LNK) Binary File Format</i>. [online] Available at: <a href="http://msdn.microsoft.com/en%E2%80%93us/library/dd871305(PROT.10)" rel="nofollow">http://msdn.microsoft.com/en–us/library/dd871305(PROT.10)</a>.aspx [Accessed: 17 Feb 11].</p>
+<p>MSDN (2011) <i>Application User Model IDs (AppUserModelIDs)</i>. [online] Available at: <a href="http://msdn.microsoft.com/en%E2%80%93us/library/dd378459(v=vs.85)" rel="nofollow">http://msdn.microsoft.com/en–us/library/dd378459(v=vs.85)</a>.aspx [Accessed: 26 Jul 2011].</p>
+<p>Torres, A. (2011) Revealing Intent with Windows 7 Artifacts. <i>Computer Enterprise and Investigations Conference</i>.</p>
+<div>
+<p><i>_____________________________________________________________________________</i></p>
+</div>
+<p>Rob Lyness is a member of the British Army Royal Military Police, who has specialised as a forensic computer examiner since February 2007.</p>
+<p>He began the MSc with Cranfield University in February 2009 and graduated in July 2012.</p>
+<p>He was awarded the prize for the highest scoring project with his thesis ‘An Assessment of the Forensic Value of Windows 7 Jump Lists’.</p>
+<p>Rob welcomes any questions regarding the content of this article. &nbsp;Please feel free to PM.</p>
+		<div class="wpcnt" style="text-align: center;">
+			<div class="wpadvert wpalt" style="text-align: center; position: relative; margin: 10px auto; overflow: hidden; display: inline-block;">
+				<a class="wpadvert-about" style="position: absolute; padding: 0 1px; text-align: left; display: block; font: 9px/1 sans-serif; text-decoration: underline;" href="http://en.wordpress.com/about-these-ads/" rel="nofollow">About these ads</a>
+				<script type="text/javascript">
+					GA_googleFillSlot("Wordads_MIS_Mrec_Below_adsafe");
+
+				</script><script src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/ads"></script><div id="google_ads_div_Wordads_MIS_Mrec_Below_adsafe_ad_wrapper">
+<div id="google_ads_div_Wordads_MIS_Mrec_Below_adsafe_ad_container" style="display:inline-block;"><div class="sharethrough-placement" data-sharethrough-placement-key="726eeacb" data-sharethrough-params="{ &quot;pext&quot; : &quot;24581919&quot; }" style="width:400px;height:267px;"><iframe src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/bounce.html" style="width: 400px; height: 267px; " frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true"></iframe></div>
+<script>
+(function() {
+  var t   = document.createElement('script');
+  t.type  = 'text/javascript';
+  t.async = true;
+  t.src = '//apis.sharethrough.com/v0/tags.js';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(t, s);
+})();
+</script>
+
+
+
+
+</div>
+</div>
+
+				<style type="text/css">
+				div.wpadvert>div { margin-top: 1em; }
+				body.highlander-light .wpadvert>a { color: #222; }
+				body.highlander-dark .wpadvert>a { color: #ddd; }
+				</style>
+			</div>
+		</div><div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow" class="share-twitter sd-button share-icon" href="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/?share=twitter&nb=1" title="Click to share on Twitter" id="sharing-twitter-2033"><span>Twitter<span class="share-count">12</span></span></a></li><li class="share-facebook"><a rel="nofollow" class="share-facebook sd-button share-icon" href="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/?share=facebook&nb=1" title="Share on Facebook" id="sharing-facebook-2033"><span>Facebook<span class="share-count">10</span></span></a></li><li class="share-end"></li></ul><div class="sharing-clear"></div></div></div></div><div class="wpl-likebox sd-block sd-like"><h3 class="sd-title">Like this:</h3><div class="sd-content"><div id="like-2033" class="wpl-button "><a href="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/?like=1&source=post_flair&_wpnonce=420e8d64d7" title="I like this." class="like needs-login sd-button" rel="nofollow"><span>Like</span></a></div><div class="wpl-count sd-like-count">One blogger likes this.</div><ul class="wpl-avatars sd-like-gravatars"><li><a href="http://gravatar.com/segmation" class="wpl-liker" rel="nofollow"><img src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/c6f6f90bd1272d3ef18252ddb5b62206" class="avatar avatar-30 grav-hashed" alt="segmation" width="30" height="30" id="grav-c6f6f90bd1272d3ef18252ddb5b62206-0"></a></li></ul></div></div></div>
+				<div class="clear"></div>
+
+				
+							</div><!-- .post_text -->
+
+			
+			<div id="nav-below" class="post-navigation clear-fix">
+				<div class="nav-previous"><a href="http://articles.forensicfocus.com/2012/10/23/why-ssd-drives-destroy-court-evidence-and-what-can-be-done-about-it/" rel="prev"><span class="meta-nav">«</span> Why SSD Drives Destroy Court Evidence, and What Can Be Done About&nbsp;It</a></div>
+				<div class="nav-next"><a href="http://articles.forensicfocus.com/2012/11/27/unacceptable-acceptable-use-policy/" rel="next">Unacceptable Acceptable Use&nbsp;Policy <span class="meta-nav">»</span></a></div>
+			</div>
+
+			
+	
+	<!-- You can start editing here. -->
+	<div id="comments">
+
+					<div id="commenthead">
+				<h2 class="post_comm">Discussion</h2>
+			</div>
+		
+		
+			
+
+			
+				<h3 id="pings">Trackbacks/Pingbacks</h3>
+
+				<ol id="pinglist">
+					
+	<li id="comment-4778" class="post pingback">
+		<p>Pingback: <span class="author"><a href="https://blogs.sans.org/computer-forensics/2012/11/02/case-leads-dfir-lessons-from-sandy-the-advanced-persistent-intruder-the-secure-breach-windows8-forensics-south-carolina-tax-info-protected-by-two-f" rel="external nofollow" class="url">Case Leads: DFIR Lessons from Sandy; The Advanced Persistent Intruder; The Secure Breach; Windows8 Forensics; South Carolina Tax Info Protected by "TWO FIREWALLS"</a></span> - <span class="date">November 2, 2012</span> <span class="edit"></span></p>
+
+</li>
+
+	<li id="comment-4866" class="post pingback">
+		<p>Pingback: <span class="author"><a href="http://forensicinsight.org/archives/1642" rel="external nofollow" class="url">[Oct 2012] Newsletter | FORENSIC INSIGHT</a></span> - <span class="date">November 8, 2012</span> <span class="edit"></span></p>
+
+</li>
+				</ol>
+
+			
+		
+	</div><!-- end #comments -->
+
+	
+										<div id="respond" class="js">
+				<h3 id="reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://articles.forensicfocus.com/wp-comments-post.php" method="post" id="commentform">
+																										
+
+
+												
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea placeholder="Enter your comment here..." style="resize: none; overflow-y: hidden; position: absolute; top: 0px; left: -9999px; width: 728px; line-height: normal; text-decoration: none; letter-spacing: 0px; height: 36px; " tabindex="-1"></textarea><textarea id="comment" name="comment" placeholder="Enter your comment here..." style="resize: none; overflow-y: hidden; height: 36px; "></textarea></div>
+</div>
+
+<div id="comment-form-identity" style="display: none; ">
+
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/ad516503a11cd5ca435acc9bb6523536" alt="Gravatar" width="25" class="no-grav">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="text" value=""></div>
+				</div> 
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/wplogo.png" alt="WordPress.com Logo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="">
+				<p class="comment-form-posting-as pa-wordpress"><strong></strong> You are commenting using your WordPress.com account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'wordpress' );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/ad516503a11cd5ca435acc9bb6523536" alt="Twitter picture" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'twitter' );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/ad516503a11cd5ca435acc9bb6523536" alt="Facebook photo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'facebook' );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+	
+	
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+});
+</script>
+
+<div id="comment-form-subscribe" style="display: none; "> 
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;" tabindex="6"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of follow-up comments via email.</label></p></div>
+
+												<p class="form-submit" style="display: none; ">
+							<input name="submit" type="submit" id="comment-submit" value="Post Comment">
+							<input type="hidden" name="comment_post_ID" value="2033" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+						</p>
+						
+<input type="hidden" name="genseq" value="1358886187">
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="7f2918afe2"></p><script type="text/javascript" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/form.js"></script>
+<p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="1358886189293"></p>					</form>
+							</div><!-- #respond -->
+			<div style="clear: both"></div>			
+	
+		</div><!-- end .primary-content -->
+
+	
+	<div class="column primary-sidebar last">
+
+	<div id="image-5" class="widget widget_image"><div style="overflow:hidden;"><a href="http://articles.forensicfocus.com/contact/"><img src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/add-article-here-forensic-focus-newsletter.jpg" class="alignnone" width="180" height="120"></a></div>
+</div><div id="blog_subscription-3" class="widget widget_blog_subscription"><h3 class="mast"><label for="subscribe-field">Don't miss an article!</label></h3>
+			<form action="https://subscribe.wordpress.com/" method="post" accept-charset="utf-8" id="subscribe-blog">
+									<p>Enter your email address to subscribe to this blog and receive notifications of new posts by email.</p>
+<p>Join 306 other followers</p>
+					<p><input type="text" name="email" style="width: 95%; padding: 1px 2px" value="" id="subscribe-field"></p>
+				
+				<p>
+					<input type="hidden" name="action" value="subscribe">
+					<input type="hidden" name="blog_id" value="24581919">
+					<input type="hidden" name="source" value="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/">
+					<input type="hidden" name="sub-type" value="widget">
+					<input type="hidden" name="redirect_fragment" value="blog_subscription-3">
+					<input type="hidden" id="_wpnonce" name="_wpnonce" value="083a269b95">					<input type="submit" value="Sign me up!">
+				</p>
+			</form>
+			
+</div><div id="rss_links-3" class="widget widget_rss_links"><ul><li><a href="http://articles.forensicfocus.com/feed/" title="Subscribe to Posts">RSS - Posts</a></li><li><a href="http://articles.forensicfocus.com/comments/feed/" title="Subscribe to Comments">RSS - Comments</a></li></ul>
+</div><div id="categories-3" class="widget widget_categories"><h3 class="mast">Categories</h3>		<ul>
+			<li class="cat-item cat-item-46230"><a href="http://articles.forensicfocus.com/category/data-recovery/" title="View all posts filed under Data Recovery">Data Recovery</a>
+</li>
+	<li class="cat-item cat-item-349239"><a href="http://articles.forensicfocus.com/category/e-discovery/" title="View all posts filed under E-Discovery">E-Discovery</a>
+</li>
+	<li class="cat-item cat-item-7915"><a href="http://articles.forensicfocus.com/category/employment/" title="View all posts filed under Employment">Employment</a>
+</li>
+	<li class="cat-item cat-item-61723745"><a href="http://articles.forensicfocus.com/category/examiner-welfare/" title="View all posts filed under Examiner Welfare">Examiner Welfare</a>
+</li>
+	<li class="cat-item cat-item-44623"><a href="http://articles.forensicfocus.com/category/file-systems/" title="View all posts filed under File Systems">File Systems</a>
+</li>
+	<li class="cat-item cat-item-2063358"><a href="http://articles.forensicfocus.com/category/forensic-accounting/" title="View all posts filed under Forensic Accounting">Forensic Accounting</a>
+</li>
+	<li class="cat-item cat-item-59752407"><a href="http://articles.forensicfocus.com/category/forensics-101/" title="View all posts filed under Forensics 101">Forensics 101</a>
+</li>
+	<li class="cat-item cat-item-79"><a href="http://articles.forensicfocus.com/category/hardware/" title="View all posts filed under Hardware">Hardware</a>
+</li>
+	<li class="cat-item cat-item-2283"><a href="http://articles.forensicfocus.com/category/legal/" title="View all posts filed under Legal">Legal</a>
+</li>
+	<li class="cat-item cat-item-13289"><a href="http://articles.forensicfocus.com/category/methodology/" title="View all posts filed under Methodology">Methodology</a>
+</li>
+	<li class="cat-item cat-item-26083"><a href="http://articles.forensicfocus.com/category/mobile-devices/" title="View all posts filed under Mobile Devices">Mobile Devices</a>
+</li>
+	<li class="cat-item cat-item-5845797"><a href="http://articles.forensicfocus.com/category/network-forensics/" title="View all posts filed under Network Forensics">Network Forensics</a>
+</li>
+	<li class="cat-item cat-item-78541"><a href="http://articles.forensicfocus.com/category/organisations/" title="View all posts filed under Organisations">Organisations</a>
+</li>
+	<li class="cat-item cat-item-5566"><a href="http://articles.forensicfocus.com/category/regulation/" title="View all posts filed under Regulation">Regulation</a>
+</li>
+	<li class="cat-item cat-item-668"><a href="http://articles.forensicfocus.com/category/research/" title="View all posts filed under Research">Research</a>
+</li>
+	<li class="cat-item cat-item-801"><a href="http://articles.forensicfocus.com/category/security/" title="View all posts filed under Security">Security</a>
+</li>
+	<li class="cat-item cat-item-581"><a href="http://articles.forensicfocus.com/category/software/" title="View all posts filed under Software">Software</a>
+</li>
+	<li class="cat-item cat-item-38540765"><a href="http://articles.forensicfocus.com/category/steganography-2/" title="View all posts filed under Steganography">Steganography</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://articles.forensicfocus.com/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-355"><a href="http://articles.forensicfocus.com/category/wireless/" title="View all posts filed under Wireless">Wireless</a>
+</li>
+		</ul>
+</div><div id="image-3" class="widget widget_image"><div style="overflow:hidden;"><a href="http://www.facebook.com/forensicfocus"><img src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/find-us-on-facebook.gif" class="alignnone" width="144" height="44"></a></div>
+</div><div id="image-4" class="widget widget_image"><div style="overflow:hidden;"><a href="http://twitter.com/ForensicFocus"><img src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/follow_us-b-small.gif" class="alignnone" width="149" height="26"></a></div>
+</div><div id="text-3" class="widget widget_text">			<div class="textwidget"><div style="position:absolute;width:50%;top:16px;left:20px;">
+<a href="http://www.forensicfocus.com/"><img src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/forensic-focus-500x100-4.gif"></a>
+</div></div>
+		</div>
+</div>
+</div><!-- end #post_content -->
+
+	<div id="footer" class="column full-width">
+		<div id="copyright" class="column first">
+			<p>
+				<a href="http://articles.forensicfocus.com/" title="Forensic Focus – Articles" rel="home">
+					Forensic Focus – Articles				</a>
+			</p>
+		</div>
+		<div id="credit" class="column last">
+			<p><a href="http://wordpress.com/?ref=footer" rel="generator">Blog at WordPress.com</a>. Theme: <a href="http://theme.wordpress.com/credits/articles.forensicfocus.com/" title="Learn more about how this site is customized with the Custom Design upgrade">Customized The Morning After</a> by <a href="http://www.woothemes.com/" rel="designer">WooThemes</a>.</p>
+		</div>
+	</div><!-- end footer -->
+</div><!-- end container -->
+
+
+<script type="text/javascript">
+var _qevents = _qevents || [], wpcomQuantcastData = {"qacct":"p-18-mFEk4J448M","labels":",language.en,type.wpcom,wa.as.a8c,wa.pv.ads.forensicfocus"};
+function wpcomQuantcastPixel( labels, options ) {
+	var i, defaults = wpcomQuantcastData, data = { event: 'ajax' };
+
+	labels  = labels  || '';
+	options = options || {};
+
+	if ( typeof labels != 'string' )
+		options = labels;
+
+	for ( i in defaults ) {
+		data[i] = defaults[i];
+	}
+
+	for ( i in options ) {
+		data[i] = options[i];
+	}
+
+	if ( data.labels ) {
+		data.labels += ',' + labels;
+	} else {
+		data.labels = labels;
+	}
+
+	_qevents.push( data );
+};
+(function() {var elem = document.createElement('script');elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";elem.async = true;elem.type = "text/javascript";var scpt = document.getElementsByTagName('script')[0];scpt.parentNode.insertBefore(elem, scpt);  })();
+_qevents.push( wpcomQuantcastData );
+</script>
+<noscript>&lt;div style="display: none;"&gt;&lt;img src="//pixel.quantserve.com/pixel/p-18-mFEk4J448M.gif?labels=%2Clanguage.en%2Ctype.wpcom%2Cwa.as.a8c%2Cwa.pv.ads.forensicfocus" height="1" width="1" alt="" /&gt;&lt;/div&gt;</noscript>
+
+
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	(function($){
+		$(document).on( 'ready post-load', function() {
+
+			// Remove the login box when clicking the page
+			$( document ).mousedown( function( e ) {
+				if ( null == $( e.target ).closest( '#wpl-mustlogin' ).get( 0 ) ) {
+					$( '#wpl-mustlogin' ).remove();
+				}
+			});
+
+			// Handle clicking the like button itself
+			$('.wpl-button > a.like').click( function(e) {
+				e.preventDefault();
+
+				var postid = $(this).parent().attr('id').split('like-')[1];
+				$.post( 'http://articles.forensicfocus.com/wp-admin/admin-ajax.php', {
+					'action': 'wpl_record_stat',
+					'stat_name': 'loggedout_like_click'
+				} );
+
+				var tenMins = new Date();
+				tenMins.setTime( tenMins.getTime() + 600000 );
+				document.cookie = 'wpl_rand=22de2f34a0; expires=' + tenMins.toGMTString() + '; domain=wordpress.com; path=/;';
+
+				$(this).parent().siblings('.wpl-count').after( '\
+					<div id="wpl-mustlogin"> \
+						<form action="https://forensicfocus.wordpress.com/wp-login.php" method="post"> \
+							<p>Just one more step to like this:</p> \
+							<label><span>Username</span> <input type="text" name="log" id="user_login" class="input" value="" size="20" tabindex="80" /></label> \
+							<label><span>Password</span> <input type="password" name="pwd" id="user_pass" class="input" value="" size="20" tabindex="81" /></label> \
+							<input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="Log In" tabindex="82" /> \
+							<input type="hidden" name="postid" value="' + postid + '" /> \
+							<input type="hidden" name="redirect_to" value="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists?year=2012&#038;monthnum=10&#038;day=30&#038;name=forensic-analysis-of-windows-7-jump-lists&#038;like=1" /> \
+							<input type="hidden" name="wpl_rand" value="22de2f34a0" /> \
+							<p>Not a member yet? <a href="http://wordpress.com/signup/?ref=likebox&user=1" id="wpl-signup-link">Sign up with WordPress.com for free</a></p> \
+						</form> \
+					</div> \
+				');
+
+				$('#wpl-mustlogin').hide().slideDown('fast');
+			} );
+
+			$('#wpl-mustlogin input.input').live( 'focus', function() {
+				$(this).prev().hide();
+			}).live( 'blur', function() {
+				if ( $(this).val() == '' ) {
+					$(this).prev().show();
+				}
+			});
+
+			$('#wpl-mustlogin input#wp-submit').live( 'click', function(e) {
+				e.preventDefault();
+
+				$.post( 'http://articles.forensicfocus.com/wp-admin/admin-ajax.php', {
+					'action': 'wpl_record_stat',
+					'stat_name': 'loggedout_login_submit'
+				}, function() {
+					$('#wpl-mustlogin form').submit();
+				} );
+			});
+
+			$('#wpl-mustlogin a#wpl-signup-link').live( 'click', function(e) {
+				e.preventDefault();
+
+				var link = $(this).attr('href');
+
+				$.post( 'http://articles.forensicfocus.com/wp-admin/admin-ajax.php', {
+					'action': 'wpl_record_stat',
+					'stat_name': 'loggedout_signup_click'
+				}, function() {
+					location.href = link;
+				} );
+			});
+		})
+	})(jQuery);
+	/* ]]> */
+	</script>
+<script type="text/javascript" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/wpgroho.js"></script>
+<script>jQuery(document).ready(function($){ Gravatar.profile_cb = function( h, d ) { WPGroHo.syncProfileData( h, d );	}; Gravatar.my_hash = WPGroHo.my_hash; Gravatar.init( 'body', '#wp-admin-bar-my-account' ); });</script>	<div style="display:none">
+	</div>
+<script type="text/javascript">
+/* <![CDATA[ */
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"http:\/\/forensicfocus.wordpress.com\/public.api\/connect\/?action=request","logoutURL":"http:\/\/forensicfocus.wordpress.com\/wp-login.php?action=logout&_wpnonce=a19a3b0dbc","homeURL":"http:\/\/articles.forensicfocus.com\/","postID":"2033","gravDefault":"identicon","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"0","userIsLoggedIn":"","isJetpack":"0"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/script.js"></script>
+
+	<div id="bit" class="loggedout-follow-normal" style="bottom: -292px; ">
+		<a class="bsub" href="javascript:void(0)"><span id="bsub-text">Follow</span></a>
+		<div id="bitsubscribe">
+
+					<h3><label for="loggedout-follow-field">Follow “Forensic Focus - Articles”</label></h3>
+
+			<form action="https://subscribe.wordpress.com/" method="post" accept-charset="utf-8" id="loggedout-follow">
+			<p>Get every new post delivered to your Inbox.</p>
+
+			<p id="loggedout-follow-error" style="display: none;"></p>
+
+						<p class="bit-follow-count">Join 306 other followers</p>
+			<p><input type="email" name="email" style="width: 95%; padding: 1px 2px" value="Enter your email address" onfocus="this.value=(this.value==&quot;Enter your email address&quot;) ? &quot;&quot; : this.value;" onblur="this.value=(this.value==&quot;&quot;) ? &quot;Enter email address&quot; : this.value;" id="loggedout-follow-field"></p>
+
+			<input type="hidden" name="action" value="subscribe">
+			<input type="hidden" name="blog_id" value="24581919">
+			<input type="hidden" name="source" value="http://articles.forensicfocus.com/2012/10/30/forensic-analysis-of-windows-7-jump-lists/">
+			<input type="hidden" name="sub-type" value="loggedout-follow">
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="083a269b95"><input type="hidden" name="_wp_http_referer" value="/2012/10/30/forensic-analysis-of-windows-7-jump-lists/">
+			<p id="bsub-subscribe-button"><input type="submit" value="Sign me up"></p>
+			</form>
+					<div id="bsub-credit"><a href="http://wordpress.com/signup/?ref=lof">Powered by WordPress.com</a></div>
+		</div><!-- #bitsubscribe -->
+	</div><!-- #bit -->
+
+	<script type="text/javascript">
+		WPCOM_sharing_counts = {"http:\/\/articles.forensicfocus.com\/2012\/10\/30\/forensic-analysis-of-windows-7-jump-lists\/":2033}	</script>
+<script type="text/javascript" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/sharing.js"></script>
+		<script type="text/javascript" charset="utf-8">
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-twitter' ).on( 'click', function() {
+				window.open( jQuery(this).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript" charset="utf-8">
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-facebook' ).on( 'click', function() {
+				window.open( jQuery(this).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+		});
+		</script>
+		<script type="text/javascript" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/devicepx.js"></script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script><script src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/w.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({'blog':'24581919','v':'wpcom','tz':'0','user_id':'0','post':'2033','subd':'forensicfocus'});
+ex_go({'crypt':'UE5VTUIlVktzQT1yeWw/VmhvWEhMQTdBblJpeEhxP3UlOEcrbDElSnp4MyslNW5WczNaYlRDcnJPWnJuY3RSNEZmbiZ4UDYra35YWzF0alBSOWtDLm5wdXY4TXFIZlo0M2hSaitYempoVkpnRlY/R1AtfmdNUFhsLVVYWj1aNlVzQmwlU3VCTi14WU1dLy03REdHMVdnbE5+a2VBOUlMUHVqbWM0JUQwPT03TDFIZThJcHFFYS16SUo5U00uU2ssQmZjXV0wL25+LU5RTFpkeD9iWDZLRVFWVVEsKyxzc1U1Q2FhWz9MTC1VJkhdbU9lc0pfaFtpMmZDJUd5SE5dc013QXAwVlA3R3RGZFNjTEF0V2xlVUE='});
+addLoadEvent(function(){linktracker_init('24581919',2033);});
+	</script><img id="wpstats" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/g.gif" alt=""><img id="wpstats2" src="./Forensic Analysis of Windows 7 Jump Lists « Forensic Focus – Articles_files/g(1).gif" alt="" style="display:none">
+<noscript>&lt;img src="http://stats.wordpress.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /&gt;</noscript>
+
+
+
+</body></html>

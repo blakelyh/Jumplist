@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx -->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="canonical" href="./Application User Model IDs (AppUserModelIDs) (Windows)_files/Application User Model IDs (AppUserModelIDs) (Windows).html">
+        <title>Application User Model IDs (AppUserModelIDs) (Windows)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/desktop/dd378459(d=default,l=en-us,v=vs.85).aspx">
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(d=default,l=en-us,v=vs.85).aspx">
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(d=default,l=en-us,v=vs.85).aspx">
+
+<meta name="MN" content="347ED6CA-12:25:15 PM">
+
+<meta name="Search.ShortId" content="dd378459">
+
+<meta name="Ms.Locale" content="en-us">
+
+
+
+
+
+
+
+
+        
+    <link rel="stylesheet" type="text/css" href="./Application User Model IDs (AppUserModelIDs) (Windows)_files/Combined.css"><script type="text/javascript" async="" src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/ms2.js"></script><script class="mtps-injected">try {
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.msdn.microsoft.com", 
+	"js": "http://i2.msdn.microsoft.com", 
+	"css": "http://i3.msdn.microsoft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script class="mtps-injected">try {
+//
+  var literalNormalizedUrl = '/en-us/library/windows/desktop/dd378459(d=default,l=en-us,v=vs.85).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'msdn.microsoft.com';
+  var wt_pathlist = '';
+  var wt_paramlist = 'DCSext.mtps_devcenter';
+  var wt_siteid = 'MSDN';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsmgru7m99k7mqmgrhudo0k8_8c6m';
+  var gFpc = 'WT_FPC';
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+  var detectedLocale = 'en-us';
+  var wtsp = '_msdn_';
+  var gTrackEvents = '0';
+/**/
+} finally { MTPS._injectNextScript_1 && MTPS._injectNextScript_1(); }</script><script class="mtps-injected">try {
+/**/
+  var omni_guid = "bca1986a-eebc-4b2f-968e-8b7415770ae9";
+/**/
+} finally { MTPS._injectNextScript_2 && MTPS._injectNextScript_2(); }</script><script class="mtps-injected" src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/Combined.js"></script><script class="mtps-injected" src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/jquery-1.8.2.min.js"></script><script class="mtps-injected" src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/Combined(1).js"></script><script class="mtps-injected" src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/jquery.tmpl.min.js"></script><script class="mtps-injected" src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/Combined(2).js"></script><script src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/broker.js"></script><link type="text/css" rel="stylesheet" href="./Application User Model IDs (AppUserModelIDs) (Windows)_files/PrintView.css" media="print"></head>
+    <body class="library">
+        <div id="page">
+            
+            
+  
+            
+
+<div id="ux-header">
+    <div class="GlobalBar">
+        <div class="PassportScarab">
+        
+        <a id="idPPScarab" class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=11&ct=1358886315&rver=6.0.5276.0&wp=MCLBI&wlcxt=msdn%24msdn%24msdn&wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fdesktop%2fdd378459%2528v%3dvs.85%2529.aspx&lc=1033&id=254354&mkt=en-US"><span id="idPPScarabSIT">Sign in</span></a>
+        </div>
+    </div>
+    <div class="Clear"></div>
+    <div class="Search">
+        <div class="SearchBox">
+        <form id="HeaderSearchForm" method="get" action="http://social.msdn.microsoft.com/search/en-us/windows/desktop" onsubmit="return SearchBoxOnSubmit(&#39;Search Dev Center with Bing&#39;);">
+            <input name="query" id="HeaderSearchTextBox" class="TextBoxSearchLoaded" type="text" value="Search Dev Center with Bing" maxlength="100" title="Search Dev Center with Bing" onfocus="WatermarkFocus(this, &#39;Search Dev Center with Bing&#39;, &#39;TextBoxSearchLoaded TextBoxSearch&#39;)" onblur="WatermarkBlur(this, &#39;Search Dev Center with Bing&#39;, &#39;TextBoxSearchLoaded&#39;)">
+            <input name="Refinement" type="hidden" value="181">
+            <input id="HeaderSearchButton" value="" class="SearchButton" type="submit" title="Search Dev Center with Bing">
+            <input id="HeaderSearchButtonHidden" value="" style="display:none;" type="submit">       
+        </form>
+        </div>
+    </div>
+    <div class="siteLogo">
+        <a href="http://msdn.microsoft.com/en-us/windows/desktop" title="Dev Center - Desktop">
+          
+            <div class="sitelogoImage" alt="Dev Center - Desktop" title="Dev Center - Desktop"></div>
+            
+            <span>Dev Center - Desktop</span>
+        </a>
+    </div>
+    <div class="tabs">
+     
+         
+         <a class="" href="http://msdn.microsoft.com/windows/desktop/aa904944" title="Home">Home</a>
+
+         
+         
+         <a class="" href="https://sysdev.microsoft.com/en-US/desktop/" title="Dashboard">Dashboard</a>
+
+         
+         
+         <a class="highlightedTab" href="http://msdn.microsoft.com/library/windows/desktop/" title="Docs">Docs</a>
+
+         
+         
+         <a class="" href="http://code.msdn.microsoft.com/en-us/windowsdesktop" title="Samples">Samples</a>
+
+         
+         
+         <a class="" href="http://msdn.microsoft.com/windows/desktop/aa904949" title="Downloads">Downloads</a>
+
+         
+         
+         <a class="" href="http://msdn.microsoft.com/windows/desktop/aa905013" title="Support">Support</a>
+
+         
+         
+         <a class="" href="http://msdn.microsoft.com/windows/desktop/aa904945" title="Community">Community</a>
+
+             
+    </div>
+    <div class="masthead_hr"></div>
+</div>
+
+
+
+
+    <div class="breadCrumb">
+<a href="http://msdn.microsoft.com/en-us/windows/desktop/" title="Dev Center - Desktop">Dev Center - Desktop</a>            <span>&gt;</span>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/" title="Docs">Docs</a>            <span>&gt;</span>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/hh447209(v=vs.85).aspx" title="Desktop app development documentation">Desktop app development documentation</a>            <span>&gt;</span>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ee663298(v=vs.85).aspx" title="Windows Environment Development">Windows Environment Development</a>            <span>&gt;</span>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb773177(v=vs.85).aspx" title="The Windows Shell">The Windows Shell</a>            <span>&gt;</span>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb776778(v=vs.85).aspx" title="Shell Developer&#39;s Guide">Shell Developer's Guide</a>            <span>&gt;</span>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ff521728(v=vs.85).aspx" title="Shell Extensibility (Creating a Data Source)">Shell Extensibility (Creating a Data Source)</a>            <span>&gt;</span>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ff521672(v=vs.85).aspx" title="Extending the Desktop">Extending the Desktop</a>            <span>&gt;</span>
+
+        <a href="./Application User Model IDs (AppUserModelIDs) (Windows)_files/Application User Model IDs (AppUserModelIDs) (Windows).html" title="Working with Application User Model IDs (AppUserModelIDs)">Working with Application User Model IDs (AppUserModelIDs)</a>
+    </div>
+        <h1 id="TopicTitle">Application User Model IDs (AppUserModelIDs) (Windows)</h1>
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+
+<div id="leftNav" class="leftNavResize1">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa904962.aspx" id="aa906041_MSDN.10_en-us" title="Windows Desktop App Development">Windows Desktop App Development</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/desktop/hh447209(v=vs.85).aspx" id="br230310_VS.85_en-us" title="Desktop app development documentation">Desktop app development documentation</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/desktop/ee663298(v=vs.85).aspx" id="hh309635_VS.85_en-us" title="Windows Environment Development">Windows Environment Development</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb773177(v=vs.85).aspx" id="bb762759_VS.85_en-us" title="The Windows Shell">The Windows Shell</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb776778(v=vs.85).aspx" id="bb762760_VS.85_en-us" title="Shell Developer&#39;s Guide">Shell Developer's Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/desktop/ff521728(v=vs.85).aspx" id="bb762795_VS.85_en-us" title="Shell Extensibility (Creating a Data Source)">Shell Extensibility (Creating a Data Source)</a>            </div>
+            <div class="toclevel1" data-toclevel="1" style="padding-left: 13px; " data-childrenloaded="true">
+<a class="toc_expanded" href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/windows/desktop/ff521672(v=vs.85).aspx" id="ee663856_VS.85_en-us" title="Extending the Desktop">Extending the Desktop</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/jj673981(v=vs.85).aspx" title="Desktop App Tiles on the Start Screen">Desktop App Tiles on the Start Screen</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/cc144179(v=vs.85).aspx" title="Understanding the Taskbar">Understanding the Taskbar</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/hh127425(v=vs.85).aspx" title="How to Add Shortcuts to the Start Menu">How to Add Shortcuts to the Start Menu</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378460(v=vs.85).aspx" title="Extending the Taskbar">Extending the Taskbar</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2" style="padding-left: 26px; ">
+<span class="toc_empty"></span><a href="./Application User Model IDs (AppUserModelIDs) (Windows)_files/Application User Model IDs (AppUserModelIDs) (Windows).html" title="Working with Application User Model IDs (AppUserModelIDs)">Working with Application User Model IDs (AppUserModelIDs)</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/hh127439(v=vs.85).aspx" title="How to Exclude Items from Taskbar Pinning and Recent/Frequent Lists">How to Exclude Items from Taskbar Pinning and Recent/Frequent Lists</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ee330740(v=vs.85).aspx" title="Managing Notifications and the Taskbar Notification Area">Managing Notifications and the Taskbar Notification Area</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/hh802768(v=vs.85).aspx" title="Quickstart: Sending a toast notification from the desktop">Quickstart: Sending a toast notification from the desktop</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/hh802762(v=vs.85).aspx" title="How to enable desktop toast notifications through an AppUserModelID">How to enable desktop toast notifications through an AppUserModelID</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 26px; ">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/cc144177(v=vs.85).aspx" title="Using Application Desktop Toolbars">Using Application Desktop Toolbars</a>            </div>
+</div>    
+    
+    
+    
+    
+    
+    
+    
+
+<a id="NavigationResize" href="javascript:epx.library.navigationResize.resize()" style="left: 215px; display: inline-block; ">
+    <img class="cl_nav_resize_open" src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/ImageSprite.png" title="Expand" alt="Expand" style="">
+    <img class="cl_nav_resize_close" src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/ImageSprite.png" title="Minimize" alt="Minimize" style="display: none; ">
+</a>
+
+
+
+</div>
+<div id="content" class="content" style="width: auto; ">
+
+
+
+
+
+
+
+
+
+    
+    
+
+    <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: none;"></div>
+
+    <div id="ratingCounter" style="display: block; ">
+        <span id="rcA" class="ratingText">
+            7 out of 8 rated this helpful <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#feedback" title="Rate this topic">Rate this topic</a>
+            
+        </span>
+    </div>
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>Application User Model IDs (AppUserModelIDs) are used extensively by the taskbar in Windows&nbsp;7 and later systems to associate processes, files, and windows with a particular application. In some cases, it is sufficient to rely on the internal AppUserModelID assigned to a process by the system. However, an application that owns multiple processes or an application that is running in a host process might need to explicitly identify itself so that it can group its otherwise disparate windows under a single taskbar button and control the contents of that application's Jump List.</p>
+<p>
+</p><ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#which">Application-Defined and System-Defined AppUserModelIDs</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#how">How to Form an Application-Defined AppUserModelID</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#where">Where to Assign an AppUserModelID</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#host">Registering an Application as a Host Process</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#exclusion_lists">Exclusion Lists for Taskbar Pinning and Recent/Frequent Lists</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#related_topics">Related topics</a></li>
+</ul>
+
+<h3><a id="which"></a><a id="WHICH"></a>Application-Defined and System-Defined AppUserModelIDs</h3>
+<p>Some applications do not declare an explicit AppUserModelID. They are optional. In that case, the system uses a series of heuristics to assign an internal AppUserModelID. However, there is a performance benefit in avoiding those calculations and an explicit AppUserModelID is the only way to guarantee an exact user experience. Therefore, it is strongly recommended that an explicit ID be set. Applications cannot retrieve a system-assigned AppUserModelID.</p>
+<p>If an application uses an explicit AppUserModelID, it must also assign the same AppUserModelID to all running windows or processes, shortcuts, and file associations. It must also use that AppUserModelID when customizing its Jump List through <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378402(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ICustomDestinationList</strong></a>, and in any calls to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb762105(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SHAddToRecentDocs</strong></a>.</p>
+<p class="note"><strong>Note</strong>&nbsp;&nbsp;If applications do not have an explicit AppUserModelID, they must call <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378413(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IApplicationDestinations</strong></a>, <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378411(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IApplicationDocumentLists</strong></a>, and <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378402(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ICustomDestinationList</strong></a> methods as well as <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb762105(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SHAddToRecentDocs</strong></a> from within the application. If those methods are called from another process, such as an installer or uninstaller, the system cannot generate the correct AppUserModelID and those calls will have no effect.</p>
+<p>The following items describe common scenarios that require an explicit AppUserModelID. They also point out cases where multiple explicit AppUserModelIDs should be used.</p>
+<ul>
+<li>A single executable file with a UI with multiple modes that appear to the user as separate applications should assign different AppUserModelIDs to each mode. For instance, a portion of an application that users see as an independent experience that they can pin to and launch from the taskbar separately from the rest of the application should have its own AppUserModelID, separate from the main experience.</li>
+<li>Multiple shortcuts with different arguments that all lead to what the user sees as the same application should use one AppUserModelID for all of the shortcuts. For example, Windows Internet Explorer has different shortcuts for different modes (such as launching without add-ons) but they should all appear to the user as a single Internet Explorer instance.</li>
+<li>
+<p>An executable that acts as a host process and runs target content as an application must <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx#host">register as a host application</a>, after which it can assign different AppUserModelIDs to each perceived experience that it hosts. Alternately, the host process can allow the hosted program to set its AppUserModelIDs. In either case, the host process must keep a record of the source of the AppUserModelIDs, either itself or the hosted application. In this case, there is no primary user experience of the host process without the target content. Examples are Windows Remote Applications Integrated Locally (RAIL) applications, the Java Runtime, RunDLL32.exe, or DLLHost.exe.</p>
+<p>In the case of existing hosted applications, the system attempts to identify individual experiences, but new applications should use explicit AppUserModelIDs to guarantee the intended user experience.</p>
+</li>
+<li>Cooperative or chained processes that to the user are part of the same application should have the same AppUserModelID applied to each process. Examples include games with a launcher process (chained) and Microsoft Windows Media Player, which has a first-run/setup experience running in one process and the main application running in another process (cooperative).</li>
+<li>A Shell namespace extension that acts as a separate application for more than browsing and managing content in Windows Explorer should assign an AppUserModelID in its folder properties. An example is the Control Panel.</li>
+<li>
+<p>In a virtualization environment such as a deployment framework, the virtualization environment should assign different AppUserModelIDs to each application that it manages. In these cases, an application launcher uses an intermediary process to set up the environment and then hands off the operation to a different process to run the application. Note that this causes the system to be unable to relate the running target process back to the shortcut because the shortcut points to the intermediary process.</p>
+<p>If any application has multiple windows, shortcuts, or processes, that application's assigned AppUserModelID should also be applied to each of those pieces by the virtualization environment.</p>
+<p>An example of this situation is the ClickOnce framework, which properly assigns AppUserModelIDs on behalf of the applications that it manages. As in all such environments, applications deployed and managed by ClickOnce should not assign explicit AppUserModelIDs themselves, because doing so will conflict with the AppUserModelIDs assigned by ClickOnce and lead to unexpected results.</p>
+</li>
+</ul>
+<h3><a id="how"></a><a id="HOW"></a>How to Form an Application-Defined AppUserModelID</h3>
+<p>An application must provide its AppUserModelID in the following form. It can have no more than 128 characters and cannot contain spaces. Each section should be camel-cased.</p>
+<p><code>CompanyName.ProductName.SubProduct.VersionInformation</code></p>
+<p><code>CompanyName</code> and <code>ProductName</code> should always be used, while the <code>SubProduct</code> and <code>VersionInformation</code> portions are optional and depend on the application's requirements. <code>SubProduct</code> allows a main application that consists of several subapplications to provide a separate taskbar button for each subapplication and its associated windows. <code>VersionInformation</code> allows two versions of an application to coexist while being seen as discrete entities. If an application is not intended to be used in that way, the <code>VersionInformation</code> should be omitted so that an upgraded version can use the same AppUserModelID as the version that it replaced.</p>
+<h3><a id="where"></a><a id="WHERE"></a>Where to Assign an AppUserModelID</h3>
+<p>When an application uses one or more explicit AppUserModelIDs, it should apply those AppUserModelIDs in the following locations and situations:</p>
+<p>
+</p><ul>
+<li>In the <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd391569(v=vs.85).aspx">System.AppUserModel.ID</a> property of the application's shortcut file. A shortcut (as an <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb774950(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IShellLink</strong></a>, CLSID_ShellLink, or a .lnk file) supports properties through <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb761474(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IPropertyStore</strong></a> and other property-setting mechanisms used throughout the Shell. This allows the taskbar to identify the proper shortcut to pin and ensures that windows belonging to the process are appropriately associated with that taskbar button.
+
+                        <p class="note"><strong>Note</strong>&nbsp;&nbsp;The <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd391569(v=vs.85).aspx">System.AppUserModel.ID</a> property should be applied to a shortcut when that shortcut is created. When using the Microsoft Windows Installer (MSI) to install the application, the <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd408039(v=vs.85).aspx">MsiShortcutProperty</a> table allows the AppUserModelID to be applied to the shortcut when it is created during installation.</p>
+</li>
+<li>
+<p>As a property of any of the application's running windows. This can be set in one of two ways: 
+
+                            </p><ol>
+<li>If different windows owned by one process require different AppUserModelIDs to control taskbar grouping, use <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378430(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SHGetPropertyStoreForWindow</strong></a>) to retrieve the window's property store and set the AppUserModelID as a window property.</li>
+<li>If all windows in the process use the same AppUserModelID, set the AppUserModelID on the process though <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378422(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SetCurrentProcessExplicitAppUserModelID</strong></a>. An application must call <strong>SetCurrentProcessExplicitAppUserModelID</strong> to set its AppUserModelID during an application's initial startup routine before the application presents any UI, makes any manipulation of its Jump Lists, or makes (or causes the system to make) any call to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb762105(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SHAddToRecentDocs</strong></a>.</li>
+</ol>
+
+<p>A window-level AppUserModelID overrides a process-level AppUserModelID.</p>
+<p>When an application sets an explicit AppUserModelID at the window level, the application can provide the specifics of its relaunch command for its taskbar button. To supply that information, the following properties are used:
+
+                            </p><ul>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd391571(v=vs.85).aspx">System.AppUserModel.RelaunchCommand</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd391572(v=vs.85).aspx">System.AppUserModel.RelaunchDisplayNameResource</a>
+</li>
+<li>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd391573(v=vs.85).aspx">System.AppUserModel.RelaunchIconResource</a>
+</li>
+</ul>
+
+<p class="note"><strong>Note</strong>&nbsp;&nbsp;If a shortcut exists to launch the application, an application should apply the AppUserModelID as a property of the shortcut instead of using the relaunch properties. In that case, the command line, icon, and text of the shortcut are used to supply the same information as the relaunch properties.</p>
+<p>A window-level explicit AppUserModelID can also use the <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd561983(v=vs.85).aspx">System.AppUserModel.PreventPinning</a> property to specify that it should not be available for pinning or relaunching.</p>
+</li>
+<li>In a call to customize or update (<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378402(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ICustomDestinationList</strong></a>), retrieve (<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378411(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IApplicationDocumentLists</strong></a>), or clear (<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378413(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IApplicationDestinations</strong></a>) the application's Jump List.</li>
+<li>In file association registration (through its <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/cc144152(v=vs.85).aspx">ProgID</a>) if the application uses the system's automatically generated <strong>Recent</strong> or <strong>Frequent</strong> destination lists. This association information is referenced by <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb762105(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SHAddToRecentDocs</strong></a>. This information is also used when adding <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb761144(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IShellItem</strong></a> destinations to custom Jump Lists through <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378396(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ICustomDestinationList::AppendCategory</strong></a>.
+</li>
+<li>In any call the application makes directly to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb762105(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SHAddToRecentDocs</strong></a>. If the application depends on the common file dialog to make calls to <strong>SHAddToRecentDocs</strong> on its behalf, those calls can deduce the explicit AppUserModelID only if the AppUserModelID is set for the entire process. If the application sets AppUserModelIDs on its windows instead of on the process, the application must make all calls to <strong>SHAddToRecentDocs</strong> itself, with its explicit AppUserModelID, as well as preventing the common file dialog from making its own calls. This must be done any time an item is opened, to ensure the <strong>Recent</strong> or <strong>Frequent</strong> sections of the application's Jump List are accurate.</li>
+</ul>
+
+<p>The following items describe common scenarios and where to apply explicit AppUserModelIDs in those scenarios.</p>
+<ul>
+<li>When a single process contains multiple applications, use <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378430(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SHGetPropertyStoreForWindow</strong></a> to retrieve the window's property store and set the AppUserModelID as a window property.</li>
+<li>When an application uses multiple processes, apply the AppUserModelID to each process. Whether you use the same AppUserModelID on each process depends on whether you want each process to appear as part of the main application or as individual entities.</li>
+<li>To separate certain windows from a set in the same process, use the window's property store to apply a single AppUserModelID to those windows you want to separate, and then apply a different AppUserModelID to the process. Any window in that process that was not explicitly labeled with the window-level AppUserModelID inherits the AppUserModelID of the process.</li>
+<li>If a file type is associated with an application, assign the AppUserModelID in the file type's <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/cc144152(v=vs.85).aspx">ProgID</a> registration. If a single executable file is launched in different modes that appear to the user as distinct applications, a separate AppUserModelID is required for each mode. In that case, there must be multiple ProgID registrations for the file type, each with a different AppUserModelID.</li>
+<li>When there are multiple shortcut locations from which a user can launch an application (in the <strong>Start</strong> menu, on the desktop, or elsewhere) retrieve the shortcut's property store to apply a single AppUserModelID to all of the shortcuts as shortcut properties.</li>
+<li>When an explicit call is made to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb762105(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SHAddToRecentDocs</strong></a> by an application, use the AppUserModelID in the call. When the common file dialog is used to open or save files, <strong>SHAddToRecentDocs</strong> is called by the dialog on behalf of the application. That call can infer the explicit AppUserModelID from the process. However, if an explicit AppUserModelID is applied as a window property, the common file dialog cannot determine the correct AppUserModelID. In that case, the application itself must explicitly call <strong>SHAddToRecentDocs</strong> and provide it with the correct AppUserModelID. Additionally, the application must prevent the common file dialog from calling <strong>SHAddToRecentDocs</strong> on its behalf by setting the FOS_DONTADDTORECENT flag in the <strong>GetOptions</strong> method of <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb775834(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IFileOpenDialog</strong></a> or <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb775688(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IFileSaveDialog</strong></a>.</li>
+</ul>
+<h3><a id="host"></a><a id="HOST"></a>Registering an Application as a Host Process</h3>
+<p>An application can set the IsHostApp registry entry to cause that executable's process to be considered a host process by the taskbar. This affects its grouping and default Jump List entries.</p>
+<p>The following example shows the required registry entry. Note that the entry is not assigned a value; its presence is all that is required. It is a REG_NULL value.</p>
+<p>
+</p><pre><strong>HKEY_CLASSES_ROOT</strong>
+&nbsp;&nbsp;&nbsp;<strong>Applications</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>example.exe</em>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>IsHostApp</strong></pre>
+
+<p>If either the process itself or the shortcut file used to launch the process has an explicit AppUserModelID, then the host process list is ignored and the application is treated as a normal application by the taskbar. The application's running windows are grouped together under a single taskbar button and the application can be pinned to the taskbar.</p>
+<p>If only the running process' executable name is known, without an explicit AppUserModelID, and that executable is in the host process list, then each instance of the process is treated as a separate entity for taskbar grouping. The taskbar button associated with any specific instance of the process does not display a pin/unpin option or a launch icon for a new instance of the process. The process is also not eligible for inclusion in the <strong>Start</strong> menu's Most Frequently Used (MFU) list. However, if the process was launched through a shortcut that contains launch arguments (usually the target content to host as the "application"), the system can determine identity and the application can be pinned and relaunched.</p>
+<h3><a id="exclusion_lists"></a><a id="EXCLUSION_LISTS"></a>Exclusion Lists for Taskbar Pinning and Recent/Frequent Lists</h3>
+<p>Applications, processes, and windows can choose to make themselves unavailable for pinning to the taskbar or for inclusion in the <strong>Start</strong> menu's MFU list. There are three mechanisms to accomplish this:</p>
+<ol>
+<li>Add the NoStartPage entry to the application's registration as shown here:
+                
+                    <pre><strong>HKEY_CLASSES_ROOT</strong>
+&nbsp;&nbsp;&nbsp;<strong>Applications</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>Example.exe</em>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>NoStartPage</strong></pre>
+<p>The data associated with the NoStartPage entry is ignored. Only the presence of the entry is required. Therefore, the ideal type for NoStartPage is REG_NONE.</p>
+<p>Note that any use of an explicit AppUserModelID overrides the NoStartPage entry. If an explicit AppUserModelID is applied to a shortcut, process, or window, it becomes pinnable and eligible for the <strong>Start</strong> menu MFU list.</p>
+</li>
+<li>Set the <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd561983(v=vs.85).aspx">System.AppUserModel.PreventPinning</a> property on windows and shortcuts. This property must be set on a window before the <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd391569(v=vs.85).aspx">PKEY_AppUserModel_ID</a> property.</li>
+<li>Add an explicit AppUserModelID as a value under the following registry subkey as shown here:
+
+                    <p>
+</p><pre><strong>HKEY_LOCAL_MACHINE</strong>
+&nbsp;&nbsp;&nbsp;<strong>Software</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Microsoft</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Windows</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>CurrentVersion</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Explorer</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>FileAssociation</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>NoStartPageAppUserModelIDs</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>AppUserModelID1</em>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>AppUserModelID2</em>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>AppUserModelID3</em></pre>
+
+<p>Each entry is a REG_NULL value with the name of the AppUserModelID. Any AppUserModelID found in this list is not pinnable and not eligible for inclusion in the <strong>Start</strong> menu MFU list.</p>
+</li>
+</ol>
+<p>Be aware that certain executable files as well as shortcuts that contain certain strings in their name are automatically excluded from pinning and inclusion in the MFU list.</p>
+<p class="note"><strong>Note</strong>&nbsp;&nbsp;This automatic exclusion can be overridden by applying an explicit AppUserModelID.</p>
+<p>If any of the following strings, regardless of case, are included in the shortcut name, the program is not pinnable and is not displayed in the most frequently used list:</p>
+<ul>
+<li>Documentation</li>
+<li>Help</li>
+<li>Install</li>
+<li>More Info</li>
+<li>Read me</li>
+<li>Read First</li>
+<li>Readme</li>
+<li>Remove</li>
+<li>Setup</li>
+<li>Support</li>
+<li>What's New</li>
+</ul>
+<p>The following list of programs are not pinnable and are excluded from the most frequently used list.</p>
+<ul>
+<li>Applaunch.exe</li>
+<li>Control.exe</li>
+<li>Dfsvc.exe</li>
+<li>Dllhost.exe</li>
+<li>Guestmodemsg.exe</li>
+<li>Hh.exe</li>
+<li>Install.exe</li>
+<li>Isuninst.exe</li>
+<li>Lnkstub.exe</li>
+<li>Mmc.exe</li>
+<li>Mshta.exe</li>
+<li>Msiexec.exe</li>
+<li>Msoobe.exe</li>
+<li>Rundll32.exe</li>
+<li>Setup.exe</li>
+<li>St5unst.exe</li>
+<li>Unwise.exe</li>
+<li>Unwise32.exe</li>
+<li>Werfault.exe</li>
+<li>Winhlp32.exe</li>
+<li>Wlrmdr.exe</li>
+<li>Wuapp.exe</li>
+</ul>
+<p>The preceding lists are stored in the following registry values.</p>
+<p class="note"><strong>Note</strong>&nbsp;&nbsp;These lists should not be modified by applications. Use one of the exclusion list methods listed previously for the same experience.</p>
+<p>
+</p><pre><strong>HKEY_LOCAL_MACHINE</strong>
+&nbsp;&nbsp;&nbsp;<strong>Software</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Microsoft</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Windows</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>CurrentVersion</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Explorer</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>FileAssociation</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>AddRemoveApps</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>AddRemoveNames</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>HostApps</strong></pre>
+
+<h3><a id="related_topics"></a>Related topics</h3>
+<dl>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378422(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SetCurrentProcessExplicitAppUserModelID</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378419(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GetCurrentProcessExplicitAppUserModelID</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378460(v=vs.85).aspx">Taskbar Extensions</a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378403(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ICustomDestinationList::SetAppID</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378412(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IApplicationDocumentLists::SetAppID</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378416(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">IApplicationDestinations::SetAppID</strong></a>
+</dt>
+<dt>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378430(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SHGetPropertyStoreForWindow</strong></a>
+</dt>
+</dl>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback%20[shell\shell]:%20Application%20User%20Model%20IDs%20(AppUserModelIDs)%20%20RELEASE:%20(11/28/2012)&body=%0A%0APRIVACY%20STATEMENT%0A%0AThe%20doc%20team%20uses%20your%20feedback%20to%20improve%20the%20documentation.%20We%20don't%20use%20your%20email%20address%20for%20any%20other%20purpose.%20We'll%20remove%20your%20email%20address%20from%20our%20system%20after%20the%20issue%20that%20you%20are%20reporting%20is%20resolved.%20While%20we%20are%20working%20to%20resolve%20this%20issue,%20we%20may%20send%20you%20an%20email%20message%20to%20request%20more%20info%20about%20your%20feedback.%20After%20the%20issue%20is%20addressed,%20we%20may%20send%20you%20an%20email%20message%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.%0A%0AFor%20more%20info%20about%20Microsoft's%20privacy%20policy,%20see%20http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+<p>Build date: 11/28/2012</p>
+</div>
+</div>
+
+
+
+
+
+<div id="contentFeedback">
+    <form method="post" action="http://msdn.microsoft.com/en-us/library/windows/desktop/feedback/add/dd378459(v=vs.85).aspx">
+        <input name="__RequestVerificationToken" type="hidden" value="jOZzkJO7WXm8IVIHbA7v8uLZXFh-enAti4unA69Zu4n7QGZH_3lu2UvecTZyTRHHuf3x1CGRGnSgBZsyiU_uJjOGb5tWIXhynbN4he-H4Lby4sWAGRqKEgd0WwoSJ_ViBFZVQw2">
+    <div id="contentFeedbackContainer">
+        <div class="FeedbackTitleContainer">
+            <a name="feedback"></a>
+        Did you find this helpful?
+            <input id="rdIsUsefulYes" name="rdIsUseful" type="radio" value="1" onclick="toggleContentFeedback(&#39;Yes&#39;);"><label for="rdIsUsefulYes">Yes</label>
+            <input id="rdIsUsefulNo" name="rdIsUseful" type="radio" value="0" onclick="toggleContentFeedback(&#39;No&#39;);"><label for="rdIsUsefulNo">No</label>
+        
+        </div>
+        
+            <div id="contentFeedbackQAContainer">
+                
+                    <div id="feedbackListNoContainer" class="FeedbackListContainer">
+                        
+                            <div>
+                                <input id="chkbxNo201" name="chkbxNo" type="checkbox" value="201">
+                                <label for="chkbxNo201">Not accurate</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo202" name="chkbxNo" type="checkbox" value="202">
+                                <label for="chkbxNo202">Not enough depth</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo203" name="chkbxNo" type="checkbox" value="203">
+                                <label for="chkbxNo203">Need more code examples</label>
+                            </div>
+                        
+                    </div>
+                
+                <div class="FeedbackTellUsMoreContainer">
+                    <textarea id="feedbackText" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" onfocus="WatermarkFocus(this, &#39;Tell us more...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)" onblur="WatermarkBlur(this, &#39;Tell us more...&#39;, &#39;TellUsMoreTextBoxSearchLoaded&#39;)" onmouseover="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeydown="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeyup="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)">Tell us more...</textarea>
+                </div>
+                <span class="counter">(<span id="feedbackTextCounter">1500</span> characters remaining)</span>
+                <input type="hidden" id="returnUrl" name="returnUrl" value="http://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx">
+                <input type="submit" id="submit" value="Submit" title="Click to Submit Feedback" onclick="WatermarkOnSubmit(document.getElementById(&#39;feedbackText&#39;), &#39;Tell us more...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)">
+                <div style="clear: both;"></div>
+            </div>  
+        
+    </div>
+    </form>
+</div>
+    
+
+
+
+<script id="CommentTemplate" type="text/x-jquery-tmpl">
+    <div class="communityContentAnnotation">
+        <a name="${Index}"></a>
+        <h3>
+            ${Title}
+        </h3>
+        <div class="communityContentAnnotationBody">
+            {{html Body}}
+        </div>
+        <div class="communityContentAnnotationInfo">
+            <div class="communityContentAnnotationAvatarContainer">
+                <a href="${UserAvatar.Href}" title="${UserAvatar.ToolTip}" class="communityContentAnnotationAvatar"><img src="${UserAvatar.ImageUrl}" alt="${UserAvatar.ImageAltText}" width="34" height="34" /></a>
+            </div>
+            <div class="communityContentAnnotationUserDateContainer">
+                <div class="communityContentAnnotationUserContainer">
+                    <a href="${UserAvatar.Href}">
+                        ${User}
+                    </a>
+                </div>
+                <div class="communityContentAnnotationDateContainer">
+                    <span>${Date}</span>
+                    
+                    {{if EditLink}}
+                        <span>
+                            <a href="${EditLink.Href}" title="${EditLink.ToolTip}" class="communityContentCommentEditLink">${EditLink.Title}</a>
+                        </span>
+                    {{/if}}
+
+                    {{if DeleteLink}}
+                        <span>
+                            <a href="${DeleteLink.Href}" title="${DeleteLink.ToolTip}" class="communityContentDeleteLink">${DeleteLink.Title}</a>
+                        </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="communityContentContainer">
+    <div id="CommunityContentHeader" class="communityContentHeader">
+        <div class="communityContentHeaderTitleContainer">
+            <h2>Community Additions</h2>
+                <a class="communityContentAddLink" href="http://msdn.microsoft.com/en-us/library/windows/desktop/community/add/dd378459(v=vs.85).aspx">
+                    <span class="communityContentAddButton" title="Add">
+                        ADD
+                    </span>
+                </a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+    <div id="CommunityComments" data-url="/en-us/library/windows/desktop/community/comments/dd378459(v=vs.85).aspx"><div class="communityContentAnnotation">         <a name="3"></a>         <h3>             NoStartPage is broken         </h3>         <div class="communityContentAnnotationBody">             NoStartPage works only on Windows XP and Windows Vista. It is broken on Windows 7 and later.         </div>         <div class="communityContentAnnotationInfo">             <div class="communityContentAnnotationAvatarContainer">                 <a href="http://social.msdn.microsoft.com/profile/xpclient/" title="" class="communityContentAnnotationAvatar"><img src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/avatar.jpg" alt="" width="34" height="34"></a>             </div>             <div class="communityContentAnnotationUserDateContainer">                 <div class="communityContentAnnotationUserContainer">                     <a href="http://social.msdn.microsoft.com/profile/xpclient/">                         xpclient                     </a>                 </div>                 <div class="communityContentAnnotationDateContainer">                     <span>12/2/2012</span>                                                                                 </div>             </div>         </div>     </div><div class="communityContentAnnotation">         <a name="2"></a>         <h3>             Lunacy         </h3>         <div class="communityContentAnnotationBody">             Needing AppUserModelID on all shortcuts to make the Start Menu work is lunacy.&nbsp; The behaviour in Windows 7 is inconsistent as the app's Taskbar icon can manage recent files just fine.<br><br><br>I'm in the same situation.&nbsp; The only solution seems to be to enumerate all shortcuts when the app starts, hunt out any with the same path as ::GetModuleFilename() and patch in the AppUseRModelID tag.&nbsp; The user can add shortcuts at any time and break the model without this.<br><br><br>The fact that if no shortcut exists to the exe that the Start Menu shows recent files is a classic example of why this is conceptually wrong for the user.<br><br><br>If the DWM guys want such a feature, at least allow us an override such that we can disregard the shortcut tag and let the CLSID_DestinationList take precedence.<br>         </div>         <div class="communityContentAnnotationInfo">             <div class="communityContentAnnotationAvatarContainer">                 <a href="http://social.msdn.microsoft.com/profile/vtraveller/" title="" class="communityContentAnnotationAvatar"><img src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/avatar(1).jpg" alt="" width="34" height="34"></a>             </div>             <div class="communityContentAnnotationUserDateContainer">                 <div class="communityContentAnnotationUserContainer">                     <a href="http://social.msdn.microsoft.com/profile/vtraveller/">                         vtraveller                     </a>                 </div>                 <div class="communityContentAnnotationDateContainer">                     <span>6/24/2011</span>                                                                                 </div>             </div>         </div>     </div><div class="communityContentAnnotation">         <a name="1"></a>         <h3>             Important informations are missing         </h3>         <div class="communityContentAnnotationBody">             "When there are multiple shortcut locations from which a user can launch an application (in the Start menu, on the desktop, or elsewhere) retrieve the shortcut's property store to apply a single AppUserModelID to all of the shortcuts as shortcut properties."<br><br><br>(1) Does this mean that an application (during its startup) have to walk through all possible locations for shortcut files (which is the entire file system, but at least the directorie trees beneath FOLDERID_UserPinned, FOLDERID_Desktop and FOLDERID_StartMenu, to find .lnk files with matching AppID *or* launch path and store the correct AppID *and* launch path into them?<br><br>Because otherwise, the user can have shortcuts to the same exe file that differ by their AppID, RelaunchCommand and RelaunchDisplayNameResource, which leads to inconsistent behavior of the Windows 7 taskbar.<br><br><br>(2) If not, how else will shortcuts created *by the user himself* ever have the correct AppID (and RelaunchCommand and RelaunchDisplayNameResource) in them?<br><br>Important note: The user can right-click an executable which offers him "Pin to taskbar" and "Pin to Start menu". When this functions are used, or when a .lnk file is created the traditional way (right-clicking the desktop, New =&gt; Create =&gt; Shortcut), no AppID is stored within the link.<br><br>How are programmers supposed to solve this without any help from the Windows shell? <br><br><br>(The only solution I can think off is a registration database managed by the Windows shell, so when a .lnk file is executed, the missing or wrong informations in the lnk file are ignored/replaced by the last registered informations for the executable to be launched. The association between lnk file and registration entry needs to be the executable path stored in the lnk file.)<br>         </div>         <div class="communityContentAnnotationInfo">             <div class="communityContentAnnotationAvatarContainer">                 <a href="http://social.msdn.microsoft.com/profile/lutzr1/" title="" class="communityContentAnnotationAvatar"><img src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/avatar(2).jpg" alt="" width="34" height="34"></a>             </div>             <div class="communityContentAnnotationUserDateContainer">                 <div class="communityContentAnnotationUserContainer">                     <a href="http://social.msdn.microsoft.com/profile/lutzr1/">                         lutzr1                     </a>                 </div>                 <div class="communityContentAnnotationDateContainer">                     <span>2/16/2011</span>                                                                                 </div>             </div>         </div>     </div></div>
+</div>
+
+
+
+
+</div>
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+
+<div id="ux-footer">
+
+    <div class="blocks">
+        <div class="footerPrimaryBlock">
+            <div class="footerLinksTitles">Network sites</div>
+            <div style="padding-top: 5px; padding-bottom: 14px;">
+              <a href="http://msdn.microsoft.com/" title="Microsoft Developer Network">
+                <div class="clip49x17">
+                  <img alt="Network sites" title="Microsoft Developer Network" class="footerLogoImage" src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/ImageSprite(1).png">
+                </div>
+              </a>
+            </div>
+            <div style="padding-bottom: 71px;"><span class="footerLinks"></span></div>
+        </div>
+        <div class="footerSubBlock">&nbsp;</div><div class="footerSubBlock">
+          <div class="footerLinksTitles">Windows Dev Center</div>
+          
+                    <div style="padding-top: 5px;" class="footerLinks">
+                      <a href="http://msdn.microsoft.com/windows" title="Windows Dev Center home">Windows Dev Center home</a>
+                    </div>
+                    
+                    <div style="padding-top: 5px;" class="footerLinks">
+                      <a href="http://msdn.microsoft.com/windows/apps" title="Windows Store apps">Windows Store apps</a>
+                    </div>
+                    
+                    <div style="padding-top: 5px;" class="footerLinks">
+                      <a href="http://msdn.microsoft.com/ie" title="Internet Explorer">Internet Explorer</a>
+                    </div>
+                    
+                    <div style="padding-top: 5px;" class="footerLinks">
+                      <a href="http://msdn.microsoft.com/windows/desktop" title="Desktop">Desktop</a>
+                    </div>
+                    
+                    <div style="padding-top: 5px;" class="footerLinks">
+                      <a href="http://msdn.microsoft.com/windows/hardware" title="Hardware">Hardware</a>
+                    </div>
+                    
+        </div><div class="footerFinalBlock">
+          <div class="footerLinksTitles">Other links</div>
+          
+                    <div style="padding-top: 5px;" class="footerLinks">
+                      <a href="http://msdn.microsoft.com/windows/desktop/aa905013" title="Support">Support</a>
+                    </div>
+                    
+                    <div style="padding-top: 5px;" class="footerLinks">
+                      <a href="https://connect.microsoft.com/dashboard/" title="Microsoft Connect">Microsoft Connect</a>
+                    </div>
+                    
+                    <div style="padding-top: 5px;" class="footerLinks">
+                      <a href="http://dev.windowsphone.com/" title="Windows Phone Dev Center">Windows Phone Dev Center</a>
+                    </div>
+                    
+        </div>
+        </div>
+    
+    <div class="footerMSLogo">
+      <a href="http://www.microsoft.com/" title="Microsoft">
+        <div class="clip104x20">
+          <img src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/ImageSprite(1).png" class="footerMsLogo" title="Microsoft" alt="">
+        </div>
+      </a>
+    </div>
+    <div class="footerSubLinksContainer">
+        <div class="footerSubLinks">
+            <a href="http://msdn.microsoft.com/windows/desktop/cc300389" title="Terms of use">Terms of use</a>
+              <span class="footerSubLinksDivider">|</span>
+            <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" title="Trademarks">Trademarks</a>
+              <span class="footerSubLinksDivider">|</span>
+            <a href="http://www.microsoft.com/info/privacy.mspx" title="Privacy statement">Privacy statement</a>
+              <span class="footerSubLinksDivider">|</span>
+            
+          <a href="http://lab.msdn.microsoft.com/mailform/contactus.aspx?refurl=%2flibrary%2fwindows%2fdesktop%2fdd378459" title="Site feedback" target="_blank" onclick="SiteFeedbackNewWindow(&#39;http://lab.msdn.microsoft.com/mailform/contactus.aspx?refurl=%2flibrary%2fwindows%2fdesktop%2fdd378459&#39;); return false;">Site feedback</a>
+          <span class="footerSubLinksDivider">|</span>
+          <a href="http://msdn.microsoft.com/en-us/windows/desktop/SelectLocale?fromPage=%2flibrary%2fwindows%2fdesktop%2fdd378459" title=" United States (English)"> United States (English)</a>
+        </div>
+        <div class="footerCopyright" title="© 2013 Microsoft. All rights reserved.">© 2013 Microsoft. All rights reserved.</div>
+    </div>
+</div>
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2013 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default">
+
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+        
+            
+            
+            
+            
+            
+        
+
+
+
+<noscript>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" /&gt;&lt;/div&gt;</noscript>
+
+
+
+
+<noscript>
+  &lt;a href="http://www.omniture.com" title="Web Analytics"&gt;
+    &lt;img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" /&gt;
+  &lt;/a&gt;
+</noscript>
+
+
+
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index],elem=document.createElement("script"),elem.className="mtps-injected",elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext,script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }"),parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/desktop/dd378459(d=default,l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"bca1986a-eebc-4b2f-968e-8b7415770ae9\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:webtrendsscript,1:omni_rsid_MSDN;/Areas/Global/Content/Webtrends/resources:0,/Areas/Global/Content/Omniture/resources/MSDN:1&amp;hashKey=8FFA6D1FF710842E9298ABD38B734B38" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,1:header,2:Toc,2:NavigationResize,3:FeedbackCounter,3:Feedback;/Areas/Epx/Content/Scripts:0,/Areas/Epx/Themes/Metro/Content:1,/Areas/Epx/Library/Content:2,/Areas/Epx/Shared/Content:3&amp;hashKey=DA8C4221BF508CDD518A9CFEA0C5AB12" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:CommunityContent,0:Topic,0:CodeSnippet,0:TopicNotInScope,0:CollapsibleArea,0:VersionSelector,0:SurveyBroker;/Areas/Epx/Content/Scripts:0&amp;hashKey=938517E0C01685162017B5E25111BF85" }
+]);
+
+/*]]>*/
+</script>
+<script src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/broker-config.js"></script><div style="display: none; " id="_WEDCSInsertedData"><iframe id="_msnFrame" src="./Application User Model IDs (AppUserModelIDs) (Windows)_files/c.gif" style="z-index:-1;height:1px;width:1px;display:none;visibility:hidden;" onload="javascript:MscomBeacon();"></iframe></div></body></html>

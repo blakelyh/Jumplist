@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<!-- saved from url=(0116)http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#code-snippet-1 -->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx">
+        <title>JumpList Class (System.Windows.Shell)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/dd990306(d=default,l=en-us,v=vs.110).aspx">
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/dd990306(d=default,l=en-us,v=vs.110).aspx">
+
+<meta name="DCSext.ProductFamily" content="LIB_DG">
+
+<meta name="DCSext.Product" content="NDP_WPF">
+
+<meta name="DCSext.Title" content="JumpList Class">
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/dd990306(d=default,l=en-us,v=vs.110).aspx">
+
+<meta name="MN" content="347ED6CA-12:23:54 PM">
+
+<meta name="Search.ShortId" content="dd990306">
+
+<meta name="Ms.Locale" content="en-us">
+
+
+
+
+
+
+
+
+        
+    <link rel="stylesheet" type="text/css" href="./JumpList Class (System.Windows.Shell)_files/Combined.css"><script type="text/javascript" async="" src="./JumpList Class (System.Windows.Shell)_files/ms2.js"></script><script class="mtps-injected">try {
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.msdn.microsoft.com", 
+	"js": "http://i2.msdn.microsoft.com", 
+	"css": "http://i3.msdn.microsoft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script class="mtps-injected">try {
+//
+  var literalNormalizedUrl = '/en-us/library/dd990306(d=default,l=en-us,v=vs.110).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'msdn.microsoft.com';
+  var wt_pathlist = '';
+  var wt_paramlist = 'DCSext.mtps_devcenter';
+  var wt_siteid = 'MSDN';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsmgru7m99k7mqmgrhudo0k8_8c6m';
+  var gFpc = 'WT_FPC';
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+  var detectedLocale = 'en-us';
+  var wtsp = 'msdnlib_dotnet';
+  var gTrackEvents = '0';
+/**/
+} finally { MTPS._injectNextScript_1 && MTPS._injectNextScript_1(); }</script><script src="./JumpList Class (System.Windows.Shell)_files/wtid.js"></script><script class="mtps-injected">try {
+/**/
+  var omni_guid = "2d0dc345-4770-4b21-b805-4d419747c9cf";
+/**/
+} finally { MTPS._injectNextScript_2 && MTPS._injectNextScript_2(); }</script><script class="mtps-injected" src="./JumpList Class (System.Windows.Shell)_files/Combined.js"></script><script class="mtps-injected" src="./JumpList Class (System.Windows.Shell)_files/jquery-1.8.2.min.js"></script><script class="mtps-injected" src="./JumpList Class (System.Windows.Shell)_files/Combined(1).js"></script><script class="mtps-injected" src="./JumpList Class (System.Windows.Shell)_files/SearchBox.jss"></script><script class="mtps-injected" src="./JumpList Class (System.Windows.Shell)_files/Toc.js"></script><script class="mtps-injected">try {
+function appendQueryOnContextualNav(properties) {
+        properties.data.UxAsync = "true";
+    }
+} finally { MTPS._injectNextScript_8 && MTPS._injectNextScript_8(); }</script><script class="mtps-injected" src="./JumpList Class (System.Windows.Shell)_files/Combined(2).js"></script><script class="mtps-injected">try {
+MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = 'Expand'; MTPS.LocalizedStrings.CollapseButtonTooltip = 'Collapse';
+} finally { MTPS._injectNextScript_10 && MTPS._injectNextScript_10(); }</script><script class="mtps-injected" src="./JumpList Class (System.Windows.Shell)_files/Combined(3).js"></script><script src="./JumpList Class (System.Windows.Shell)_files/broker.js"></script><link type="text/css" rel="stylesheet" href="./JumpList Class (System.Windows.Shell)_files/PrintView.css" media="print"></head>
+    <body class="library">
+        <div id="page">
+            
+            
+  
+            
+  
+
+
+
+    
+    <div id="ux-header" class="Chrome ltr">
+        <div class="BrandLogo">
+            <a href="http://msdn.microsoft.com/en-us">
+                <span class="BrandLogoImage msdn" title="MSDN"></span>
+            </a>
+        </div>
+        <div class="GlobalBar">
+            <div id="LocaleSelector">
+                
+<a title="Change your language" id="SelectLocale" href="http://msdn.microsoft.com/en-us/SelectLocale?fromPage=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fsystem.windows.shell.jumplist.aspx%3fcs-save-lang%3d1%26cs-lang%3dcpp">United States (English)</a>
+        
+            
+            
+            </div>
+
+            <div class="Divide"> | </div>
+            <div class="PassportScarab">
+                    
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=11&ct=1358886234&rver=6.0.5276.0&wp=MCLBI&wlcxt=MSDN%24MSDN%24MSDN&wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fsystem.windows.shell.jumplist.aspx%3fcs-save-lang%3d1%26cs-lang%3dcpp&lc=1033&id=254354&mkt=en-US" title="Sign in">Sign in</a>
+            </div>
+                
+                <div class="Divide"> | </div>
+                <div class="Icons">
+                    <a href="http://msdn.microsoft.com/en-us/library/preferences/experience/?returnurl=%252fen-us%252flibrary%252fsystem.windows.shell.jumplist.aspx%253fcs-save-lang%253d1%2526cs-lang%253dcpp" title="Preferences" rel="nofollow">
+                        <div class="clip26x23">
+                            <img class="isd_settings" src="./JumpList Class (System.Windows.Shell)_files/ImageSprite.png" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="Divide"> | </div>
+                <div class="Icons">
+                    <a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist(d=printer).aspx?cs-save-lang=1&cs-lang=cpp" title="Print/Export" rel="nofollow">
+                        <div class="clip26x23">
+                            <img class="isd_print" src="./JumpList Class (System.Windows.Shell)_files/ImageSprite.png" alt="">
+                        </div>
+                    </a>
+                </div>
+        </div>
+        <div class="internav">
+            
+
+    
+
+<div class="SearchBox">
+              <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" action="http://social.msdn.microsoft.com/Search" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this, this.title);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(this, this.title, &#39;TextBoxSearch&#39;)" onblur="Epx.Controls.SearchBox.watermarkBlur(this, this.title, &#39;TextBoxSearchLoaded&#39;)" autocomplete="off" title="Search MSDN with Bing" style="color: rgb(170, 170, 170); font-style: italic; ">
+            <input id="RefinementId" name="refinement" type="hidden" value="">
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button" title="Search MSDN with Bing"></button>
+        <div id="SearchFlyoutContainer" style="display: none; text-align: left; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: buttonshadow; border-right-color: buttonshadow; border-bottom-color: buttonshadow; border-left-color: buttonshadow; border-image: initial; position: absolute; z-index: 1000; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 255); font-family: arial; "><div id="SuggestionContainer"><ul style="list-style-type: none; list-style-position: initial; list-style-image: initial; padding-top: 4px; padding-right: 2px; padding-bottom: 0px; padding-left: 1px; cursor: pointer; font-size: 8pt; margin-top: 1px; margin-right: 1px; margin-bottom: 1px; margin-left: 1px; "></ul></div><div id="FooterContainer" style="width: 100%; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; text-align: right; font-size: 8pt; "><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#">Close</a></div></div></form>
+        
+    
+</div>
+
+            <div class="TocNavigation">
+   
+   <div class="toclevel1">
+          <a class="normal" href="http://msdn.microsoft.com/" title="Home">Home</a>
+          <a class="active" href="http://msdn.microsoft.com/library/default.aspx" title="Library">Library</a>
+          <a class="normal" href="http://msdn.microsoft.com/bb188199" title="Learn">Learn</a>
+          <a class="normal" href="http://code.msdn.microsoft.com/" title="Samples">Samples</a>
+          <a class="normal" href="http://msdn.microsoft.com/aa570309" title="Downloads">Downloads</a>
+          <a class="normal" href="http://msdn.microsoft.com/hh361695" title="Support">Support</a>
+          <a class="normal" href="http://msdn.microsoft.com/aa497440" title="Community">Community</a>
+          <a class="normal" href="http://social.msdn.microsoft.com/Forums/en-US/categories" title="Forums">Forums</a>
+
+    </div>
+  
+</div>
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+<div id="leftNav" class="leftNavResize1">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/ms123401.aspx" id="ms310241_MSDN.10_en-us" title="MSDN Library">MSDN Library</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/ff361664.aspx" id="aa139615_MSDN.10_en-us" title=".NET Development">.NET Development</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/w0x726c2.aspx" id="aa139616_MSDN.10_en-us" title=".NET Framework 4.5">.NET Framework 4.5</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/gg145045.aspx" id="hh795167_VS.110_en-us" title=".NET Framework Class Library">.NET Framework Class Library</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/gg145013.aspx" id="hh796099_VS.110_en-us" title="System.Windows Namespaces">System.Windows Namespaces</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/dd985741.aspx" id="hh795278_VS.110_en-us" title="System.Windows.Shell">System.Windows.Shell</a>            </div>
+            <div class="toclevel1 current" data-toclevel="1" data-childrenloaded="true" style="padding-left: 17px; ">
+<a class="toc_expanded" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/dd990306.aspx" id="hh794804_VS.110_en-us" title="JumpList Class">JumpList Class</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.jumplist.aspx" id="hh796767_VS.110_en-us" title="JumpList Constructor">JumpList Constructor</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist_methods.aspx" id="hh797161_VS.110_en-us" title="JumpList Methods">JumpList Methods</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist_properties.aspx" id="hh797984_VS.110_en-us" title="JumpList Properties">JumpList Properties</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px; ">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist_events.aspx" id="hh794369_VS.110_en-us" title="JumpList Events">JumpList Events</a>            </div>
+</div>    
+    
+    
+    
+
+
+
+<div data-uxservices-async="true" data-uxservices-url="http://msdn.microsoft.com/en-us/epxshared/uxservices/contextualnav?id=mtps%3asystem.windows.shell.jumplist&amp;locale=en-us&amp;productFamilyVersion=VS.110&amp;version=1" data-uxservices-sourceaction="appear" data-uxservices-targetaction="Replace" data-uxservices-onstartfunction="appendQueryOnContextualNav(properties)" data-uxservices-oncompletefunction="contextualNavigationInit()" data-uxservices-method="Get"></div>
+
+    
+    
+    
+    
+
+<a id="NavigationResize" href="javascript:epx.library.navigationResize.resize()" style="left: 280px; display: inline-block; ">
+    <img class="cl_nav_resize_open" src="./JumpList Class (System.Windows.Shell)_files/ImageSprite.png" title="Expand" alt="Expand" style="">
+    <img class="cl_nav_resize_close" src="./JumpList Class (System.Windows.Shell)_files/ImageSprite.png" title="Minimize" alt="Minimize" style="display: none; ">
+</a>
+
+
+
+</div>
+<div id="content" class="content" style="width: auto; ">
+
+
+
+
+
+
+
+
+
+    
+    
+
+    
+
+    
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+    <h1 class="title">JumpList Class</h1>
+    
+    <div class="lw_vs">
+      <div id="curversion">
+        <strong>
+            .NET Framework 4.5
+        </strong>
+      </div>
+      <div id="versionclick">
+        <div id="vsseperator" class="cl_lw_vs_seperator"></div>
+        <div>
+          <div>
+            <a id="vsLink" href="javascript:;">
+                        Other Versions
+                    </a>
+          </div>
+          <div class="cl_vs_arrow clip10x10">
+            <img class="cl_lw_vs_arrow" id="vsArrow" alt="" src="./JumpList Class (System.Windows.Shell)_files/ImageSprite.png">
+          </div>
+        </div>
+        <ul id="vsPanel">
+          <li>
+            <a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist(v=vs.100).aspx" title="">.NET Framework 4</a>
+          </li>
+        </ul>
+      </div>
+    <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: block; "></div><div id="ratingCounter" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 13px; display: block; ">
+        <span id="rcA" class="ratingText">
+            0 out of 4 rated this helpful <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#feedback" title="Rate this topic">Rate this topic</a>
+            
+        </span>
+    </div></div>
+    <div style="clear:both;"></div>
+    
+    <div id="mainSection">
+      <div id="mainBody">
+        <p>
+          
+        </p>
+        <div>
+          <div class="summary">
+            <p>Represents a list of items and tasks displayed as a menu on a Windows 7 taskbar button.</p>
+          </div>
+        </div>
+        <div>
+          
+          <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+              <a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse">
+                <span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span>
+                <span class="LW_CollapsibleArea_Title">Inheritance Hierarchy</span>
+              </a>
+              <div class="LW_CollapsibleArea_HrDiv">
+                <hr class="LW_CollapsibleArea_Hr">
+              </div>
+            </div>
+          </div>
+          <div class="sectionblock">
+            <a id="familyToggle">
+              
+            </a>
+            <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx">System<span xmlns="">::</span>Object</a>
+            <br>&nbsp;&nbsp;<span class="selflink">System.Windows.Shell<span xmlns="">::</span>JumpList</span><br></div>
+        </div>
+        <p>
+          
+        </p> <strong>Namespace:</strong> 
+  &nbsp;<a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.aspx">System.Windows.Shell</a><br> <strong>Assembly:</strong>
+  &nbsp;<span>PresentationFramework</span> (in PresentationFramework.dll)<br><strong>XMLNS for XAML:</strong> Not mapped to an xmlns.<div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Syntax</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="syntaxToggle"></a>
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=csharp#code-snippet-1">C#</a></div><div class="codeSnippetContainerTabActive" dir="ltr"><a>C++</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=fsharp#code-snippet-1">F#</a></div><div class="codeSnippetContainerTab" dir="ltr"><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=vb#code-snippet-1">VB</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_bf9adc27-a6ab-418e-b41e-c67ce51f5dfd');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_bf9adc27-a6ab-418e-b41e-c67ce51f5dfd" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>[ContentPropertyAttribute(L<span style="color:#A31515;">"JumpItems"</span>)]
+[UIPermissionAttribute(SecurityAction::LinkDemand, Window = UIPermissionWindow::AllWindows)]
+<span style="color:Blue;">public</span>&nbsp;<span style="color:Blue;">ref</span> <span style="color:Blue;">class</span>&nbsp;JumpList&nbsp;<span style="color:Blue;">sealed</span> : ISupportInitialize
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>XAML Object Element Usage</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_871ff530-58e3-4c12-96cd-0ceefc2e2c0b');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_871ff530-58e3-4c12-96cd-0ceefc2e2c0b" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Blue;">&lt;</span><span style="color:#A31515;">JumpList</span><span style="color:Blue;">&gt;</span>
+  JumpItems
+<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">JumpList</span><span style="color:Blue;">&gt;</span>
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</div></div><p>The <span class="selflink">JumpList</span> type exposes the following members.</p><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Constructors</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="constructorTableToggle"></a><table id="memberList" class="members"><tbody><tr><th class="iconColumn">
+              &nbsp;
+            </th><th class="nameColumn">Name</th><th class="descriptionColumn">Description</th></tr><tr data="public;declared;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/dd989928.aspx">JumpList<span xmlns="">()</span></a></td><td><span>Initializes a new instance of the <span><span class="selflink">JumpList</span></span> class.</span></td></tr><tr data="public;declared;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/dd783122.aspx">JumpList(IEnumerable<span xmlns="">&lt;</span>JumpItem<span xmlns="">&gt;</span>, Boolean, Boolean)</a></td><td><span>Initializes a new instance of the <span><span class="selflink">JumpList</span></span> class with the specified parameters.</span></td></tr></tbody></table><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#mainBody">Top</a></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Properties</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="propertyTableToggle"></a><table id="memberList1" class="members"><tbody><tr><th class="iconColumn">
+              &nbsp;
+            </th><th class="nameColumn">Name</th><th class="descriptionColumn">Description</th></tr><tr data="public;declared;"><td><img id="pubproperty" alt="Public property" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubproperty(v=vs.110).gif" title="Public property" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.jumpitems.aspx">JumpItems</a></td><td><span>Gets the collection of <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumpitem.aspx">JumpItem</a></span> objects that are displayed in the Jump List.</span></td></tr><tr data="public;declared;"><td><img id="pubproperty" alt="Public property" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubproperty(v=vs.110).gif" title="Public property" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.showfrequentcategory.aspx">ShowFrequentCategory</a></td><td><span>Gets or sets a value that indicates whether frequently used items are displayed in the Jump List.</span></td></tr><tr data="public;declared;"><td><img id="pubproperty" alt="Public property" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubproperty(v=vs.110).gif" title="Public property" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.showrecentcategory.aspx">ShowRecentCategory</a></td><td><span>Gets or sets a value that indicates whether recently used items are displayed in the Jump List.</span></td></tr></tbody></table><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#mainBody">Top</a></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Methods</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="methodTableToggle"></a><table id="memberList2" class="members"><tbody><tr><th class="iconColumn">
+              &nbsp;
+            </th><th class="nameColumn">Name</th><th class="descriptionColumn">Description</th></tr><tr data="public;static;declared;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""><img id="static" alt="Static member" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.static(v=vs.110).gif" title="Static member" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/dd990369.aspx">AddToRecentCategory(JumpPath)</a></td><td><span>Adds the specified jump path to the <span class="label">Recent</span> category of the Jump List.</span></td></tr><tr data="public;static;declared;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""><img id="static" alt="Static member" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.static(v=vs.110).gif" title="Static member" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/dd991612.aspx">AddToRecentCategory(JumpTask)</a></td><td><span>Adds the specified jump task to the <span class="label">Recent</span> category of the Jump List.</span></td></tr><tr data="public;static;declared;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""><img id="static" alt="Static member" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.static(v=vs.110).gif" title="Static member" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/dd783498.aspx">AddToRecentCategory(String)</a></td><td><span>Adds the specified item path to the <span class="label">Recent</span> category of the Jump List.</span></td></tr><tr data="public;declared;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.apply.aspx">Apply</a></td><td><span>Sends the <span><span class="selflink">JumpList</span></span> to the Windows shell in its current state.</span></td></tr><tr data="public;declared;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.begininit.aspx">BeginInit</a></td><td>Infrastructure. <span>Signals the start of the <span><span class="selflink">JumpList</span></span> initialization.</span></td></tr><tr data="public;declared;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.endinit.aspx">EndInit</a></td><td>Infrastructure. <span>Signals the end of the <span><span class="selflink">JumpList</span></span> initialization.</span></td></tr><tr data="public;inherited;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/bsc2ak47.aspx">Equals(Object)</a></td><td><span>Determines whether the specified object is equal to the current object.</span> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx">Object</a>.)</td></tr><tr data="public;inherited;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/system.object.gethashcode.aspx">GetHashCode</a></td><td><span>Serves as a hash function for a particular type. </span> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx">Object</a>.)</td></tr><tr data="public;static;declared;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""><img id="static" alt="Static member" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.static(v=vs.110).gif" title="Static member" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.getjumplist.aspx">GetJumpList</a></td><td><span>Returns the <span><span class="selflink">JumpList</span></span> object associated with an application.</span></td></tr><tr data="public;inherited;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/system.object.gettype.aspx">GetType</a></td><td><span>Gets the <span><a href="http://msdn.microsoft.com/en-us/library/system.type.aspx">Type</a></span> of the current instance.</span> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx">Object</a>.)</td></tr><tr data="public;static;declared;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""><img id="static" alt="Static member" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.static(v=vs.110).gif" title="Static member" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.setjumplist.aspx">SetJumpList</a></td><td><span>Sets the <span><span class="selflink">JumpList</span></span> object associated with an application.</span></td></tr><tr data="public;inherited;"><td><img id="pubmethod" alt="Public method" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubmethod(v=vs.110).gif" title="Public method" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/system.object.tostring.aspx">ToString</a></td><td><span>Returns a string that represents the current object.</span> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx">Object</a>.)</td></tr></tbody></table><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#mainBody">Top</a></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Events</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="eventTableToggle"></a><table id="memberList3" class="members"><tbody><tr><th class="iconColumn">
+              &nbsp;
+            </th><th class="nameColumn">Name</th><th class="descriptionColumn">Description</th></tr><tr data="public;declared;"><td><img id="pubevent" alt="Public event" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubevent(v=vs.110).gif" title="Public event" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.jumpitemsrejected.aspx">JumpItemsRejected</a></td><td><span>Occurs when jump items are not successfully added to the Jump List by the Windows shell.</span></td></tr><tr data="public;declared;"><td><img id="pubevent" alt="Public event" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.pubevent(v=vs.110).gif" title="Public event" xmlns=""></td><td><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.jumpitemsremovedbyuser.aspx">JumpItemsRemovedByUser</a></td><td><span>Occurs when jump items previously in the Jump List are removed from the list by the user.</span></td></tr></tbody></table><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&cs-lang=cpp#mainBody">Top</a></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Remarks</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="remarksToggle"></a><p>The Windows 7 taskbar provides enhanced functionality for starting programs directly from the taskbar button by using&nbsp;Jump Lists. Jump Lists are also used in the Windows 7 Start menu. You access a Jump List by right-clicking a taskbar button or by clicking the arrow next to a program in the Start menu.&nbsp;For more information about Jump Lists, see the <a href="http://go.microsoft.com/fwlink/?LinkId=178478" target="_blank">Taskbar</a> section of the Windows User Experience Interaction Guidelines.</p><p>The <span><span class="selflink">JumpList</span></span> class provides a managed wrapper for the Jump List functionality in the Windows 7 taskbar and manages the data passed to the Windows shell. The functionality exposed by the <span><span class="selflink">JumpList</span></span>&nbsp;class is not available in versions of Windows&nbsp;earlier than&nbsp;Windows 7. Applications that use the <span><span class="selflink">JumpList</span></span> class will run in other versions of Windows, but the Jump List will not be available. For more information about the Windows shell and native Jump List APIs, see <a href="http://go.microsoft.com/fwlink/?LinkId=178479" target="_blank">Taskbar Extensions</a>.</p><p>The following illustration shows the Jump List for Windows Media Player, with items in the <span class="label">Tasks</span> and <span class="label">Frequent</span> categories.</p><div class="caption">Windows Media Player Jump List</div><br><img id="WPFShell_JumpList" alt="Windows Media Player Jump List" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.WPFShell_JumpList(v=vs.110).png" title="Windows Media Player Jump List" xmlns=""><h3 class="subHeading">Configuring a Jump List</h3><div class="subsection"><p>Jump Lists can contain two types of items, a <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumptask.aspx">JumpTask</a></span> and a <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumppath.aspx">JumpPath</a></span>. A <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumptask.aspx">JumpTask</a></span> is a link to a program and a <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumppath.aspx">JumpPath</a></span> is a link to a file. You can visually separate items in a Jump List by creating a <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumptask.aspx">JumpTask</a></span> that does not have a <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumptask.title.aspx">Title</a></span> and <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumpitem.customcategory.aspx">CustomCategory</a></span> specified. This empty <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumptask.aspx">JumpTask</a></span> will be displayed as a horizontal line in the Jump List.</p><div class="alert"><table><tbody><tr><th align="left"><img id="alert_note" alt="Note" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.alert_note(v=vs.110).gif" title="Note" xmlns=""><strong>Note</strong></th></tr><tr><td><p>If the type of the file specified in a <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumppath.aspx">JumpPath</a></span> is not registered with your application, the file will not appear in the Jump List. For example, if you add a <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumppath.aspx">JumpPath</a></span> that points to a .txt file, your application must be registered to handle .txt files. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkId=178480" target="_blank">Introduction to File Associations</a>.</p></td></tr></tbody></table></div><p>Jump items are placed into categories in the <span><span class="selflink">JumpList</span></span>. By default, a <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumpitem.aspx">JumpItem</a></span> is displayed in the <span class="label">Tasks</span> category. Alternatively, you can specify a <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumpitem.customcategory.aspx">CustomCategory</a></span> for the <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumpitem.aspx">JumpItem</a></span>.</p><p>You can specify whether the standard <span class="label">Recent</span> and <span class="label">Frequent</span> categories are displayed in the <span><span class="selflink">JumpList</span></span> by setting the <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.showrecentcategory.aspx">ShowRecentCategory</a></span> and <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.showfrequentcategory.aspx">ShowFrequentCategory</a></span> properties. The contents of these categories are managed by the Windows shell. Because these categories might contain much of the same data, you typically display one or the other in your <span><span class="selflink">JumpList</span></span>, but not both. Windows automatically manages recent items if they are opened through a common file dialog box or used to open an application through file type association. When an item is accessed through the Jump List, you can notify the Windows shell to add the item to the <span class="label">Recent</span> category by calling the <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.addtorecentcategory.aspx">AddToRecentCategory</a></span> method.</p></div><h3 class="subHeading">Applying a Jump List to the Windows Shell</h3><div class="subsection"><p>You cannot access the shell’s Jump List directly or read its contents into the <span><span class="selflink">JumpList</span></span> class. Instead, the <span><span class="selflink">JumpList</span></span> class provides a representation of a Jump List that you can work with, and then apply to the Windows shell. You typically create a <span><span class="selflink">JumpList</span></span> and set it one time when the application is first run. However, you can modify or replace the <span><span class="selflink">JumpList</span></span> at run&nbsp;time.</p><p>When you have set the <span><span class="selflink">JumpList</span></span> properties, you must apply the <span><span class="selflink">JumpList</span></span> to the Windows shell before its contents appear in the taskbar Jump List. This is done automatically when the <span><span class="selflink">JumpList</span></span> is first attached to an application, either in XAML or in a call to the <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.setjumplist.aspx">SetJumpList</a></span> method. If you modify the contents of the <span><span class="selflink">JumpList</span></span> at run time, you must call the <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.apply.aspx">Apply</a></span> method to apply its current contents to the Windows shell.</p></div><h3 class="subHeading">Setting a Jump List in XAML</h3><div class="subsection"><p>A <span><span class="selflink">JumpList</span></span> is not automatically attached to an <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.application.aspx">Application</a></span> object. You attach a <span><span class="selflink">JumpList</span></span> to an <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.application.aspx">Application</a></span> object in XAML by using the attached property syntax. The <span><span class="selflink">JumpList</span></span> class implements the <span><a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.isupportinitialize.aspx">ISupportInitialize</a></span> interface to support XAML declaration of a <span><span class="selflink">JumpList</span></span>. If the <span><span class="selflink">JumpList</span></span> is declared in XAML and attached to the current <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.application.aspx">Application</a></span>, it is automatically applied to the Windows shell when the <span><span class="selflink">JumpList</span></span> is initialized.&nbsp;</p></div><h3 class="subHeading">Setting and Modifying a Jump List in Code</h3><div class="subsection"><p>You attach a <span><span class="selflink">JumpList</span></span> to an <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.application.aspx">Application</a></span> object in code by calling the static <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.setjumplist.aspx">SetJumpList</a></span> method. This also applies the <span><span class="selflink">JumpList</span></span> to the Windows shell.</p><p>To modify a <span><span class="selflink">JumpList</span></span> at run time, you call the <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.getjumplist.aspx">GetJumpList</a></span> method to get the <span><span class="selflink">JumpList</span></span> that is currently attached to an <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.application.aspx">Application</a></span>. After you have modified the properties of the <span><span class="selflink">JumpList</span></span>, you must call the <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.apply.aspx">Apply</a></span> method to apply the changes to the Windows shell.</p><div class="alert"><table><tbody><tr><th align="left"><img id="alert_note" alt="Note" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.alert_note(v=vs.110).gif" title="Note" xmlns=""><strong>Note</strong></th></tr><tr><td><p>You typically create one <span><span class="selflink">JumpList</span></span> that is attached to the <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.application.aspx">Application</a></span> and applied to the Windows shell. However, you can create multiple <span><span class="selflink">JumpList</span></span> objects. Only one <span><span class="selflink">JumpList</span></span> at a time can be applied to the Windows shell, and only one <span><span class="selflink">JumpList</span></span> at a time can be associated with an&nbsp;<span><a href="http://msdn.microsoft.com/en-us/library/system.windows.application.aspx">Application</a></span>. The .NET Framework does not require that these be the same <span><span class="selflink">JumpList</span></span>.</p></td></tr></tbody></table></div><div class="alert"><table><tbody><tr><th align="left"><img id="alert_note" alt="Note" src="./JumpList Class (System.Windows.Shell)_files/system.windows.shell.jumplist.alert_note(v=vs.110).gif" title="Note" xmlns=""><strong>Note</strong></th></tr><tr><td><p>This class contains a link demand at the class level that applies to all members. A <span><a href="http://msdn.microsoft.com/en-us/library/system.security.securityexception.aspx">SecurityException</a></span> is thrown when the immediate caller does not have full-trust permission. For more information about security demands, see <span><a href="http://msdn.microsoft.com/en-us/library/hzsc022c.aspx">Link Demands</a></span> and <span><a href="http://msdn.microsoft.com/en-us/library/x4yx82e6.aspx">Inheritance Demands</a></span>.</p></td></tr></tbody></table></div></div></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Examples</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="exampleToggle"></a><p>The following example shows an application with a Jump List. The application has three buttons that enable you to add a task to the current Jump List, clear the contents of the Jump List, and apply a new Jump List to the application.</p><p>The following example shows how to declare a <span><span class="selflink">JumpList</span></span> in markup. The <span><span class="selflink">JumpList</span></span> contains two <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumptask.aspx">JumpTask</a></span> links and one <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumppath.aspx">JumpPath</a></span>. Applying the <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumppath.aspx">JumpPath</a></span> to the shell will fail if the application is not registered to handle the .txt file name extension.</p><div>
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>XAML</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_db553d54-5bea-4793-b632-72df3889e52c');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_db553d54-5bea-4793-b632-72df3889e52c" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Blue;">&lt;</span><span style="color:#A31515;">Application</span> <span style="color:Red;">x:Class</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">JumpListSample.App</span><span style="color:Black;">"</span>
+             <span style="color:Red;">xmlns</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">http://schemas.microsoft.com/winfx/2006/xaml/presentation</span><span style="color:Black;">"</span>
+             <span style="color:Red;">xmlns:x</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">http://schemas.microsoft.com/winfx/2006/xaml</span><span style="color:Black;">"</span>
+             <span style="color:Red;">StartupUri</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">MainWindow.xaml</span><span style="color:Black;">"</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">JumpList.JumpList</span><span style="color:Blue;">&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">JumpList</span> <span style="color:Red;">ShowRecentCategory</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">True</span><span style="color:Black;">"</span>
+                  <span style="color:Red;">ShowFrequentCategory</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">True</span><span style="color:Black;">"</span>
+                  <span style="color:Red;">JumpItemsRejected</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">JumpList_JumpItemsRejected</span><span style="color:Black;">"</span>
+                  <span style="color:Red;">JumpItemsRemovedByUser</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">JumpList_JumpItemsRemovedByUser</span><span style="color:Black;">"</span><span style="color:Blue;">&gt;</span>
+            <span style="color:Blue;">&lt;</span><span style="color:#A31515;">JumpTask</span> <span style="color:Red;">Title</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Notepad</span><span style="color:Black;">"</span> 
+                      <span style="color:Red;">Description</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Open Notepad.</span><span style="color:Black;">"</span> 
+                      <span style="color:Red;">ApplicationPath</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">C:\Windows\notepad.exe</span><span style="color:Black;">"</span>
+                      <span style="color:Red;">IconResourcePath</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">C:\Windows\notepad.exe</span><span style="color:Black;">"</span><span style="color:Blue;">/&gt;</span>
+            <span style="color:Blue;">&lt;</span><span style="color:#A31515;">JumpTask</span> <span style="color:Red;">Title</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Read Me</span><span style="color:Black;">"</span> 
+                      <span style="color:Red;">Description</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Open readme.txt in Notepad.</span><span style="color:Black;">"</span> 
+                      <span style="color:Red;">ApplicationPath</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">C:\Windows\notepad.exe</span><span style="color:Black;">"</span>
+                      <span style="color:Red;">IconResourcePath</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">C:\Windows\System32\imageres.dll</span><span style="color:Black;">"</span>
+                      <span style="color:Red;">IconResourceIndex</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">14</span><span style="color:Black;">"</span>
+                      <span style="color:Red;">WorkingDirectory</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">C:\Users\Public\Documents</span><span style="color:Black;">"</span>
+                      <span style="color:Red;">Arguments</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">readme.txt</span><span style="color:Black;">"</span><span style="color:Blue;">/&gt;</span>
+            <span style="color:Blue;">&lt;</span><span style="color:#A31515;">JumpPath</span> <span style="color:Red;">Path</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">C:\Users\Public\Documents\readme.txt</span><span style="color:Black;">"</span> <span style="color:Blue;">/&gt;</span>
+        <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">JumpList</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">JumpList.JumpList</span><span style="color:Blue;">&gt;</span>
+<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">Application</span><span style="color:Blue;">&gt;</span>
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</div><p>The following example shows the code-behind page for <span class="code">App.xaml</span>. This code handles the <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.jumpitemsrejected.aspx">JumpItemsRejected</a></span> and <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.jumpitemsremovedbyuser.aspx">JumpItemsRemovedByUser</a></span> events.</p><div>
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C#</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_8db7a951-ddc5-4a9a-a548-69596b2817f7');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_8db7a951-ddc5-4a9a-a548-69596b2817f7" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Blue;">using</span> System.Text;
+<span style="color:Blue;">using</span> System.Windows;
+<span style="color:Blue;">using</span> System.Windows.Shell;
+
+<span style="color:Blue;">namespace</span> JumpListSample
+{
+    <span style="color:Gray;">///</span> <span style="color:Gray;">&lt;summary&gt;</span><span style="color:Green;">&nbsp;</span>
+    <span style="color:Gray;">///</span><span style="color:Green;"> Interaction logic for App.xaml&nbsp;</span>
+    <span style="color:Gray;">///</span> <span style="color:Gray;">&lt;/summary&gt;</span><span style="color:Green;">&nbsp;</span>
+    <span style="color:Blue;">public</span>&nbsp;<span style="color:Blue;">partial</span>&nbsp;<span style="color:Blue;">class</span> App : Application
+    {
+        <span style="color:Blue;">private</span>&nbsp;<span style="color:Blue;">void</span> JumpList_JumpItemsRejected(<span style="color:Blue;">object</span> sender, System.Windows.Shell.JumpItemsRejectedEventArgs e)
+        {
+            StringBuilder sb = <span style="color:Blue;">new</span> StringBuilder();
+            sb.AppendFormat(<span style="color:#A31515;">"{0} Jump Items Rejected:\n"</span>, e.RejectionReasons.Count);
+            <span style="color:Blue;">for</span> (<span style="color:Blue;">int</span> i = 0; i &lt; e.RejectionReasons.Count; ++i)
+            {
+                <span style="color:Blue;">if</span> (e.RejectedItems[i].GetType() == <span style="color:Blue;">typeof</span>(JumpPath))
+                    sb.AppendFormat(<span style="color:#A31515;">"Reason: {0}\tItem: {1}\n"</span>, e.RejectionReasons[i], ((JumpPath)e.RejectedItems[i]).Path);
+                <span style="color:Blue;">else</span>
+                    sb.AppendFormat(<span style="color:#A31515;">"Reason: {0}\tItem: {1}\n"</span>, e.RejectionReasons[i], ((JumpTask)e.RejectedItems[i]).ApplicationPath);
+            }
+
+            MessageBox.Show(sb.ToString());
+        }
+
+        <span style="color:Blue;">private</span>&nbsp;<span style="color:Blue;">void</span> JumpList_JumpItemsRemovedByUser(<span style="color:Blue;">object</span> sender, System.Windows.Shell.JumpItemsRemovedEventArgs e)
+        {
+            StringBuilder sb = <span style="color:Blue;">new</span> StringBuilder();
+            sb.AppendFormat(<span style="color:#A31515;">"{0} Jump Items Removed by the user:\n"</span>, e.RemovedItems.Count);
+            <span style="color:Blue;">for</span> (<span style="color:Blue;">int</span> i = 0; i &lt; e.RemovedItems.Count; ++i)
+            {
+                sb.AppendFormat(<span style="color:#A31515;">"{0}\n"</span>, e.RemovedItems[i]);
+            }
+
+            MessageBox.Show(sb.ToString());
+        }
+    }
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</div><p>The following example shows the markup used to create the application user interface.</p><div>
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>XAML</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_8927ee3d-2005-4cf9-9334-a307e5ebb772');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_8927ee3d-2005-4cf9-9334-a307e5ebb772" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Blue;">&lt;</span><span style="color:#A31515;">Window</span> <span style="color:Red;">x:Class</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">JumpListSample.MainWindow</span><span style="color:Black;">"</span>
+        <span style="color:Red;">xmlns</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">http://schemas.microsoft.com/winfx/2006/xaml/presentation</span><span style="color:Black;">"</span>
+        <span style="color:Red;">xmlns:x</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">http://schemas.microsoft.com/winfx/2006/xaml</span><span style="color:Black;">"</span>
+        <span style="color:Red;">Title</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Jump List Sample</span><span style="color:Black;">"</span> <span style="color:Red;">Height</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">240</span><span style="color:Black;">"</span> <span style="color:Red;">Width</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">500</span><span style="color:Black;">"</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Window.Resources</span><span style="color:Blue;">&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Style</span> <span style="color:Red;">TargetType</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Button</span><span style="color:Black;">"</span><span style="color:Blue;">&gt;</span>
+            <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Setter</span> <span style="color:Red;">Property</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Width</span><span style="color:Black;">"</span> <span style="color:Red;">Value</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">200</span><span style="color:Black;">"</span> <span style="color:Blue;">/&gt;</span>
+            <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Setter</span> <span style="color:Red;">Property</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Margin</span><span style="color:Black;">"</span> <span style="color:Red;">Value</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">5</span><span style="color:Black;">"</span> <span style="color:Blue;">/&gt;</span>
+        <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">Style</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">Window.Resources</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Grid</span><span style="color:Blue;">&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">StackPanel</span><span style="color:Blue;">&gt;</span>
+            <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Button</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Add Task to JumpList</span><span style="color:Black;">"</span> <span style="color:Red;">Click</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">AddTask</span><span style="color:Black;">"</span> <span style="color:Blue;">/&gt;</span>
+            <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Button</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Clear Jump List</span><span style="color:Black;">"</span> <span style="color:Red;">Click</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">ClearJumpList</span><span style="color:Black;">"</span><span style="color:Blue;">/&gt;</span>
+            <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Button</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">Set New Jump List</span><span style="color:Black;">"</span> <span style="color:Red;">Click</span><span style="color:Blue;">=</span><span style="color:Black;">"</span><span style="color:Blue;">SetNewJumpList</span><span style="color:Black;">"</span> <span style="color:Blue;">/&gt;</span>
+        <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">StackPanel</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">Grid</span><span style="color:Blue;">&gt;</span>
+<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">Window</span><span style="color:Blue;">&gt;</span>
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</div><p>The following example shows the code-behind page for <span class="code">MainWindow.xaml</span>. This code demonstrates how to modify, clear, and create a <span><span class="selflink">JumpList</span></span> in procedural code. For the new Jump List, the static <span><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.setjumplist.aspx">SetJumpList</a></span> method is called to associate the <span><span class="selflink">JumpList</span></span> with the current application and apply the <span><span class="selflink">JumpList</span></span> to the Windows shell.</p><div>
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C#</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_9527d05b-6b66-483d-822b-9ef398bc251a');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_9527d05b-6b66-483d-822b-9ef398bc251a" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre><span style="color:Blue;">using</span> System;
+<span style="color:Blue;">using</span> System.IO;
+<span style="color:Blue;">using</span> System.Windows;
+<span style="color:Blue;">using</span> System.Windows.Shell;
+
+<span style="color:Blue;">namespace</span> JumpListSample
+{
+    <span style="color:Gray;">///</span> <span style="color:Gray;">&lt;summary&gt;</span><span style="color:Green;">&nbsp;</span>
+    <span style="color:Gray;">///</span><span style="color:Green;"> Interaction logic for MainWindow.xaml&nbsp;</span>
+    <span style="color:Gray;">///</span> <span style="color:Gray;">&lt;/summary&gt;</span><span style="color:Green;">&nbsp;</span>
+    <span style="color:Blue;">public</span>&nbsp;<span style="color:Blue;">partial</span>&nbsp;<span style="color:Blue;">class</span> MainWindow : Window
+    {
+        <span style="color:Blue;">public</span> MainWindow()
+        {
+            InitializeComponent();
+        }
+        <span style="color:Blue;">private</span>&nbsp;<span style="color:Blue;">void</span> AddTask(<span style="color:Blue;">object</span> sender, RoutedEventArgs e)
+        {
+            <span style="color:Green;">// Configure a new JumpTask.</span>
+            JumpTask jumpTask1 = <span style="color:Blue;">new</span> JumpTask();
+            <span style="color:Green;">// Get the path to Calculator and set the JumpTask properties.</span>
+            jumpTask1.ApplicationPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.SystemX86), <span style="color:#A31515;">"calc.exe"</span>);
+            jumpTask1.IconResourcePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.SystemX86), <span style="color:#A31515;">"calc.exe"</span>);
+            jumpTask1.Title = <span style="color:#A31515;">"Calculator"</span>;
+            jumpTask1.Description = <span style="color:#A31515;">"Open Calculator."</span>;
+            jumpTask1.CustomCategory = <span style="color:#A31515;">"User Added Tasks"</span>;
+            <span style="color:Green;">// Get the JumpList from the application and update it.</span>
+            JumpList jumpList1 = JumpList.GetJumpList(App.Current);
+            jumpList1.JumpItems.Add(jumpTask1);
+            JumpList.AddToRecentCategory(jumpTask1);
+            jumpList1.Apply();
+        }
+        <span style="color:Blue;">private</span>&nbsp;<span style="color:Blue;">void</span> ClearJumpList(<span style="color:Blue;">object</span> sender, RoutedEventArgs e)
+        {
+            JumpList jumpList1 = JumpList.GetJumpList(App.Current);
+            jumpList1.JumpItems.Clear();
+            jumpList1.Apply();
+        }
+        <span style="color:Blue;">private</span>&nbsp;<span style="color:Blue;">void</span> SetNewJumpList(<span style="color:Blue;">object</span> sender, RoutedEventArgs e)
+        {
+            <span style="color:Green;">//Configure a new JumpTask</span>
+            JumpTask jumpTask1 = <span style="color:Blue;">new</span> JumpTask();
+            <span style="color:Green;">// Get the path to WordPad and set the JumpTask properties.</span>
+            jumpTask1.ApplicationPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), <span style="color:#A31515;">"write.exe"</span>);
+            jumpTask1.IconResourcePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), <span style="color:#A31515;">"write.exe"</span>);
+            jumpTask1.Title = <span style="color:#A31515;">"WordPad"</span>;
+            jumpTask1.Description = <span style="color:#A31515;">"Open WordPad."</span>;
+            jumpTask1.CustomCategory = <span style="color:#A31515;">"Jump List 2"</span>;
+            <span style="color:Green;">// Create and set the new JumpList.</span>
+            JumpList jumpList2 = <span style="color:Blue;">new</span> JumpList();
+            jumpList2.JumpItems.Add(jumpTask1);
+            JumpList.SetJumpList(App.Current, jumpList2);
+        }
+    }
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+</div></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Version Information</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="versionsTitleToggle"></a><h4 class="subHeading">.NET Framework</h4>Supported in: 4.5, 4<br><h4 class="subHeading">.NET Framework Client Profile</h4>Supported in: 4<br></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">.NET Framework Security</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="permissionsToggle"></a><ul><li><span><a href="http://msdn.microsoft.com/en-us/library/system.security.permissions.uipermission.aspx">UIPermission</a></span>&nbsp;<p>for full access to modify the Windows shell. Security action: <span><a href="http://msdn.microsoft.com/en-us/library/system.security.permissions.securityaction.aspx">LinkDemand</a></span>. Associated enumeration: <span><a href="http://msdn.microsoft.com/en-us/library/system.security.permissions.uipermissionwindow.aspx">UIPermissionWindow<span xmlns="">::</span>AllWindows</a></span></p></li></ul></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Platforms</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="platformsTitleToggle"></a><p>Windows 8, Windows Server 2012, Windows 7, Windows Vista SP2, Windows Server 2008 (Server Core Role not supported), Windows Server 2008 R2 (Server Core Role supported with SP1 or later; Itanium not supported)</p><p><span>
+		  The .NET Framework does not support all versions of every platform. For a list of the supported versions, see <a href="http://msdn.microsoft.com/en-us/library/8z6watww.aspx">.NET Framework System Requirements</a>.
+	  </span></p></div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Thread Safety</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="threadSafetyToggle"></a>Any public <span class="input">static</span> (<span class="input">Shared</span> in Visual Basic)  members of this type are thread safe. Any instance members are not guaranteed to be thread safe.</div></div><div><div class="LW_CollapsibleArea_TitleDiv"><div><a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">See Also</span></a><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></div><div class="sectionblock"><a id="seeAlsoToggle"></a><h4 class="subHeading">Reference</h4><div class="seeAlsoStyle"><a href="http://msdn.microsoft.com/en-us/library/system.windows.shell.aspx">System.Windows.Shell Namespace</a></div></div></div></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div id="contentFeedback">
+    <form method="post" action="http://msdn.microsoft.com/en-us/library/feedback/add/system.windows.shell.jumplist.aspx">
+        <input name="__RequestVerificationToken" type="hidden" value="WRTuAVYyqL8cWAm3h9c8Kgrq30137B5hHHtG5eAqn2Ku6_n0R8Qg5yHCe4yHpHcOWqC2s48hN6wmVPWa5Z58rIg0fxrkS-ituMuE1boFVxVeYtdrFNKVF8Iu1gAmbvMf_o9DZg2">
+    <div id="contentFeedbackContainer">
+        <div class="FeedbackTitleContainer">
+            <a name="feedback"></a>
+        Did you find this helpful?
+            <input id="rdIsUsefulYes" name="rdIsUseful" type="radio" value="1" onclick="toggleContentFeedback(&#39;Yes&#39;);"><label for="rdIsUsefulYes">Yes</label>
+            <input id="rdIsUsefulNo" name="rdIsUseful" type="radio" value="0" onclick="toggleContentFeedback(&#39;No&#39;);"><label for="rdIsUsefulNo">No</label>
+        
+        </div>
+        
+            <div id="contentFeedbackQAContainer">
+                
+                    <div id="feedbackListNoContainer" class="FeedbackListContainer">
+                        
+                            <div>
+                                <input id="chkbxNo201" name="chkbxNo" type="checkbox" value="201">
+                                <label for="chkbxNo201">Not accurate</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo202" name="chkbxNo" type="checkbox" value="202">
+                                <label for="chkbxNo202">Not enough depth</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo203" name="chkbxNo" type="checkbox" value="203">
+                                <label for="chkbxNo203">Need more code examples</label>
+                            </div>
+                        
+                    </div>
+                
+                <div class="FeedbackTellUsMoreContainer">
+                    <textarea id="feedbackText" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" onfocus="WatermarkFocus(this, &#39;Tell us more...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)" onblur="WatermarkBlur(this, &#39;Tell us more...&#39;, &#39;TellUsMoreTextBoxSearchLoaded&#39;)" onmouseover="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeydown="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeyup="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)">Tell us more...</textarea>
+                </div>
+                <span class="counter">(<span id="feedbackTextCounter">1500</span> characters remaining)</span>
+                <input type="hidden" id="returnUrl" name="returnUrl" value="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist.aspx?cs-save-lang=1&amp;cs-lang=cpp">
+                <input type="submit" id="submit" value="Submit" title="Click to Submit Feedback" onclick="WatermarkOnSubmit(document.getElementById(&#39;feedbackText&#39;), &#39;Tell us more...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)">
+                <div style="clear: both;"></div>
+            </div>  
+        
+    </div>
+    </form>
+</div>
+    
+
+
+
+
+</div>
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+   <div id="ux-footer" class="Chrome ltr">
+    <div id="ux-footer-cols">
+        
+
+        <div class="TocNavigation">
+            <div class="linksContainer">
+                    <ul class="links" style="width: 19.99%;">
+                        <li class="linksTitle"><a href="http://msdn.microsoft.com/vstudio/default.aspx" title="Tools">Tools</a></li>
+                                <li><a href="http://msdn.microsoft.com/vstudio/default.aspx" title="Visual Studio">Visual Studio</a></li>
+                                <li><a href="http://expression.microsoft.com/default.aspx" title="Expression">Expression</a></li>
+                                <li><a href="http://www.asp.net/" title="ASP.NET">ASP.NET</a></li>
+                                <li><a href="http://msdn.microsoft.com/silverlight/" title="Silverlight">Silverlight</a></li>
+                    </ul>
+                    <ul class="links" style="width: 19.99%;">
+                        <li class="linksTitle"><a href="http://msdn.microsoft.com/vstudio/default.aspx" title="Platforms">Platforms</a></li>
+                                <li><a href="http://msdn.microsoft.com/vstudio/default.aspx" title="Visual Studio">Visual Studio</a></li>
+                                <li><a href="http://msdn.microsoft.com/windows/apps/default.aspx" title="Windows">Windows</a></li>
+                                <li><a href="https://dev.windowsphone.com/" title="Windows Phone">Windows Phone</a></li>
+                                <li><a href="http://www.windowsazure.com/en-us/develop/overview/" title="Windows Azure">Windows Azure</a></li>
+                                <li><a href="http://msdn.microsoft.com/office/default.aspx" title="Office">Office</a></li>
+                    </ul>
+                    <ul class="links" style="width: 19.99%;">
+                        <li class="linksTitle"><a href="http://msdn.microsoft.com/windowsserver/default.aspx" title="Servers">Servers</a></li>
+                                <li><a href="http://msdn.microsoft.com/windowsserver/default.aspx" title="Windows Server">Windows Server</a></li>
+                                <li><a href="http://msdn.microsoft.com/exchange/default.aspx" title="Exchange Server">Exchange Server</a></li>
+                                <li><a href="http://msdn.microsoft.com/sqlserver/default.aspx" title="SQL Server">SQL Server</a></li>
+                                <li><a href="http://msdn.microsoft.com/biztalk/default.aspx" title="Biz Talk Server">Biz Talk Server</a></li>
+                                <li><a href="http://msdn.microsoft.com/data/default.aspx" title="Data">Data</a></li>
+                    </ul>
+                    <ul class="links" style="width: 19.99%;">
+                        <li class="linksTitle"><a href="http://msdn.microsoft.com/subscriptions/default.aspx" title="Developer resources">Developer resources</a></li>
+                                <li><a href="http://msdn.microsoft.com/subscriptions/default.aspx" title="MSDN Subscriptions">MSDN Subscriptions</a></li>
+                                <li><a href="http://msdn.microsoft.com/magazine/default.aspx" title="MSDN Magazine">MSDN Magazine</a></li>
+                                <li><a href="http://msdn.microsoft.com/aa570311" title="MSDN Flash Newsletter">MSDN Flash Newsletter</a></li>
+                                <li><a href="http://code.msdn.microsoft.com/" title="Code Samples">Code Samples</a></li>
+                                <li><a href="http://social.msdn.microsoft.com/Forums/en-US/categories" title="MSDN Forums">MSDN Forums</a></li>
+                    </ul>
+                    <ul class="links" style="width: 19.99%;">
+                        <li class="linksTitle"><a href="http://msdn.microsoft.com/evalcenter/default.aspx" title="Get started for free">Get started for free</a></li>
+                                <li><a href="http://msdn.microsoft.com/evalcenter/default.aspx" title="MSDN evaluation center">MSDN evaluation center</a></li>
+                                <li><a href="http://www.microsoft.com/bizspark/" title="BizSpark (for startups)">BizSpark (for startups)</a></li>
+                                <li><a href="https://www.dreamspark.com/" title="DreamSpark (for students)">DreamSpark (for students)</a></li>
+                                <li><a href="http://www.microsoft.com/websitespark/" title="WebsiteSpark (for web devs)">WebsiteSpark (for web devs)</a></li>
+                                <li><a href="https://www.microsoft.com/faculty" title="School faculty">School faculty</a></li>
+                    </ul>
+            </div>
+        </div>        
+
+    </div>
+
+    <div class="ux-footer-clear"></div>
+    <div id="footerRight">
+        <div id="FooterLogoContainer"><div id="FooterLogo"></div></div>
+        <div id="FooterCopyright">© 2013 Microsoft. All rights reserved.</div> 
+    </div>
+    <div id="footerLeft">
+        <div id="footerGroup">
+            <div id="LinkGroup">
+                <div id="Links1"><div data-fragmentname="FooterLinks" id="Fragment_FooterLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div>
+      <div class="LinkColumn">
+        <a href="http://msdn.microsoft.com/en-us/newsletter.aspx" xmlns="http://www.w3.org/1999/xhtml">Newsletter</a>
+      </div>
+      <div class="LinksDivider">|</div>
+      <div class="LinkColumn">
+        <a href="http://msdn.microsoft.com/en-us/subscriptions/aa948875.aspx" xmlns="http://www.w3.org/1999/xhtml">Contact Us</a>
+      </div>
+      <div class="LinksDivider">|</div>
+      <div class="LinkColumn">
+        <a href="http://privacy.microsoft.com/en-us/default.mspx" xmlns="http://www.w3.org/1999/xhtml">Privacy Statement</a>
+      </div>
+      <div class="LinksDivider">|</div>
+      <div class="LinkColumn">
+        <a href="http://msdn.microsoft.com/en-US/cc300389.aspx" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+      </div>
+      <div class="LinksDivider">|</div>
+      <div class="LinkColumn">
+        <a href="http://www.microsoft.com/About/Legal/EN/US/IntellectualProperty/Trademarks/EN-US.aspx" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+      </div>
+      <div class="Clear"></div>
+    </div>
+  </div>
+</div></div>
+            </div>
+            <div id="Feedback">
+                <div class="feedbackListItem">
+                    <div class="LinksDivider">|</div>
+                    <div class="LinkColumn">
+                        
+
+
+
+
+
+<div class="FooterSiteFeedBack">
+    <a id="SiteFeedbackLinkOpener" href="javascript:void(0)">
+        <span class="FeedbackButton clip20x21" id="FeedbackButton">
+            <img id="feedBackImg" class="cl_footer_feedback_icon" src="./JumpList Class (System.Windows.Shell)_files/ImageSprite.png" alt="Site Feedback">
+        </span>
+        Site Feedback
+    </a>
+    
+    <div id="SiteFeedbackLinkContainer" class="SiteFeedbackLinkContainer" style="display: none;">
+    <form id="siteFeedbackForm" method="post" action="http://msdn.microsoft.com/en-us/library/feedback/add/system.windows.shell.jumplist(v=msdn.10).aspx">
+        <input name="__RequestVerificationToken" type="hidden" value="r4ddPnU0RK5KsKEq5hCnDknTyu_B4ESJDA881-z03l_Ju9jMmD9_GSYFffpyE0c0bomrNSW0p-WBUoaIJUsnZySnl3OlMdkG9SB42lkaWOeuF_Rvo5JRkgMl_857o7WHvRyh_g2">
+        <div class="SiteFeedbackLinkTitleContainer">
+            <div class="SiteFeedbackLinkTitle">
+                Site Feedback
+            </div>
+            <div class="SiteFeedbackLinkCancel">
+                <a id="SiteFeedbackLinkCloser" href="javascript:void(0)">x</a>
+            </div>
+        </div>
+        <div class="SiteFeedbackLinkData">
+            <div class="SiteFeedbackLinkInfoText">
+                Tell us about your experience...
+            </div>
+            <div class="QuestionText">
+                Did the page load quickly?
+            </div>
+            <div class="AnswerText">
+                
+                <span>
+                    Yes<span>
+                        <input id="searchBox" name="searchBox" type="radio" value="1"></span></span>
+                
+                <span>
+                    No<span>
+                        <input id="searchBox" name="searchBox" type="radio" value="0"></span></span>
+                
+            </div>
+            <div class="QuestionText">
+                Do you like the page design?
+            </div>
+            <div class="AnswerText">
+                
+                <span>
+                    Yes<span>
+                        <input id="tabbedCode" name="tabbedCode" type="radio" value="1"></span></span>
+                
+                <span>
+                    No<span>
+                        <input id="tabbedCode" name="tabbedCode" type="radio" value="0"></span></span>
+                
+            </div>
+            <div class="QuestionText">
+                Tell us more
+            </div>
+            <div class="SiteFeedbackLinkTextAreaContainer">
+                <textarea id="feedbackText" data-maxlength="4000" name="feedbackText" cols="25" rows="5" class="SiteFeedbackLinkTextArea"></textarea>
+                
+                <textarea id="feedbackDescription" name="feedbackDescription" cols="25" rows="10" style="display: none;">Enter description here.</textarea>
+                <input type="hidden" id="feedbackPriority" name="feedbackPriority" value="">
+                <input type="hidden" id="feedbackSourceUrl" name="feedbackSourceUrl" value="">
+                <input type="hidden" id="ClientIP" name="ClientIP" value="">
+                <input type="hidden" id="ClientOS" name="ClientOS" value="">
+                <input type="hidden" id="ClientBrowser" name="ClientBrowser" value="">
+                <input type="hidden" id="ClientTime" name="ClientTime" value="">
+                <input type="hidden" id="ClientTimeZone" name="ClientTimeZone" value="">
+                
+            </div>
+            <div>
+                <input id="siteFeedbackSubmit" type="submit" value="Send" class="SiteFeedbackLinkSubmit">
+            </div>
+        </div>
+        <input type="hidden" id="returnUrl" name="returnUrl" value="http://msdn.microsoft.com/en-us/library/system.windows.shell.jumplist(v=msdn.10).aspx?cs-save-lang=1&amp;cs-lang=cpp">
+    </form>
+</div>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+        <div id="Links2"></div>
+    </div>
+</div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2013 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+    <input id="tocPaddingPerLevel" type="hidden" value="17">
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default">
+
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+        
+            
+            
+            
+            
+            
+        
+
+
+
+<noscript>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" /&gt;&lt;/div&gt;</noscript>
+
+
+
+
+<noscript>
+  &lt;a href="http://www.omniture.com" title="Web Analytics"&gt;
+    &lt;img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" /&gt;
+  &lt;/a&gt;
+</noscript>
+
+
+
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index],elem=document.createElement("script"),elem.className="mtps-injected",elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext,script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }"),parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/dd990306(d=default,l=en-us,v=vs.110).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027msdnlib_dotnet\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"2d0dc345-4770-4b21-b805-4d419747c9cf\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:webtrendsscript,1:omni_rsid_MSDN;/Areas/Global/Content/Webtrends/resources:0,/Areas/Global/Content/Omniture/resources/MSDN:1&amp;hashKey=8FFA6D1FF710842E9298ABD38B734B38" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,1:Base\\Content\\SearchBox;/Areas/Epx/Content/Scripts:0,/\\Areas/Epx/Themes:1&amp;hashKey=17071977F041503512079A5875D83B09" },
+	{ url: "http://i3.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox&btnid=HeaderSearchButton&brand=MSDN&loc=en-us&watermark=MSDN" },
+	{ url: "http://i2.msdn.microsoft.com/Areas/Epx/Library/Content/Toc.js" },
+	{ txt: "function appendQueryOnContextualNav(properties) {\n        properties.data.UxAsync = \"true\";\n    }" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:NavigationResize,1:FeedbackCounter;/Areas/Epx/Library/Content:0,/Areas/Epx/Shared/Content:1&amp;hashKey=1151866E7AC1B9F656D9554ED59C4320" },
+	{ txt: "MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = \u0027Expand\u0027; MTPS.LocalizedStrings.CollapseButtonTooltip = \u0027Collapse\u0027;" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Feedback,1:SiteFeedbackLink,1:Topic,1:CodeSnippet,1:TopicNotInScope,1:CollapsibleArea,1:VersionSelector,1:SurveyBroker,2:uxservicesasync;/Areas/Epx/Shared/Content:0,/Areas/Epx/Content/Scripts:1,/Areas/Global/Content:2&amp;hashKey=D76AC9E620F25BB114934FC5F2503E7D" }
+]);
+
+/*]]>*/
+</script>
+<script src="./JumpList Class (System.Windows.Shell)_files/broker-config.js"></script><div style="display: none; " id="_WEDCSInsertedData"><iframe id="_msnFrame" src="./JumpList Class (System.Windows.Shell)_files/c.gif" style="z-index:-1;height:1px;width:1px;display:none;visibility:hidden;" onload="javascript:MscomBeacon();"></iframe></div></body></html>

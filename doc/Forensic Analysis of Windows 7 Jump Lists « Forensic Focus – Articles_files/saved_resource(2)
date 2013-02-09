@@ -1,0 +1,32 @@
+#navigation {
+font-family:Arial, "helvetica neue", "lucida grande", helvetica, sans-serif;
+font-size:1.1em;
+}
+
+#navigation ul {
+background:#3375B0 url('http://www.forensicfocus.com/themes/ff_reDesign3/images/backgrounds/header/menu/menu_slice.png') repeat-x;
+padding-left:15px;
+width:945px;
+height:63px;
+}
+
+.nav a {
+color:white;
+line-height:63px;
+text-shadow:none;
+padding:0 13px;
+}
+
+.nav a:hover,.nav li.current_page_item a,.nav li.current_page_parent a,.nav li.current-menu-ancestor a {
+background:none;
+color:#688AAb;
+}
+
+.nav ul li a:hover,.nav ul li.current_page_item a,.nav ul li.current-menu-item a {
+background:none;
+color:#688AAb;
+}
+
+#navigation ul.rss {
+display:none;
+}
