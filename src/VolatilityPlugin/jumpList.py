@@ -310,12 +310,85 @@ class jle(forensics.commands.command):
 		# if this is a stream object. For a root storage object, this field 
 		# contains the size of the mini stream.
 		
-		# 2.6.2 Root Directory Entry #
+
+
+	def parseMS_SHLLINK():
+	
+		######################## [ MS-SHLLINK ] ########################
+		# REFERENCE: [MS-SHLLINK].pdf
+		
+		# 2.1 SHELL_LINK_HEADER #
+		HeaderSize = '' 	# LENGTH: 4 bytes.
+		# The size, in bytes, of this structure. This value MUST be 0x0000004C.
+		
+		LinkCLSID = ''		# LENGTH: 16 bytes
+		# A class identifier (CLSID). This value MUST be 
+		# 00021401-0000-0000-C000-000000000046.
+
+		LinkFlags = ''		# LENGTH: 4 bytes
+		# A LinkFlags structure (section 2.1.1) that specifies information about 
+		# the shell link and the presence of optional portions of the structure.
+		
+		FileAttributes = ''	# LENGTH: 4 bytes
+		# A FileAttributesFlags structure (section 2.1.2) that specifies 
+		# information about the link target.	
+
+		CreationTime = ''	# LENGTH: 8 bytes
+		# A FILETIME structure ([MS-DTYP] section 2.3.1) that specifies the 
+		# creation time of the link target in UTC (Coordinated Universal Time). 
+		# If the value is zero, there is no creation time set on the link target.
+		
+		AccessTime = ''		# LENGTH: 8 bytes
+		# A FILETIME structure ([MS-DTYP] section 2.3.1) that specifies the access 
+		# time of the link target in UTC (Coordinated Universal Time). If the value 
+		# is zero, there is no access time set on the link target.
+		
+		WriteTime = ''		# LENGTH: 8 bytes
+		# A FILETIME structure ([MS-DTYP] section 2.3.1) that specifies the write 
+		# time of the link target in UTC (Coordinated Universal Time). If the value 
+		# is zero, there is no write time set on the link target.
+	
+		FileSize = ''		# LENGTH: 4 bytes
+		# A 32-bit unsigned integer that specifies the size, in bytes, of the link 
+		# target. If the link target file is larger than 0xFFFFFFFF, this value 
+		# specifies the least significant 32 bits of the link target file size.
+		
+		IconIndex = ''		# LENGTH: 4 bytes
+		# A 32-bit signed integer that specifies the index of an icon within a 
+		# given icon location.
+	
+		ShowCommand = ''	# LENGTH: 4 bytes
+		# A 32-bit unsigned integer that specifies the expected window state of an 
+		# application launched by the link. This value SHOULD be one of the 
+		# following.
+
+		HotKey = ''		# LENGTH: 2 bytes
+		# A HotKeyFlags structure (section 2.1.3) that specifies the keystrokes 
+		# used to launch the application referenced by the shortcut key. This value 
+		# is assigned to the application after it is launched, so that pressing the 
+		# key activates that application.
+
+		Reserved1 = ''		# LENGTH: 2 bytes 
+		# A value that MUST be zero.
+
+		Reserved2 = ''		# LENGTH: 4 bytes 
+		# A value that MUST be zero.
+
+		Reserved3 = ''		# LENGTH: 4 bytes
+		# A value that MUST be zero.
+
+
+		
+
+		# 2.1.1 LINK_FLAGS # 
+		
+		
 
 
 
-	# def parseMS_SHLLINK():
-		# return parsedInfo
+
+
+
 
 	# def DecryptJumpListID():
 		# return nameOfJumpList
