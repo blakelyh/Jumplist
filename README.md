@@ -1,8 +1,8 @@
 ##Contents of repository:
-#	* /doc
+#	 /doc
 		- Reference material, and guides for creation of the project.
-#	* /src
+#	 /src
 		- Source code for the project.
-#	* /test
+#	 /test
 		- Testing new concepts for the project.
 
