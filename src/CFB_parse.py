@@ -3,7 +3,12 @@ import binascii
 
 filename = 'test.txt'
 
-with open(filename, 'rb') as f:
-    content = f.read()
+try:
+	with open(filename, 'rb') as f:
+    	content = f.read()
+	break
+except Exception, e:
+	print ("Error: " + e)
+
 print(binascii.hexlify(content))
 
