@@ -1,6 +1,5 @@
 import binascii
 
-
 filename = 'test.txt'
 
 try:

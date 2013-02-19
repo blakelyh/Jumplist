@@ -1,0 +1,1776 @@
+from vutils import *
+class shllink():
+		######################## [ MS-SHLLINK ] ########################
+		# REFERENCE: [MS-SHLLINK].pdf
+		
+		# 2.1 SHELL_LINK_HEADER #
+		HeaderSize = '' 	# LENGTH: 4 bytes.
+		# The size, in bytes, of this structure. This value MUST be 0x0000004C.
+		
+		LinkCLSID = ''		# LENGTH: 16 bytes
+		# A class identifier (CLSID). This value MUST be 
+		# 00021401-0000-0000-C000-000000000046.
+
+		LinkFlags = ''		# LENGTH: 4 bytes
+		# A LinkFlags structure (section 2.1.1) that specifies information about 
+		# the shell link and the presence of optional portions of the structure.
+		
+		FileAttributes = ''	# LENGTH: 4 bytes
+		# A FileAttributesFlags structure (section 2.1.2) that specifies 
+		# information about the link target.	
+
+		CreationTime = ''	# LENGTH: 8 bytes
+		# A FILETIME structure ([MS-DTYP] section 2.3.1) that specifies the 
+		# creation time of the link target in UTC (Coordinated Universal Time). 
+		# If the value is zero, there is no creation time set on the link target.
+		
+		AccessTime = ''		# LENGTH: 8 bytes
+		# A FILETIME structure ([MS-DTYP] section 2.3.1) that specifies the access 
+		# time of the link target in UTC (Coordinated Universal Time). If the value 
+		# is zero, there is no access time set on the link target.
+		
+		WriteTime = ''		# LENGTH: 8 bytes
+		# A FILETIME structure ([MS-DTYP] section 2.3.1) that specifies the write 
+		# time of the link target in UTC (Coordinated Universal Time). If the value 
+		# is zero, there is no write time set on the link target.
+	
+		FileSize = ''		# LENGTH: 4 bytes
+		# A 32-bit unsigned integer that specifies the size, in bytes, of the link 
+		# target. If the link target file is larger than 0xFFFFFFFF, this value 
+		# specifies the least significant 32 bits of the link target file size.
+		
+		IconIndex = ''		# LENGTH: 4 bytes
+		# A 32-bit signed integer that specifies the index of an icon within a 
+		# given icon location.
+	
+		ShowCommand = ''	# LENGTH: 4 bytes
+		# A 32-bit unsigned integer that specifies the expected window state of an 
+		# application launched by the link. This value SHOULD be one of the 
+		# following.
+
+		HotKey = ''		# LENGTH: 2 bytes
+		# A HotKeyFlags structure (section 2.1.3) that specifies the keystrokes 
+		# used to launch the application referenced by the shortcut key. This value 
+		# is assigned to the application after it is launched, so that pressing the 
+		# key activates that application.
+
+		Reserved1 = ''		# LENGTH: 2 bytes 
+		# A value that MUST be zero.
+
+		Reserved2 = ''		# LENGTH: 4 bytes 
+		# A value that MUST be zero.
+
+		Reserved3 = ''		# LENGTH: 4 bytes
+		# A value that MUST be zero.
+
+
+		
+
+		# 2.1.1 LINK_FLAGS #
+		# The LinkFlags structure defines bits that specify which shell link 
+		# structures are present in the file format after the ShellLinkHeader 
+		# structure (section 2.1). 
+		
+		# Case for index if value at index is set.
+		switch(LinkFlagStructure) {
+ 			case 0:
+    				printf("A");
+    				break;
+  			case 1:
+    				printf("B");
+    				break;
+  			case 2:
+    				printf("C");
+    				break;
+  			case 3:
+    				printf("D");
+    				break;
+  			case 4:
+    				printf("E");
+    				break;
+  			case 5:
+    				printf("F");
+    				break;
+  			case 6:
+    				printf("G");
+    				break;
+  			case 7:
+    				printf("H");
+    				break;
+  			case 8:
+    				printf("I");
+    				break;
+    			case 9:	
+				printf("J");
+    				break;
+			case 10:
+    				printf("K");
+    				break;
+			case 11:
+    				printf("L");
+    				break;
+			case 12:
+    				printf("M");
+    				break;
+			case 13:
+    				printf("N");
+    				break;
+			case 14:
+    				printf("O");
+    				break;
+			case 15:
+    				printf("P");
+    				break;
+			case 16:
+    				printf("Q");
+    				break;
+			case 17:
+    				printf("R");
+    				break;
+			case 18:
+    				printf("S");
+    				break;
+			case 19:
+    				printf("T");
+    				break;
+			case 20:
+    				printf("U");
+    				break;
+			case 21:
+    				printf("V");
+    				break;
+			case 22:
+    				printf("W");
+    				break;
+			case 23:
+    				printf("X");
+    				break;
+			case 24:
+    				printf("Y");
+    				break;
+			case 25:
+    				printf("Z");
+    				break;
+			case 26:
+    				printf("AA");
+    				break;
+			case 27:
+    				printf("0");
+    				break;
+			case 28:
+    				printf("0");
+    				break;
+			case 29:
+    				printf("0");
+    				break;
+			case 30:
+    				printf("0");
+    				break;
+			case 31:
+    				printf("0");
+    				break;
+  			default:
+    				printf("ERROR!");
+    				break;
+		}
+
+		# Meaning of value
+		switch(LinkFlag) {
+		 	case A:
+			# The shell link is saved with an item ID list (IDList). If this 
+			# bit is set, a LinkTargetIDList structure (section 2.2) MUST 
+			# follow the ShellLinkHeader .
+    				printf("HasLinkTargetIDList");
+    				break;
+  			case B:
+			# The shell link is saved with link information. If this bit is 
+			# set, a LinkInfo structure (section 2.3) MUST be present.
+    				printf("HasLinkInfo");
+    				break;
+  			case C:
+			# The shell link is saved with a name string. If this bit is set,
+			# a NAME_STRING StringData structure (section 2.4) MUST be present.
+    				printf("HasName");
+    				break;
+  			case D:
+			# The shell link is saved with a relative path string. If this bit
+			# is set, a RELATIVE_PATH StringData structure (section 2.4) MUST 
+			# be present.
+    				printf("HasRelativePath");
+    				break;
+  			case E:
+			# The shell link is saved with a working directory string. If this
+			# bit is set, a WORKING_DIR StringData structure (section 2.4) MUST
+			# be present.
+    				printf("HasWorkingDir");
+    				break;
+  			case F:
+			# The shell link is saved with command line arguments. If this bit
+			# is set, a COMMAND_LINE_ARGUMENTS StringData structure 
+			# (section 2.4) MUST be present.
+    				printf("HasArguments");
+    				break;
+  			case G:
+			# The shell link is saved with an icon location string. If this bit
+			# is set, an ICON_LOCATION StringData structure (section 2.4) MUST 
+			# be present.
+    				printf("HasIconLocation");
+    				break;
+  			case H:
+			# The shell link contains Unicode encoded strings. This bit SHOULD 
+			# be set.
+    				printf("IsUnicode");
+    				break;
+  			case I:
+			# The LinkInfo structure (section 2.3) is ignored.
+    				printf("ForceNoLinkInfo");
+    				break;
+    			case J:	
+			# The shell link is saved with an EnvironmentVariableDataBlock
+			# (section 2.5.4).
+				printf("HasExpString");
+    				break;
+			case K:
+    			# The target is run in a separate virtual machine when launching 
+			# a link target that is a 16-bit application.
+				printf("RunInSeparateProcess");
+    				break;
+			case L:
+			# A bit that is undefined and MUST be ignored.
+    				printf("Unused1");
+    				break;
+			case M:
+			# The shell link is saved with a DarwinDataBlock (section 2.5.3).
+    				printf("HasDarwinID");
+    				break;
+			case N:
+			# The application is run as a different user when the target of 
+			# the shell link is activated.
+    				printf("RunAsUser");
+    				break;
+			case O:
+			# The shell link is saved with an IconEnvironmentDataBlock 
+			# (section 2.5.5).
+    				printf("HasExpIcon");
+    				break;
+			case P:
+			# The file system location is represented in the shell namespace
+			# when the path to an item is parsed into an IDList.
+    				printf("NoPidAlias");
+    				break;
+			case Q:
+			# A bit that is undefined and MUST be ignored
+    				printf("Unused2");
+    				break;
+			case R:
+			# The shell link is saved with a ShimDataBlock (section 2.5.8).
+    				printf("RunWithShimLayer");
+    				break;
+			case S:
+			# The TrackerDataBlock (section 2.5.10) is ignored.	
+    				printf(" ForceNoLinkTrack");
+    				break;
+			case T:
+			# The shell link attempts to collect target properties and store
+			# them in the PropertyStoreDataBlock (section 2.5.7) when the 
+			# link target is set.
+    				printf("EnableTargetMetadata");
+    				break;
+			case U:
+			# The EnvironmentVariableDataBlock is ignored.
+    				printf("DisableLinkPathTracking");
+    				break;
+			case V:
+			# The SpecialFolderDataBlock (section 2.5.9) and the
+			# KnownFolderDataBlock (section 2.5.6) are ignored when loading the
+			# shell link. If this bit is set, these extra data blocks SHOULD 
+			# NOT be saved when saving the shell link.
+    				printf("DisableKnownFolderTracking");
+    				break;
+			case W:
+			# If the link has a KnownFolderDataBlock (section 2.5.6), the 
+			# unaliased form of the known folder IDList SHOULD be used when
+			# translating the target IDList at the time that the link is loaded.
+    				printf("DisableKnownFolderAlias");
+    				break;
+			case X:
+			# Creating a link that references another link is enabled. 
+			# Otherwise, specifying a link as the target IDList SHOULD NOT be
+			# allowed.
+    				printf("AllowLinkToLink");
+    				break;
+			case Y:
+			# When saving a link for which the target IDList is under a known 
+			# folder, either the unaliased form of that known folder or the 
+			# target IDList SHOULD be used.
+    				printf("UnaliasOnSave");
+    				break;
+			case Z:
+			# The target IDList SHOULD NOT be stored; instead, the path
+			# specified in the EnvironmentVariableDataBlock (section 2.5.4)
+			# SHOULD be used to refer to the target.
+    				printf("PreferEnvironmentPath");
+    				break;
+			case AA:
+    			# When the target is a UNC name that refers to a location on a 
+			# local machine, the local path IDList in the 
+			# PropertyStoreDataBlock (section 2.5.7) SHOULD be stored, so it 
+			# can be used when the link is loaded on the local machine.
+				printf("KeepLocalIDListForUNCTarget");
+    				break;
+    			default:
+				printf("ERROR!");
+				break;
+		}
+		
+
+		
+
+
+		# 2.1.2 FileAttributesFlags #
+		# The FileAttributesFlags structure defines bits that specify the file 
+		# attributes of the link target, if the target is a file system item. 
+		# File attributes can be used if the link target is not available, or if
+		# accessing the target would be inefficient. It is possible for the target 
+		# items attributes to be out of sync with this value.
+			switch(FileAttributesFlagStructure) {
+ 			case 0:
+    				printf("A");
+    				break;
+  			case 1:
+    				printf("B");
+    				break;
+  			case 2:
+    				printf("C");
+    				break;
+  			case 3:
+    				printf("D");
+    				break;
+  			case 4:
+    				printf("E");
+    				break;
+  			case 5:
+    				printf("F");
+    				break;
+  			case 6:
+    				printf("G");
+    				break;
+  			case 7:
+    				printf("H");
+    				break;
+  			case 8:
+    				printf("I");
+    				break;
+    			case 9:	
+				printf("J");
+    				break;
+			case 10:
+    				printf("K");
+    				break;
+			case 11:
+    				printf("L");
+    				break;
+			case 12:
+    				printf("M");
+    				break;
+			case 13:
+    				printf("N");
+    				break;
+			case 14:
+    				printf("O");
+    				break;
+			case 15:
+    				printf("0");
+    				break;
+			case 16:
+    				printf("0");
+    				break;
+			case 17:
+    				printf("0");
+    				break;
+			case 18:
+    				printf("0");
+    				break;
+			case 19:
+    				printf("0");
+    				break;
+			case 20:
+    				printf("0");
+    				break;
+			case 21:
+    				printf("0");
+    				break;
+			case 22:
+    				printf("0");
+    				break;
+			case 23:
+    				printf("0");
+    				break;
+			case 24:
+    				printf("0");
+    				break;
+			case 25:
+    				printf("0");
+    				break;
+			case 26:
+    				printf("0");
+    				break;
+			case 27:
+    				printf("0");
+    				break;
+			case 28:
+    				printf("0");
+    				break;
+			case 29:
+    				printf("0");
+    				break;
+			case 30:
+    				printf("0");
+    				break;
+			case 31:
+    				printf("0");
+    				break;
+  			default:
+    				printf("ERROR!");
+    				break;
+		}
+
+
+
+		# Meaning of values
+		switch(FileAttributesFlagStructure) {
+ 			case A:
+			# The file or directory is read-only. For a file, if this bit is
+			# set, applications can read the file but cannot write
+    				printf("FILE_ATTRIBUTE_READONLY");
+    				break;
+  			case B:
+			# The file or directory is hidden. If this bit is set, the file or
+			# folder is not included in an ordinary directory listing.
+    				printf("FILE_ATTRIBUTE_HIDDEN");
+    				break;
+  			case C:
+			# The file or directory is part of the operating system or is used
+			# exclusively by the operating system.
+
+    				printf("FILE_ATTRIBUTE_SYSTEM");
+    				break;
+  			case D:
+			# A bit that MUST be zero.
+		    				printf("Reserved1");
+    				break;
+  			case E:
+			# The link target is a directory instead of a file.
+    				printf("FILE_ATTRIBUTE_DIRECTORY");
+    				break;
+  			case F:
+			# The file or directory is an archive file. Applications use this
+			# flag to mark files for backup or removal.
+    				printf("FILE_ATTRIBUTE_ARCHIVE");
+    				break;
+  			case G:
+			# A bit that MUST be zero.
+    				printf("Reserved2");
+    				break;
+  			case H:
+			# The file or directory has no other flags set. If this bit is 1,
+			# all other bits in this structure MUST be clear.
+    				printf("FILE_ATTRIBUTE_NORMAL");
+    				break;
+  			case I:
+			# The file is being used for temporary storage.
+    				printf("FILE_ATTRIBUTE_TEMPORARY");
+    				break;
+    			case J:	
+			# The file is a sparse file.
+				printf("FILE_ATTRIBUTE_SPARSE_FILE");
+    				break;
+			case K:
+			# The file or directory has an associated reparse point.
+    				printf("FILE_ATTRIBUTE_REPARSE_POINT");
+    				break;
+			case L:
+			# The file or directory is compressed. For a file, this means that
+			# all data in the file is compressed. For a directory, this means
+			# that compression is the default for newly created files and
+			# subdirectories.
+    				printf("FILE_ATTRIBUTE_COMPRESSED");
+    				break;
+			case M:
+			# The data of the file is not immediately available.
+    				printf("FILE_ATTRIBUTE_OFFLINE");
+    				break;
+			case N:
+			# The contents of the file need to be indexed.
+    				printf("FILE_ATTRIBUTE_NOT_CONTENT_INDEXED");
+    				break;
+			case O:
+			# The file or directory is encrypted. For a file, this means that
+			# all data in the file is encrypted. For a directory, this means
+			# that encryption is the default for newly created files and
+			# subdirectories.
+				printf("FILE_ATTRIBUTE_ENCRYPTED")
+				break;
+		}
+		
+
+	
+
+		# 2.1.3 HotKeyFlags
+		# The HotKeyFlags structure specifies input generated by a combination
+		# of keyboard keys being pressed.
+		
+		# LowByte (1 byte) 0-7bit contains virtual key code to a key on the keyboard
+		# This value MUST be one of the following:
+		switch(LowByte){		
+			case 0x30:
+				printf("0 key")
+				break:
+			case 0x31:
+				printf("1 key")
+				break:
+			case 0x32:
+				printf("2 key")
+				break;
+			case 0x33:
+				printf("3 key")
+				break;
+			case 0x34:
+				printf("4 key")
+				break;
+			case 0x35:
+				printf("5 key")
+				break;
+			case 0x36:
+				printf("6 key")
+				break;
+			case 0x37:
+				printf("7 key")
+				break;
+			case 0x38:
+				printf("8 key")
+				break;
+			case 0x39:
+				printf("9 key")
+				break;
+			case 0x41:
+				printf("A key")
+				break;
+			case 0x42:
+				printf("B key")
+				break;
+			case 0x43:
+				printf("C key")
+				break;
+			case 0x44:
+				printf("D key")
+				break;
+			case 0x45:
+				printf("E key")
+				break;
+			case 0x46:
+				printf("F key")
+				break;
+			case 0x47:
+				printf("G key")
+				break;
+			case 0x48:
+				printf("H key")
+				break;
+			case 0x49:
+				printf("I key")
+				break;
+			case 0x4A:
+				printf("J key")
+				break;
+			case 0x4B:
+				printf("K key")
+				break;
+			case 0x4C:
+				printf("L key")
+				break;
+			case 0x4D:
+				printf("M key")
+				break;
+			case 0x4E:
+				printf("N key")
+				break;
+			case 0x4F:
+				printf("O key")
+				break;
+			case 0x50:
+				printf("P key")
+				break;
+			case 0x51:
+				printf("Q key")
+				break;
+			case 0x52:
+				printf("R key")
+				break;
+			case 0x53: 
+				printf("S key")
+				break;
+			case 0x54:
+				printf("T key")
+				break;
+			case 0x55: 
+				printf("U key")
+				break;
+			case 0x56:
+				printf("V key")
+				break;
+			case 0x57: 
+				printf("W key")
+				break;
+			case 0x58:
+				printf("X key")
+				break;
+			case 0x59:
+				printf("Y key")
+				break;
+			case 0x5A:
+				printf("Z key")
+				break;
+			case 0x70 | VK_F1:
+				printf("F1 key")
+				break;
+			case 0x71 | VK_F2:
+				printf("F2 key")
+				break;
+			case 0x72 | VK_F3:
+				printf("F3 key")
+				break;
+			case 0x73 | VK_F4:
+				printf("F4 key")
+				break;
+			case 0x74 | VK_F5:
+				printf("F5 key")
+				break;
+			case 0x75 | VK_F6:
+				printf("F6 key")
+				break;
+			case 0x76 | VK_F7:
+				printf("F7 key")
+				break;
+			case 0x77 | VK_F8:
+				printf("F8 key")
+				break;
+			case 0x78 | VK_F9:
+				printf("F9 key")
+				break;
+			case VK_F10 | 0x79:
+				printf("F10 key")
+				break;
+			case VK_F11 | 0x7A:
+				printf("F11 key")
+				break;
+			case VK_F12 | 0x7B:
+				printf("F12 key")
+				break;
+			case VK_F13 | 0x7C:
+				printf("F13 key")
+				break;
+			case VK_F14 | 0x7D:
+				printf("F14 key")
+				break;
+			case VK_F15 | 0x7E:
+				printf("F15 key")
+				break;
+			case VK_F16 | 0x7F:
+				printf("F16 key")
+				break;
+			case VK_F17 | 0x80:
+				printf("F17 key")
+				break;
+			case VK_F18 | 0x81:
+				printf("F18 key")
+				break;
+			case VK_F19 | 0x82:
+				printf("F19 key")
+				break;
+			case VK_F20 | 0x83:
+				printf("F20 key")
+				break;
+			case VK_F21 | 0x84:
+				printf("F21 key")
+				break;
+			case VK_F22 | 0x85:
+				printf("F22 key")
+				break;
+			case VK_F23 | 0x86:
+				printf("F23 key")
+				break;
+			case VK_F24 | 0x87:
+				printf("F24 key")
+				break;
+			case VK_NUMLOCK | 0x90:
+				printf("NUM LOCK key")
+				break;
+			case VK_SCROLL | 0x91:
+				printf("SCROLL LOCK key")
+				break;
+			case HOTKEYF_SHIFT | 0x01:
+				printf("The SHIFT key on the keyboard.")
+				break;
+			case HOTKEYF_CONTROL | 0x02:
+				printf("The CTRL key on the keyboard.")
+				break;
+			case HOTKEYF_ALT | 0x04:
+				printf("The ALT key on the keyboard.")
+				break;
+			default:
+				break;
+		}
+
+		
+
+
+
+		# 2.2 LinkTargetIDList #
+		# The LinkTargetIDList structure specifies the target of the link. The 
+		# presence of this optional structure is specified by the 
+		# HasLinkTargetIDList bit (LinkFlags section 2.1.1) in the ShellLinkHeader 
+		# (section 2.1).
+		
+		# IDListSize (2 bytes): The size, in bytes, of the IDList field.
+		IDListSize = ''
+
+		# IDList (variable): A stored IDList structure (section 2.2.1), which 
+		# contains the item ID list. An IDList structure conforms to the following 
+		# ABNF [RFC5234]:
+		IDList = ''
+		
+		
+
+
+		# 2.2.1 IDList #
+		
+		# ItemIDList (variable): An array of zero or more ItemID structures
+		# (section 2.2.2).
+		ItemIDList = ''
+
+		# TerminalID (2 bytes): A 16-bit, unsigned integer that indicates the end 
+		# of the item IDs. This ￼￼value MUST be zero.
+		TerminalID = ''
+
+
+
+		
+		# 2.3 LinkInfo #
+		# The LinkInfo structure specifies information necessary to resolve a link
+		# target if it is not found in its original location. This includes 
+		# information about the volume that the target was stored on, the mapped
+		# drive letter, and a Universal Naming Convention (UNC) form of the path if
+		# one existed when the link was created. For more details about UNC paths,
+		# see [MS-DFSNM] section 2.2.1.4.
+		
+		# LinkInfoSize (4 bytes): A 32-bit, unsigned integer that specifies the 
+		# size, in bytes, of the LinkInfo structure. All offsets specified in this
+		# structure MUST be less than this value, and all strings contained in this
+		# structure MUST fit within the extent defined by this size.
+		LinkInfoSize = ''
+
+		# LinkInfoHeaderSize (4 bytes): A 32-bit, unsigned integer that specifies
+		# the size, in bytes, of the LinkInfo header section, which includes all
+		# specified offsets. This value MUST be defined as shown in the following
+		# table, and it MUST be less than LinkInfoSize.<1>
+		LinkInfoHeaderSize = ''
+		if (LinkInfoHeaderSize == 0x0000001C):
+			printf("Offsets to the optional fields are not specified.")
+		elif (0x00000024 ≤ LinkInfoHeaderSize):
+				printf("Offsets to the optional fields are specified.")
+		
+		# LinkInfoFlags (4 bytes): Flags that specify whether the VolumeID,
+		# LocalBasePath, LocalBasePathUnicode, and CommonNetworkRelativeLink
+		# fields are present in this structure.
+		LinkInfoFlags = ''
+		switch(LinkedInfoLagsIndex){
+			case 0:
+				printf("A")
+				break;
+			case 1:
+				printf("B")
+				break;
+		}
+		switch(LinkInfoFlags){
+			case A:
+			# If set, the VolumeID and LocalBasePath fields are present, and
+			# their locations are specified by the values of the VolumeIDOffset
+			# and LocalBasePathOffset fields, respectively. If the value of the
+			# LinkInfoHeaderSize field is greater than or equal to 0x00000024,
+			# the LocalBasePathUnicode field is present, and its location is
+			# specified by the value of the LocalBasePathOffsetUnicode field.
+			# If not set, the VolumeID, LocalBasePath, and LocalBasePathUnicode 
+			# fields are not present, and the values of the VolumeIDOffset and 
+			# LocalBasePathOffset fields are zero. If the value of the 
+			# LinkInfoHeaderSize field is greater than or equal to 0x00000024,
+			# the value of the LocalBasePathOffsetUnicode field is zero.
+				printf("VolumeIDAndLocalBasePath")
+				break;
+			case B:
+			# If set, the CommonNetworkRelativeLink field is present, and its
+			# location is specified by the value of the 
+			# CommonNetworkRelativeLinkOffset field.
+			# If not set, the CommonNetworkRelativeLink field is not present,
+			# and the value of the CommonNetworkRelativeLinkOffset field is zero.
+				printf("CommonNetworkRelativeLinkAndPathSuffix")
+				break;
+		}
+
+		# VolumeIDOffset (4 bytes): A 32-bit, unsigned integer that specifies the
+		# location of the VolumeID field. If the VolumeIDAndLocalBasePath flag is
+		# set, this value is an offset, in bytes, from the start of the LinkInfo
+		# structure; otherwise, this value MUST be zero.	
+		VolumeIDOffset = ''
+		
+		# LocalBasePathOffset (4 bytes): A 32-bit, unsigned integer that specifies
+		# the location of the LocalBasePath field. If the VolumeIDAndLocalBasePath
+		# flag is set, this value is an offset, in bytes, from the start of the
+		# LinkInfo structure; otherwise, this value MUST be zero.
+		LocalBasePathOffset = ''
+
+		# CommonNetworkRelativeLinkOffset (4 bytes): A 32-bit, unsigned integer
+		# that specifies the location of the CommonNetworkRelativeLink field. If
+		# the CommonNetworkRelativeLinkAndPathSuffix flag is set, this value is an
+		# offset, in bytes, from the start of the LinkInfo structure; otherwise,
+		# this value MUST be zero.
+		CommonNetworkRelativeLinkOffset = ''
+
+		# CommonPathSuffixOffset (4 bytes): A 32-bit, unsigned integer that
+		# specifies the location of the CommonPathSuffix field. This value is an 
+		# offset, in bytes, from the start of the LinkInfo structure.
+		CommonPathSuffixOffset = ''
+
+		# LocalBasePathOffsetUnicode (4 bytes): An optional, 32-bit, unsigned
+		# integer that specifies the location of the LocalBasePathUnicode field.
+		# If the VolumeIDAndLocalBasePath flag is set, this value is an offset,
+		# in bytes, from the start of the LinkInfo structure; otherwise, this value
+		# MUST be zero. This field can be present only if the value of the
+		# LinkInfoHeaderSize field is greater than or equal to 0x00000024.
+		LocalBasePathOffsetUnicode = ''
+
+		# CommonPathSuffixOffsetUnicode (4 bytes): An optional, 32-bit, unsigned
+		# integer that specifies the location of the CommonPathSuffixUnicode field.
+		# This value is an offset, in bytes, from the start of the LinkInfo
+		# structure. This field can be present only if the value of the
+		# LinkInfoHeaderSize field is greater than or equal to 0x00000024.
+		CommonPathSuffixOffsetUnicode = ''		
+
+		# VolumeID (variable): An optional VolumeID structure (section 2.3.1) 
+		# that specifies information about the volume that the link target was on
+		# when the link was created. This field is present if the
+		# VolumeIDAndLocalBasePath flag is set.
+		VolumeID = ''
+
+		# LocalBasePath(variable): Anoptional,NULL–terminatedstring,
+		# definedbythesystemdefault code page, which is used to construct the full
+		# path to the link item or link target by appending the string in the
+		# CommonPathSuffix field. This field is present if the
+		# VolumeIDAndLocalBasePath flag is set.
+		LocalBasePath = ''
+		
+		# CommonNetworkRelativeLink (variable): An optional
+		# CommonNetworkRelativeLink structure (section 2.3.2) that specifies
+		# information about the network location where the link target is stored.
+		CommonNetworkRelativeLink = ''
+
+		# CommonPathSuffix (variable): A NULL–terminated string, defined by the
+		# system default code page, which is used to construct the full path to the
+		# link item or link target by being appended to the string in the
+		# LocalBasePath field.
+		CommonPathSuffix = ''
+
+		
+		# LocalBasePathUnicode (variable): An optional, NULL–terminated, Unicode
+		# string that is used to construct the full path to the link item or link
+		# target by appending the string in the CommonPathSuffixUnicode field. This
+		# field can be present only if the VolumeIDAndLocalBasePath flag is set and
+		# the value of the LinkInfoHeaderSize field is greater than or equal to
+		# 0x00000024.
+		LocalBasePathUniode = ''
+
+		# CommonPathSuffixUnicode (variable): An optional, NULL–terminated, Unicode
+		# string that is used to construct the full path to the link item or link
+		# target by being appended to the string in the LocalBasePathUnicode field.
+		# This field can be present only if the value of the LinkInfoHeaderSize
+		# field is greater than or equal to 0x00000024.
+		CommonPathSuffixUnicode = ''
+
+		
+
+
+
+		# 2.3.1 VolumeID #
+		# The VolumeID structure specifies information about the volume that a 
+		# link target was on when the link was created. This information is useful
+		# for resolving the link if the file is not found in its original location.
+	
+		# VolumeIDSize (4 bytes): A 32-bit, unsigned integer that specifies the 
+		# size, in bytes, of this structure. This value MUST be greater than
+		# 0x00000010. All offsets specified in this structure MUST be less than
+		# this value, and all strings contained in this structure MUST fit within
+		# the extent defined by this size.
+		VolumeIDSize = ''
+		
+		# DriveType (4 bytes): A 32-bit, unsigned integer that specifies the type
+		# of drive the link target is stored on. This value MUST be one of the
+		# following:
+		DriveType = ''
+		switch(DriveType){
+			case DRIVE_UNKNOWN | 0x00000000:
+				printf("The drive type cannot be determined.")
+				break;
+			case DRIVE_NO_ROOT_DIR | 0x00000001:
+				printf("The root path is invalid; for example, there" \
+				" is no volume mounted at the path.")
+				break;
+			case DRIVE_REMOVABLE| 0x00000002:
+				printf("The drive has removable media, such as a"\
+				" floppy drive, thumb drive, or flash card reader.")
+				break;
+			case DRIVE_FIXED | 0x00000003:
+				printf("The drive has fixed media, such as a hard"\
+				" drive or flash drive.")
+				break;
+			case DRIVE_REMOTE | 0x00000004:
+				printf("The drive is a remote (network) drive.")
+				break;
+			case DRIVE_CDROM | 0x00000005:
+				printf("The drive is a CD-ROM drive.")
+				break;
+			case DRIVE_RAMDISK | 0x00000006:
+				break;
+		}
+
+		# DriveSerialNumber (4 bytes): A 32-bit, unsigned integer that specifies
+		# the drive serial number of the volume the link target is stored on.
+		DriveSerialNumber = ''
+
+		# VolumeLabelOffset (4 bytes): A 32-bit, unsigned integer that specifies
+		# the location of a string that contains the volume label of the drive that
+		# the link target is stored on. This value is an offset, in bytes, from the
+		# start of the VolumeID structure to a NULL-terminated string of characters,
+		# defined by the system default code page. The volume label string is 
+		# located in the Data field of this structure.
+		VolumeLabelOffset = ''
+		# If the value of this field is 0x00000014, it MUST be ignored, and the 
+		# value of the VolumeLabelOffsetUnicode field MUST be used to locate the
+		# volume label string.
+	
+
+		# VolumeLabelOffsetUnicode (4 bytes): An optional, 32-bit, unsigned 
+		# integer that specifies the location of a string that contains the
+		# volume label of the drive that the link target is stored on. This value
+		# is an offset, in bytes, from the start of the VolumeID structure to a
+		# NULL- terminated string of Unicode characters. The volume label string is
+		# located in the Data field of this structure.
+		VolumeLabelOffsetUnicode = ''
+		# If the value of the VolumeLabelOffset field is not 0x00000014, this 
+		# field MUST be ignored, and the value of the VolumeLabelOffset field MUST
+		# be used to locate the volume label string.
+		
+		# Data (variable): A buffer of data that contains the volume label of the
+		# drive as a string defined by the system default code page or Unicode
+		# characters, as specified by preceding fields.
+		Data = ''
+
+		
+
+
+
+		# 2.3.2 CommonNetworkRelativeLink # 
+		# The CommonNetworkRelativeLink structure specifies information about the
+		# network location where a link target is stored, including the mapped
+		# drive letter and the UNC path prefix. For details on UNC paths, see
+		# [MS-DFSNM] section 2.2.1.4.
+		
+		# CommonNetworkRelativeLinkSize (4 bytes): A 32-bit, unsigned integer that
+		# specifies the size, in bytes, of the CommonNetworkRelativeLink structure.
+		# This value MUST be greater than or equal to 0x00000014. All offsets
+		# specified in this structure MUST be less than this value, and all strings
+		# contained in this structure MUST fit within the extent defined by this
+		# size.
+		CommonNetworkRelativeLinkSize = ''
+
+		# CommonNetworkRelativeLinkFlags (4 bytes): Flags that specify the 
+		# contents of the DeviceNameOffset and NetProviderType fields.
+		CommonNetworkRelativeLinkFlags = ''
+		switch(CommonNetworkRelativeLinkFlags){
+			case A | ValidNetType:
+				printf("If set, the DeviceNameOffset field contains an"\
+				" offset to the device name."\
+				" If not set, the DeviceNameOffset field does not contain"\
+				" an offset to the device name, and its value MUST be zero.")
+				break;
+			case B | ValidNetType:
+				printf("If set, the NetProviderType field contains the "\
+				"network provider type. If not set, the NetProviderType "\
+				"field does not contain the network provider type, and its"\
+				" value MUST be zero.")
+				break;
+		
+		# NetNameOffset (4 bytes): A 32-bit, unsigned integer that specifies the
+		# location of the NetName field. This value is an offset, in bytes, from
+		# the start of the CommonNetworkRelativeLink structure.
+		NetNameOffset = ''
+
+		# DeviceNameOffset (4 bytes): A 32-bit, unsigned integer that specifies
+		# the location of the DeviceName field. If the ValidDevice flag is set,
+		# this value is an offset, in bytes, from the start of the
+		# CommonNetworkRelativeLink structure; otherwise, this value MUST be zero.
+		DeviceNameOffset = ''
+					
+		# NetworkProviderType (4 bytes): A 32-bit, unsigned integer that specifies
+		# the type of network provider. If the ValidNetType flag is set, this 
+		# value MUST be one of the following; otherwise, this value MUST be ignored.
+		NetworkProviderType = ''
+		switch(NetworkProviderType){
+			case 0x001A0000:
+				printf("WNNC_NET_AVID")
+				break;
+			case 0x001B0000:
+				printf("WNNC_NET_DOCUSPACE")
+				break;
+			case 0x001C0000:
+				printf("WNNC_NET_MANGOSOFT")
+				break;
+			case 0x001D0000:
+				printf("WNNC_NET_SERNET")
+				break;
+			case 0X001E0000:
+				printf("WNNC_NET_RIVERFRONT1")
+				break;
+			case 0x001F0000:
+				printf("WNNC_NET_RIVERFRONT2")
+				break;
+			case 0x00200000:
+				printf("WNNC_NET_DECORB")
+				break;
+			case 0x00210000:
+				printf("WNNC_NET_PROTSTOR")
+				break;
+			case 0x00220000:
+				printf("WNNC_NET_FJ_REDIR")
+				break;
+			case 0x00230000:
+				printf("WNNC_NET_DISTINCT")
+				break;
+			case 0x00240000:
+				printf("WNNC_NET_TWINS")
+				break;
+			case 0x00250000:
+				printf("WNNC_NET_RDR2SAMPLE")
+				break;
+			case 0x00260000:
+				printf("WNNC_NET_CSC")
+				break;
+			case 0x00270000:
+				printf("WNNC_NET_3IN1")
+				break;
+			case 0x00290000:
+				printf("WNNC_NET_EXTENDNET")
+				break;
+			case 0x002A0000:
+				printf"(WNNC_NET_STAC")			
+				break;
+			case 0x002B0000:
+				printf("WNNC_NET_FOXBAT")
+				break;
+			case￼ 0x002C0000:
+				printf("WNNC_NET_YAHOO") 
+			case 0x002D0000:
+				printf("WNNC_NET_EXIFS")
+			case￼ 0x002E0000:
+				printf("WNNC_NET_DAV")
+			case￼ 0x002F0000:
+				printf("WNNC_NET_KNOWARE")
+			case￼ 0x00300000:
+				printf("WNNC_NET_OBJECT_DIRE")
+			case￼ 0x00310000:
+				printf("WNNC_NET_MASFAX")
+			case 0x00320000:
+				printf("WNNC_NET_HOB_NFS")
+			case￼ 0x00330000:
+				printf("WNNC_NET_SHIVA")
+			case￼ 0x00340000:
+				printf("WNNC_NET_IBMAL")
+			case￼ 0x00350000:
+				printf("WNNC_NET_LOCK")
+			case 0x00360000:
+				printf("WNNC_NET_TERMSRV")
+			case￼ 0x00370000:
+				printf("WNNC_NET_SRT")
+			case￼ 0x00380000:
+				printf("WNNC_NET_QUINCY")
+			case 0x00390000:
+				printf("WNNC_NET_OPENAFS")
+			case￼ 0X003A0000:
+				printf("WNNC_NET_AVID1")
+			case￼ 0x003B0000:
+				printf("WNNC_NET_DFS")
+			case￼ 0x003C0000:
+				printf("WNNC_NET_KWNP")
+			case 0x003D0000:
+				printf("WNNC_NET_ZENWORKS")
+			case￼ 0x003E0000:
+				printf("WNNC_NET_DRIVEONWEB")
+			case￼ 0x003F0000:
+				printf("WNNC_NET_VMWARE")
+			case￼ 0x00400000:
+				printf("WNNC_NET_RSFX")
+			case￼ 0x00410000:
+				printf("WNNC_NET_MFILES")
+			case￼ 0x00420000:
+				printf("WNNC_NET_MS_NFS")
+			case￼ 0x00430000:
+				printf("WNNC_NET_GOOGLE")
+
+		}
+		
+		# NetNameOffsetUnicode (4 bytes): An optional, 32-bit, unsigned integer 
+		# that specifies the location of the NetNameUnicode field. This value is
+		# an offset, in bytes, from the start of the CommonNetworkRelativeLink 
+		# structure. This field MUST be present if the value of the NetNameOffset 
+		# field is greater than 0x00000014; otherwise, this field MUST NOT be
+		# present.
+		NetNameOffsetUnicode = ''
+
+		# DeviceNameOffsetUnicode (4 bytes): An optional, 32-bit, unsigned 
+		# integer that specifies the location of the DeviceNameUnicode field.
+		# This value is an offset, in bytes, from the start of the
+		# CommonNetworkRelativeLink structure. This field MUST be present if the
+		# value of the NetNameOffset field is greater than 0x00000014; otherwise,
+		# this field MUST NOT be present.	
+		DeviceNameOffsetUnicode = ''	
+	
+		# NetName (variable): ANULL–terminated string, as defined by the system 
+		# default code page, which specifies a server share path; for example,
+		# "\\server\share".
+		NetName = ''
+
+		# DeviceName (variable): A NULL–terminated string, as defined by the
+		# system default code page, which specifies a device; for example, the
+		# drive letter "D:".
+		DeviceName = ''
+
+		# NetNameUnicode (variable): An optional, NULL–terminated, Unicode string
+		# that is the Unicode version of the NetName string. This field MUST be
+		# present if the value of the NetNameOffset field is greater than
+		# 0x00000014; otherwise, this field MUST NOT be present.
+		NetNameUnicode = ''
+
+		# DeviceNameUnicode (variable): An optional, NULL–terminated, Unicode
+		# string that is the Unicode version of the DeviceName string. This field
+		# MUST be present if the value of the NetNameOffset field is greater than
+		# 0x00000014; otherwise, this field MUST NOT be present.
+		DeviceNameUnicode = ''
+
+		
+
+
+		
+
+		# 2.4 StringData #
+	
+		# StringData refers to a set of structures that convey user interface and
+		# path identification information. The presence of these optional
+		# structures is controlled by LinkFlags (section 2.1.1) in the
+		# ShellLinkHeader (section 2.1).
+		# The StringData structures conform to the following ABNF rules [RFC5234].
+		# STRING_DATA = [NAME_STRING] [RELATIVE_PATH] [WORKING_DIR] 
+		# [COMMAND_LINE_ARGUMENTS] [ICON_LOCATION]
+
+		# NAME_STRING: An optional structure that specifies a description of the
+		# shortcut that is displayed to end users to identify the purpose of the
+		# shell link. This structure MUST be present if the HasName flag is set.
+		NAME_STRING = ''
+
+		# RELATIVE_PATH: An optional structure that specifies the location of the
+		# link target relative to the file that contains the shell link. When
+		# specified, this string SHOULD be used when resolving the link. This
+		# structure MUST be present if the HasRelativePath flag is set.
+		RELATIVE_PATH = ''
+
+		# WORKING_DIR: An optional structure that specifies the file system path
+		# of the working directory to be used when activating the link target.
+		# This structure MUST be present if the HasWorkingDir flag is set.
+		WORKING_DIR = ''
+
+		# COMMAND_LINE_ARGUMENTS: An optional structure that stores the 
+		# command-line arguments that should be specified when activating the 
+		# link target. This structure MUST be present if the HasArguments flag 
+		# is set.
+		COMMAND_LINE_ARGUMENTS = ''
+
+		# ICON_LOCATION: An optional structure that specifies the location of
+		# the icon to be used when displaying a shell link item in an icon view.
+		# This structure MUST be present if the HasIconLocation flag is set.
+		ICON_LOCATION = ''
+
+		# CountCharacters (2 bytes): A 16-bit, unsigned integer that specifies
+		# either the number of characters, defined by the system default code
+		# page, or the number of Unicode characters found in the String field.
+		# A value of zero specifies an empty string.
+		CountCharacters = ''
+
+		# All StringData structures have the following structure:
+		# bits 0 -> 15 : CountCharacters
+		# bits 16 ->21 : String (variable)
+
+		# String (variable): An optional set of characters, defined by the system
+		# default code page, or a Unicode string with a length specified by the
+		# CountCharacters field. This string MUST NOT be NULL-terminated.
+		String  = ''
+	
+		
+
+
+		
+		# 2.5 ExtraData # 
+
+		# ExtraData refers to a set of structures that convey additional 
+		# information about a link target. These optional structures can be 
+		# present in an extra data section that is appended to the basic Shell
+		# Link Binary File Format.
+		# The ExtraData structures conform to the following ABNF rules [RFC5234]:
+		
+		# EXTRA_DATA = *EXTRA_DATA_BLOCK TERMINAL_BLOCK
+
+		# EXTRA_DATA_BLOCK = CONSOLE_PROPS / CONSOLE_FE_PROPS / DARWIN_PROPS
+		# / ENVIRONMENT_PROPS / ICON_ENVIRONMENT_PROPS / KNOWN_FOLDER_PROPS 
+		# / PROPERTY_STORE_PROPS / SHIM_PROPS / SPECIAL_FOLDER_PROPS 
+		# / TRACKER_PROPS / VISTA_AND_ABOVE_IDLIST_PROPS
+￼￼￼
+		# EXTRA_DATA: A structure consisting of zero or more property data blocks
+		# followed by a terminal block.
+		EXTRA_DATA = ''
+
+		# EXTRA_DATA_BLOCK: A structure consisting of any one of the following
+		# property data blocks. 
+		EXTRA_DATA_BLOCK = ''
+		# CONSOLE_PROPS: A ConsoleDataBlock structure (section 2.5.1).
+		# CONSOLE_FE_PROPS: A ConsoleFEDataBlock structure (section 2.5.2). 
+		# DARWIN_PROPS: A DarwinDataBlock structure (section 2.5.3). 
+		# ENVIRONMENT_PROPS: An EnvironmentVariableDataBlock structure 
+		# (section 2.5.4).
+		# ICON_ENVIRONMENT_PROPS: An IconEnvironmentDataBlock structure 
+		# (section 2.5.5).
+		# KNOWN_FOLDER_PROPS: A KnownFolderDataBlock structure (section 2.5.6).
+		# PROPERTY_STORE_PROPS: A PropertyStoreDataBlock structure (section 2.5.7).
+		# SHIM_PROPS: A ShimDataBlock structure (section 2.5.8).
+		# SPECIAL_FOLDER_PROPS: A SpecialFolderDataBlock structure (section 2.5.9).
+		# TRACKER_PROPS: A TrackerDataBlock structure (section 2.5.10).
+		# VISTA_AND_ABOVE_IDLIST_PROPS: A VistaAndAboveIDListDataBlock structure 
+		#(section 2.5.11).
+		
+		# TERMINAL_BLOCK A structure that indicates the end of the extra data
+		# section.
+		TERMINAL_BLOCK = ''
+
+		# The general structure of an extra data section is shown in the 
+		# following diagram.
+
+		# ExtraDataBlock (variable): An optional array of bytes that contains zero 
+		# or more property data blocks listed in the EXTRA_DATA_BLOCK syntax rule.
+		ExtraDataBlock = ''
+		
+		# TerminalBlock (4 bytes): A 32-bit, unsigned integer that indicates the 
+		# end of the extra data section. This value MUST be less than 0x00000004.
+		TerminalBlock = ''
+
+		
+
+
+
+
+
+		# 2.5.1 ConsoleDataBlock #
+		# The ConsoleDataBlock structure specifies the display settings to use 
+		# when a link target specifies an application that is run in a console
+		# window.
+		
+		# BlockSize (4 bytes): A 32-bit, unsigned integer that specifies the size
+		# of the ConsoleDataBlock structure. This value MUST be 0x000000CC.
+		BlockSize = ''
+
+		# BlockSignature (4 bytes): A 32-bit, unsigned integer that specifies 
+		# the signature of the ConsoleDataBlock extra data section. This value
+		# MUST be 0xA0000002.
+		BlockSignature = ''
+
+		# FillAttributes (2 bytes): A 16-bit, unsigned integer that specifies the
+		# fill attributes that control the foreground and background text colors
+		# in the console window. The following bit definitions can be combined to
+		# specify 16 different values each for the foreground and background
+		# colors:
+		FillAttributes = ''
+		switch(FileAttributes){		
+			case 0x0001:
+				printf("FOREGROUND_BLUE")
+				# The foreground text color contains blue.
+				break;
+			case 0x0002:
+				printf("FOREGROUND_GREEN")
+				#The foreground text color contains green.
+				break;
+			case 0x0004:
+				printf("FOREGROUND_RED")
+				# The foreground text color contains red.
+				break;
+			case 0x0008:
+				printf("FOREGROUND_INTENSITY")
+				# The foreground text color is intensified.
+				break;
+			case 0x0010:
+				printf("BACKGROUND_BLUE")
+				# The background text color contains blue.
+				break;
+			case 0x0020:
+				printf("BACKGROUND_GREEN")
+				# The background text color contains green.
+				break;
+			case 0x0040:
+				printf("BACKGROUND_RED")
+				# The background text color contains red.
+				break;
+			case 0x0080:
+				printf("BACKGROUND_INTENSITY")
+				# The background text color is intensified.
+				break;
+		}
+		
+		# PopupFillAttributes (2 bytes): A 16-bit, unsigned integer that 
+		# specifies the fill attributes that control the foreground and 
+		# background text color in the console window popup. The values are the 
+		# same as for the FillAttributes field.
+		PopupFillAttributes = ''
+
+		# ScreenBufferSizeX (2 bytes): A 16-bit, signed integer that specifies
+		# the horizontal size (X axis), in characters, of the console window buffer.
+		ScreenBufferSizeX = ''
+		
+		# ScreenBufferSizeY (2 bytes): A 16-bit, signed integer that specifies 
+		# the vertical size (Y axis), in characters, of the console window buffer.
+		ScreenBufferSizeY = ''	
+	
+		# WindowSizeX (2bytes): A16-bit,signed integer that specifies the
+		# horizontal size(Xaxis),in characters, of the console window.
+		WindowSizeX = ''
+
+		# WindowSizeY (2 bytes): A 16-bit, signed integer that specifies the
+		# vertical size (Y axis), in characters, of the console window.
+		
+		# WindowOriginX (2 bytes): A 16-bit, signed integer that specifies the
+		# horizontal coordinate (X axis), in pixels, of the console window origin.
+		WindowOriginX = ''
+
+		# WindowOriginY (2 bytes): A 16-bit, signed integer that specifies the
+		# vertical coordinate (Y axis), in pixels, of the console window origin.
+		WindowOriginY = ''
+
+		# Unused1 (4 bytes): A value that is undefined and MUST be ignored.
+		Unused1 = ''
+	
+		# Unused2 (4 bytes): A value that is undefined and MUST be ignored.
+		Unused2 = ''
+
+		# FontSize (4 bytes): A 32-bit, unsigned integer that specifies the
+		# size, in pixels, of the font used in the console window.
+		FontSize = ''
+
+		# FontFamily (4 bytes): A 32-bit, unsigned integer that specifies the
+		# family of the font used in the console window. This value MUST be one 
+		# of the following:
+		FontFamily = ''
+		switch(FontFamily){
+			case FF_DONTCARE | 0x0000:
+				printf("The font family is unknown.")
+				break;
+			case FF_ROMAN | 0x0010:
+				printf("The font is variable-width with serifs; for"\ 
+				" example, \"Times New Roman\".")
+				break;
+			case FF_SWISS | 0x0020:
+				printf("The font is variable-width without serifs; for "\
+				"example, \"Arial\".")
+				break;
+			case FF_MODERN | 0x0030:
+				printf("The font is fixed-width, with or without serifs; "\
+				"for example, \"Courier New\".")
+				break;
+			case FF_SCRIPT | 0x0040:
+				printf("The font is designed to look like handwriting; "\
+				"for example, \"Cursive\".")
+				break;
+			case FF_DECORATIVE | 0x0050:
+				printf("The font is a novelty font; for example, \"Old "\
+				"English\".")
+				break;
+		}
+
+		# FontWeight (4 bytes): A 16-bit, unsigned integer that specifies the
+		# stroke weight of the font used in the console window.
+		FontWeight = ''
+		if(FontWeight >= 700):
+			printf("A bold font.")
+		elif(FontWeight < 700):
+			printf("A regular-weight font.")
+		else
+			printf("error")
+
+		# Face Name (64 bytes): A 32-character Unicode string that specifies the
+		# face name of the font used in the console window.
+		Face Name = ''
+
+		# CursorSize (4 bytes): A 32-bit, unsigned integer that specifies the 
+		# size of the cursor, in pixels, used in the console window.
+		CursorSize = ''
+		if(CursorSize <=25):
+			printf("A small cursor.")
+		elif(CursorSize >=26) and (CursorSize <=50):
+			printf("A medium cursor.")
+		elif(CursorSize >= 51) and (CursorSize <= 100):
+			printf("A large cursor.")
+
+		# FullScreen (4 bytes): A 32-bit, unsigned integer that specifies whether
+		# to open the console window in full-screen mode.
+		FullScreen = ''
+		if(FullScreen > 0x00000000):
+			printf("Full-screen mode is on.")
+		elif(FullScreen == 0x00000000):
+			printf("Full-screen mode is off.")
+		else
+			printf("Error: FullScreen value is not valid:" + FullScreen)
+		
+		# QuickEdit (4 bytes): A 32-bit, unsigned integer that specifies whether
+		# to open the console window in QuikEdit mode. In QuickEdit mode, the
+		# mouse can be used to cut, copy, and paste text in the console window.
+		QuickEdit = ''
+		if(QuickEdit > 0x00000000):
+			printf("QuickEdit mode is on.")
+		elif(QuickEdit == 0x00000000):
+			printf("QuickEdit mode is off.")
+		else
+			printf("Error: QuickEdit value is not valid:" + QuickEdit)
+	
+		# InsertMode (4 bytes): A 32-bit, unsigned integer that specifies insert
+		# mode in the console window.
+		InsertMode = ''
+		if(InsertMode > 0x00000000):
+			printf("InsertMode mode is enabled.")
+		elif(InsertMode == 0x00000000):
+			printf("InsertMode mode is disabled.")
+		else
+			printf("Error: InsertMode value is not valid:" + InsertMode)
+
+		
+		# AutoPosition (4 bytes): A 32-bit, unsigned integer that specifies 
+		# auto-position mode of the console window.
+		AutoPosition = ''
+		if(AutoPosition > 0x00000000):
+			printf("The console window is positioned automatically.")
+		elif(AutoPosition == 0x00000000):
+			printf("The values of the WindowOriginX and WindowOriginY "\
+			"fields are used to position the console window.")
+		else
+			printf("Error: AutoPosition value is not valid:" + AutoPosition)
+
+		# HistoryBufferSize (4 bytes): A 32-bit, unsigned integer that specifies 
+		# the size, in characters, of the buffer that is used to store a 
+		# history of user input into the console window.
+		HistoryBufferSize = ''
+
+		# NumberOfHistoryBuffers (4 bytes): A 32-bit, unsigned integer that
+		# specifies the number of history buffers to use.
+		NumberOfHistoryBuffers = ''
+
+		# HistoryNoDup (4 bytes): A 32-bit, unsigned integer that specifies 
+		# whether to remove duplicates in the history buffer.
+		HistoryNoDup = ''
+		if(HistoryNoDup > 0x00000000):
+			printf("Duplicates are allowed.")
+		elif(HistoryNoDup == 0x00000000):
+			printf("Duplicates are not allowed.")
+		else
+			printf("Error: InsertMode value is not valid:" + InsertMode)
+
+		# ColorTable (64 bytes): A table of 16 32-bit, unsigned integers
+		# specifying the RGB colors that are used for text in the console window.
+		# The values of the fill attribute fields FillAttributes and 
+		# PopupFillAttributes are used as indexes into this table to specify the
+		# final foreground and background color for a character.
+		ColorTable = ''
+
+		# 2.5.2 ConsoleFEDataBlock #
+		
+		# The ConsoleFEDataBlock structure specifies the code page to use for
+		# displaying text when a link target specifies an application that is run
+		# in a console window.
+
+		# BlockSize (4 bytes): A 32-bit, unsigned integer that specifies the
+		# size of the ConsoleFEDataBlock structure. This value MUST be 0x0000000C.
+		BlockSize = ''
+
+		# BlockSignature (4 bytes): A 32-bit, unsigned integer that specifies the
+		# signature of the ConsoleFEDataBlock extra data section. This value
+		# MUST be 0xA0000004.
+		BlockSignature = ''
+
+		# CodePage (4 bytes): A 32-bit, unsigned integer that specifies a code
+		# page language code identifier. For details concerning the structure and
+		# meaning of language code identifiers, see [MS-LCID]. For additional
+		# background information, see [MSCHARSET] and [MSDN- CODEPAGE].
+		CodePage = ''
+
+
+
+		
+
+		# 2.5.3 DarwinDataBlock #
+		
+		# The DarwinDataBlock structure specifies an application identifier that
+		# can be used instead of a link target IDList to install an application
+		# when a shell link is activated.
+
+		# BlockSize (4 bytes): A 32-bit, unsigned integer that specifies the 
+		# size of the DarwinDataBlock structure. This value MUST be 0x00000314.
+		BlockSize = ''
+
+		# BlockSignature (4 bytes): A 32-bit, unsigned integer that specifies
+		# the signature of the DarwinDataBlock extra data section. This value 
+		# MUST be 0xA0000006.
+		BlockSignature = ''
+		
+		# DarwinDataAnsi (260 bytes): A NULL–terminated string, defined by the 
+		# system default code page, which specifies an application identifier. 
+		# This field SHOULD be ignored.	
+		DarwinDataAnsi = ''
+
+		# DarwinDataUnicode (520 bytes): An optional, NULL–terminated, Unicode
+		# string that specifies an application identifier.<4>
+		DarwinDataUnicode = ''
+
+
+
+
+
+		# 2.5.4 EnvironmentVariableDataBlock #
+
+		# The EnvironmentVariableDataBlock structure specifies a path to 
+		# environment variable information when the link target refers to a 
+		# location that has a corresponding environment variable.
+		
+		# BlockSize (4 bytes): A 32-bit, unsigned integer that specifies the 
+		# size of the EnvironmentVariableDataBlock structure. This value MUST
+		# be 0x00000314.
+		BlockSize = ''
+				
+		# TargetAnsi (260 bytes): A NULL-terminated string, defined by the
+		# system default code page, which specifies a path to environment 
+		# variable information.
+		TargetAnsi = ''
+
+		# TargetUnicode (520 bytes): An optional, NULL-terminated, Unicode 
+		# string that specifies a path to environment variable information.
+		TargetUnicode = ''
+
+		
+
+
+
+		# 2.5.5 IconEnvironmentDataBlock # 
+
+		# The IconEnvironmentDataBlock structure specifies the path to an icon.
+		# The path is encoded using environment variables, which makes it 
+		# possible to find the icon across machines where the locations vary but
+		# are expressed using environment variables.
+
+		# BlockSize (4 bytes): A 32-bit, unsigned integer that specifies the
+		# size of the IconEnvironmentDataBlock structure. This value MUST be
+		# 0x00000314.
+		BlockSize = ''
+
+		# BlockSignature (4 bytes): A 32-bit, unsigned integer that specifies
+		# the signature of the IconEnvironmentDataBlock extra data section.
+		# This value MUST be 0xA0000007.
+		BlockSignature = ''
+
+		# TargetAnsi (260 bytes): A NULL-terminated string, defined by the 
+		# system default code page, which specifies a path that is constructed
+		# with environment variables.
+		TargetAnsi = ''
+		
+		# TargetUnicode (520 bytes): An optional, NULL-terminated, Unicode 
+		# string that specifies a path that is constructed with environment
+		# variables.
+		TargetUnicode = ''
+
+
+
+
+
+		# 2.5.6 KnownFolderDataBlock #
+	
+		# The KnownFolderDataBlock structure specifies the location of a known 
+		# folder. This data can be used when a link target is a known folder to
+		# keep track of the folder so that the link target IDList can be
+		# translated when the link is loaded.
+
+		# BlockSize (4 bytes): A 32-bit, unsigned integer that specifies the 
+		# size of the KnownFolderDataBlock structure. This value MUST be
+		# 0x0000001C.
+		BlockSize = ''
+
+		# BlockSignature (4 bytes): A 32-bit, unsigned integer that specifies 
+		# the signature of the KnownFolderDataBlock extra data section. This value
+		# MUST be 0xA000000B.
+		BlockSignature = ''
+
+		# KnownFolderID (16 bytes): A value in GUID packet representation 
+		# ([MS-DTYP] section 2.3.2.2) that specifies the folder GUID ID.	
+		KnownFolderID = ''
+
+		# Offset (4 bytes): A 32-bit, unsigned integer that specifies the
+		# location of the ItemID of the first child segment of the IDList
+		# specified by KnownFolderID. This value is the offset, in bytes, into
+		# the link target IDList.
+		Offset = ''
+
+
+
+
+
+
+		# 2.5.7 PropertyStoreDataBlock # 
+		
+		# A PropertyStoreDataBlock structure specifies a set of properties that 
+		# can be used by applications to store extra data in the shell link.
+
+		# BlockSize (4 bytes): A 32-bit, unsigned integer that specifies the size
+		# of the PropertyStoreDataBlock structure. This value MUST be greater than
+		# or equal to 0x0000000C.
+		BlockSize = ''
+
+		# BlockSignature (4 bytes): A 32-bit, unsigned integer that specifies the
+		# signature of the PropertyStoreDataBlock extra data section. This value
+		# MUST be 0xA0000009.
+		BlockSignature = ''
+
+		# PropertyStore (variable): A serialized property storage structure
+		# ([MS-PROPSTORE] section 2.2).
+		PropertyStore = ''
+
+
+
+
+
+
+		# 2.5.8 ShimDataBlock # 
+		
+		# BlockSize (4 bytes): A 32-bit, unsigned integer that specifies the size
+		# of the ShimDataBlock structure. This value MUST be greater than or equal
+		# to 0x00000088.
+		BlockSize = ''
+
+		# BlockSignature (4 bytes): A 32-bit, unsigned integer that specifies the
+		# signature of the ShimDataBlock extra data section. This value MUST be
+		# 0xA0000008.
+		BlockSignature = ''
+
+		# LayerName (variable): A Unicode string that specifies the name of a shim 
+		# layer to apply to a link target when it is being activated.
+		LayerName = ''
+		
+	
+
+
+
+		
+		
+		# 2.5.9 SpecialFolderDataBlock # 
+		
+		# The SpecialFolderDataBlock structure specifies the location of a special
+		# folder. This data can be used when a link target is a special folder to
+		# keep track of the folder, so that the link target IDList can be translated
+		# when the link is loaded.
+		
+		# BlockSize (4 bytes): A 32-bit, unsigned integer that specifies the size 
+		# of the SpecialFolderDataBlock structure. This value MUST be 0x00000010.
+		BlockSize = ''
+
+		# SpecialFolderID (4 bytes): A 32-bit, unsigned integer that specifies the
+		# folder integer ID.
+		SpecialFolderID = ''
+
+		# Offset (4 bytes): A 32-bit, unsigned integer that specifies the 
+		# location of the ItemID of the first child segment of the IDList specified
+		# by SpecialFolderID. This value is the offset, in bytes, into the link
+		# target IDList.
+		Offset = ''
+
+		
+
+
+		# 2.5.10 TrackerDataBlock # 
+		
+		# The TrackerDataBlock structure specifies data that can be used to 
+		# resolve a link target if it is not found in its original location when
+		# the link is resolved. This data is passed to the Link Tracking service
+		# [MS-DLTW] to find the link target.
+		
+		# BlockSize (4 bytes): A 32-bit, unsigned integer that specifies the size 
+		# of the TrackerDataBlock structure. This value MUST be 0x00000060.
+		BlockSize = ''
+
+		# BlockSignature (4 bytes): A 32-bit, unsigned integer that specifies the
+		# signature of the TrackerDataBlock extra data section. This value MUST be
+		# 0xA0000003.
+		BlockSignature = ''
+
+		# Length (4 bytes): A 32-bit, unsigned integer. This value MUST be greater
+		# than or equal to 0x0000058.
+		Length = ''
+
+		# Version (4 bytes): A 32-bit, unsigned integer. This value MUST be
+		# 0x00000000.
+		Version = ''
+
+		# MachineID (variable): A character string, as defined by the system
+		# default code page, which specifies the NetBIOS name of the machine where 
+		# the link target was last known to reside.
+		MachineID = ''
+
+		# Droid (32 bytes): Two values in GUID packet representation ([MS-DTYP]
+		# section 2.3.2.2) that are used to find the link target with the Link
+		# Tracking service, as specified in [MS-DLTW].
+		Droid = ''
+
+		# DroidBirth (32 bytes): Two values in GUID packet representation that 
+		# are used to find the link target with the Link Tracking service
+		DroidBirth = ''
+
+
+
+
+
+
+
+		# 2.5.11 VistaAndAboveIDListDataBlock # 
+		
+		# The VistaAndAboveIDListDataBlock structure specifies an alternate IDList
+		# that can be used instead of the LinkTargetIDList structure (section 2.2)
+		# on platforms that support it.
+		
+		# BlockSize (4 bytes): A 32-bit, unsigned integer that specifies the size
+		# of the VistaAndAboveIDListDataBlock structure. This value MUST be greater
+		# than or equal to 0x0000000A.
+		BlockSize = ''
+
+		# BlockSignature (4 bytes): A 32-bit, unsigned integer that specifies the
+		# signature of the VistaAndAboveIDListDataBlock extra data section. This 
+		# value MUST be 0xA000000C.
+		BlockSignature = ''
+
+		# IDList (variable): An IDList structure (section 2.2.1).
+		IDList = ''
+
