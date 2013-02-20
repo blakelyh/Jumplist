@@ -235,7 +235,7 @@ class cfb():
 
  
 
-
+	def cfb_sector():
 		# 2.1 Compound File Sector Numbers and Types #
 		# Each sector, except for the header, is identified by a non-negative 
 		# 32-bit sector number. The following sector numbers above 0xFFFFFFFA are 
@@ -269,6 +269,7 @@ class cfb():
 		# Specifies unallocated sector in the FAT, Mini FAT, or DIFAT
 		FREESECT = 0xFFFFFFFF			
 
+	def cfb_file_Format():
 		# Compound File Binary File Format 
 		# Compound file sectors can contain unallocated free space, user-defined 
 		# data for stream objects, directory sectors containing directory entries, 
@@ -322,7 +323,7 @@ class cfb():
 
 
 
-
+	def cfb_header():
 		# 2.2 COMPOUND FILE HEADER: MUST be at beginning of file (0x0) #
 		# The Compound File Header structure MUST be at the beginning of the file
 		# (offset 0).			
@@ -459,7 +460,7 @@ class cfb():
 		
 
 
-
+	def cfb_FAT_Sectors():
 		# 2.3 Compound File FAT Sectors #
 		# The FAT is the main allocator for space within a compound file. Every 
 		# sector in the file is represented within the FAT in some fashion, 
@@ -502,7 +503,7 @@ class cfb():
 
 
 
-
+	def cfb_mini_FAT_Sectors():
 		# 2.4 Compound File Mini FAT Sectors #
 		# The mini FAT is used to allocate space in the mini stream. The mini 
 		# stream is divided into smaller, equal-length sectors, and the sector 
@@ -536,7 +537,7 @@ class cfb():
 
 
 
-
+	def cfb_DIFAT_Sectors():
 		# 2.5 Compound File DIFAT Sectors #
 		# The DIFAT array is used to represent storage of the FAT sectors. The
 		# DIFAT is represented by an array of 32-bit sector numbers. The DIFAT 
@@ -586,7 +587,7 @@ class cfb():
 
 
 
-
+	def cfb_Directory_Sectors():
 		# 2.6 Compound File Directory Sectors #
 		# The directory entry array is a structure used to contain information 
 		# about the stream and storage objects in a compound file, and to 
@@ -600,7 +601,7 @@ class cfb():
 
 
 
-
+	def cfb_Directory_Entry():
 		# 2.6.1 Compound File Directory Entry #
 		# Regular stream ID to identify directory entry.
 		# 0x00000000 through 0xFFFFFFF9 		
