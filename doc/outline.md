@@ -20,6 +20,8 @@ examples:  	28c8b86deab549a1.automaticDestinations-ms
 		14bdd67f29cb1962.customDestinations-ms
 
 
+
+
 2.2 Windows 7 Jump List files are located in two directories: 
 
 C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\
@@ -27,6 +29,8 @@ C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinatio
 and
 
 C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Recent\CustomDestinations\
+
+
 
 
 2.3 As you may have guessed, files ending in "automaticDestinations-ms" go to the AutomaticDestinations folder, while files ending in "customDestinations-ms" are allocated to the CustomDestinations folder.
