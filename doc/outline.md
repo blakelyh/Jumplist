@@ -2,7 +2,7 @@
 
 
 PREFACE:
-When writing parser for windows jump list files, a few things are essential to understand. First, you must know the file structure implemented within a windows jump list. Second, you must be able to recognize a jump list file, and know where to access these files. Third, you must understand how to parse a file with a hexadecimal editor.
+When writing a parser for windows jump list files, a few things are essential to understand. First, you must know the file structure implemented within a windows jump list. Second, you must be able to recognize a jump list file, and know where to access these files. Third, you must understand how to parse a file with a hexadecimal editor.
 
 
 ##1) Define CFB Structure Utilized In Jump Lists:
