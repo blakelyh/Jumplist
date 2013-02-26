@@ -1,18 +1,13 @@
 #Parsing Windows Jump Lists:
-
-
 ##1) Define CFB structure utilized in Jump Lists.
-
 ##2) Locate all Jump List files.
-
 ##3) Parse all Jump List files using defined CFB structures.
-
 #
 
 
 ###CFB Structure Utilized In Jump Lists:
 
-Create a variable for each aspect of the CFB file structure as seen in /doc/references/MS_CFB.pdf. The resulting code will be used to store bit information parsed from the soon-to-be-found Jump Lists, and can be found in /src/ms_cfb/cfb.py. 
+A variable for each aspect of the CFB file structure has been written in /src/ms_cfb/cfb.py. The code will be used to store bit information parsed from the Jump List files.
 
 
 
