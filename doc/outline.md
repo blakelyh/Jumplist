@@ -1,7 +1,6 @@
 #Parsing Windows Jump Lists:
 
 
-PREFACE:
 When writing a parser for windows jump list files, a few things are essential to understand. First, you must know the file structure implemented within a windows jump list. Second, you must be able to recognize a jump list file, and know where to access these files. Third, you must understand how to parse a file with a hexadecimal editor.
 
 
@@ -20,8 +19,6 @@ examples:  	28c8b86deab549a1.automaticDestinations-ms
 		14bdd67f29cb1962.customDestinations-ms
 
 
-
-
 2.2 Windows 7 Jump List files are located in two directories: 
 
 C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\
@@ -29,8 +26,6 @@ C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinatio
 and
 
 C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Recent\CustomDestinations\
-
-
 
 
 2.3 As you may have guessed, files ending in "automaticDestinations-ms" go to the AutomaticDestinations folder, while files ending in "customDestinations-ms" are allocated to the CustomDestinations folder.
