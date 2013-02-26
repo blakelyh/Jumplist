@@ -1,9 +1,10 @@
 #Parsing Windows Jump Lists:
-###1) Define CFB structure utilized in Jump Lists.
-###2) Locate all Jump List files.
-###3) Parse all Jump List files using defined CFB structures.
 
-## 
+###OUTLINE:
+1) Define CFB structure utilized in Jump Lists.
+2) Locate all Jump List files.
+3) Parse all Jump List files using defined CFB structures.
+ 
 
 
 ###CFB Structure Utilized In Jump Lists:
