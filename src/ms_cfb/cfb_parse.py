@@ -3,8 +3,9 @@ import optparse
 def seekAndRead(inFile, hexOffset, hexLength):
 	f = open(inFile, 'r')
 	f.seek(int(str(hexOffset),16))
+	out = f.read(int(str(hexLength),16)).encode("hex")
 	f.close()
-	return f.read(int(str(hexLength),16)).encode("hex")
+	return out 
 
 def main():
 	parser = optparse.OptionParser('usage%prog '+\
