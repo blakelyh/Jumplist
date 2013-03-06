@@ -3,6 +3,7 @@ import optparse
 def seekAndRead(inFile, hexOffset, hexLength):
 	f = open(inFile, 'r')
 	f.seek(int(str(hexOffset),16))
+	f.close()
 	return f.read(int(str(hexLength),16)).encode("hex")
 
 def main():
