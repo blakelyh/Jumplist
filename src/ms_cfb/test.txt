@@ -1,1 +1,1 @@
-This is my text file. MUAHAHAHAHA
+This is my text file. MUAHAHAHAHA. I need to print the hexadecimal version of this information with the python script.
