@@ -1,13 +1,12 @@
 import binascii
-
-filename = 'test.txt'
-
-try:
-	with open(filename, 'rb') as f:
-    	content = f.read()
-	break
-except Exception, e:
-	print ("Error: " + e)
-
-print(binascii.hexlify(content))
-
+def main():
+	filename = 'test.txt'
+	try:
+		with open(filename, 'rb') as f:
+	    		content = f.read()
+	except Exception, e:
+		print ("Error: " + e)
+	hex = str(binascii.hexlify(content))
+	print(hex)
+if '__name__' == '__main__':
+	main()
