@@ -10,7 +10,7 @@ def header(inFile):
 	mStreamSectSize=seekAndRead(inFile,0x0020,2) 	# Mini stream sector size
 	res=seekAndRead(inFile,0x0022,6) 		# Reserved
 	nDirSect=seekAndRead(inFile,0x0028,4) 		# Number of directory sectors
-	nFATSect=seekAndRead(inFile,0x002c,4)		# Number of FAT Sectors
+	nFATSect=seekAndRead(inFile,0x002c,4)		# Number of FAT sectors
 	dirStartSectLoc=seekAndRead(inFile,0x0030,4) 	# Directory start sector location
 	tSig=seekAndRead(inFile,0x0034,4) 		# Transaction signature
 	mStreamSizeCutoff=seekAndRead(inFile,0x0038,4) 	# Mini stream size cutoff
@@ -19,14 +19,25 @@ def header(inFile):
 	DIFATStartSectLoc=seekAndRead(inFile,0x0044,4) 	# DIFAT start sector location
 	nDIFATSect=seekAndRead(inFile,0x0048,4) 	# Number of DIFAT sectors
 	DIFAT=109*[None]				# DIFAT list
-	c = 0
-	print ("DIFAT START "+DIFATStartSectLoc)
+	###POPULATE DIFAT[]###
+	c = 0	
 	for i in range(0, len(DIFAT)):
 		offset = hex(int(DIFATStartSectLoc,16)+c)	
 		DIFAT[i]=seekAndRead(inFile,offset,20)
-		print ("DIFAT["+str(i)+"]"+"\tdifat offset "+str(hex(c)+",\tFile Offset "+str(offset)+": "+str(DIFAT[i])))
 		c += 32
-		
+	print("Signature\t\t"+sig+"\nCLSID\t\t"+clsid+"\nMinor Version\t\t"+minVersion+\
+		"\nMajor Version\t\t"+majVersion+"\nByte Order\t\t"+byteOrder+\
+		"\nSector Size\t\t"+sectSize+"\nMini Stream Sector Size\t\t"+mStreamSectSize+\
+		"\nReserved\t\t"+res+"\nNumber of Directory sectors\t\t"+nDirSect+\
+		"\nNumber of FAT sectors\t\t"+nFATSect+\
+		"\nDirectory start sector location\t\t"+dirStartSectLoc+\
+		"\nTransaction signature\t\t"+tSig+\
+		"\nMini stream size cutoff\t\t"+mStreamSizeCutoff+\
+		"\nMini FAT start sector location\t\t"+mFATStartSectLoc+\
+		"\nNumber of mini FAT sectors\t\t"+nMFATSect+\
+		"\nDIFAT Start Sector Loccation\t\t"+DIFATStartSectLoc+\
+		"\nNumber of DIFAT sectors\t\t"+nDIFATSect)	
+
 def seekAndRead(inFile, hexOffset, hexLength):
 	f = open(inFile, 'r')
 	f.seek(int(str(hexOffset),16))
@@ -54,7 +65,8 @@ def main():
 		print ("Error: " + str(e))
 	if outFile == None:
 		try:
-			print(inFile+" Hex Dump:\n"+binascii.hexlify(content)+"\n")
+			print("WOOT")
+			#print(inFile+" Hex Dump:\n"+binascii.hexlify(content)+"\n")
 		except Exception, e:
 			print("Error: " + str(e))
 	elif outFile != None:
