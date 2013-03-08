@@ -1,35 +1,36 @@
 import binascii
 import optparse
 def header(inFile):
-	sig=seekAndRead(inFile,0x0000,8) 		# Header signature
-	clsid=seekAndRead(inFile,0x0008,10)		# Header CLSID
-	minVersion=seekAndRead(inFile,0x0018,2)		# Minor version
-	majVersion=seekAndRead(inFile,0x001A,2) 	# Major version
-	byteOrder=seekAndRead(inFile,0x001C,2) 		# Byte order (little/big endian)
-	sectSize=seekAndRead(inFile,0x001E,2) 		# Sector Size
-	mStreamSectSize=seekAndRead(inFile,0x0020,2) 	# Mini stream sector size
-	res=seekAndRead(inFile,0x0022,6) 		# Reserved
-	nDirSect=seekAndRead(inFile,0x0028,4) 		# Number of directory sectors
-	nFATSect=seekAndRead(inFile,0x002c,4)		# Number of FAT sectors
-	dirStartSectLoc=seekAndRead(inFile,0x0030,4) 	# Directory start sector location
-	tSig=seekAndRead(inFile,0x0034,4) 		# Transaction signature
-	mStreamSizeCutoff=seekAndRead(inFile,0x0038,4) 	# Mini stream size cutoff
-	mFATStartSectLoc=seekAndRead(inFile,0x003C,4) 	# Mini FAT start sector location
-	nMFATSect=seekAndRead(inFile,0x0040,4) 		# Number of mini FAT sectors
-	DIFATStartSectLoc=seekAndRead(inFile,0x0044,4) 	# DIFAT start sector location
-	nDIFATSect=seekAndRead(inFile,0x0048,4) 	# Number of DIFAT sectors
+	sig=seekAndRead(inFile,0x0000,0x08) 		# Header signature
+	clsid=seekAndRead(inFile,0x0008,0x10)		# Header CLSID
+	minVersion=seekAndRead(inFile,0x0018,0x02)	# Minor version
+	majVersion=seekAndRead(inFile,0x001A,0x02) 	# Major version
+	byteOrder=seekAndRead(inFile,0x001C,0x02) 	# Byte order (little/big endian)
+	sectSize=seekAndRead(inFile,0x001E,0x02) 	# Sector Size
+	mStreamSectSize=seekAndRead(inFile,0x0020,0x02) # Mini stream sector size
+	res=seekAndRead(inFile,0x0022,0x06) 		# Reserved
+	nDirSect=seekAndRead(inFile,0x0028,0x04) 	# Number of directory sectors
+	nFATSect=seekAndRead(inFile,0x002c,0x04)	# Number of FAT sectors
+	dirStartSectLoc=seekAndRead(inFile,0x0030,0x04) # Directory start sector location
+	tSig=seekAndRead(inFile,0x0034,0x04) 		# Transaction signature
+	mStreamSizeCutoff=seekAndRead(inFile,0x0038,0x04) # Mini stream size cutoff
+	mFATStartSectLoc=seekAndRead(inFile,0x003C,0x04) # Mini FAT start sector location
+	nMFATSect=seekAndRead(inFile,0x0040,0x04) 	# Number of mini FAT sectors
+	DIFATStartSectLoc=seekAndRead(inFile,0x0044,0x04) # DIFAT start sector location
+	nDIFATSect=seekAndRead(inFile,0x0048,0x04) 	# Number of DIFAT sectors
 	DIFAT=109*[None]				# DIFAT list
 	###POPULATE DIFAT
 	try:
+		print("DIFAT PARSING\n\t\t0 1 2 3 4 5 6 7 8 9 A B C D E F 0 1 2 3 4 5 6 7 8 9 A B C D E F\n")
 		c = 0	
 		for i in range(0, len(DIFAT)):
-			offset = hex(int(DIFATStartSectLoc,16)+c)
-			print offset
-			#DIFAT[i]=seekAndRead(inFile,offset,20)
+			offset = int(DIFATStartSectLoc,16)+c
+			DIFAT[i]=seekAndRead(inFile,offset,32)
+			print (offset+"\t"+DIFAT[i])
 			c += 32
 	except Exception, e:
 		print("ERROR PARSING DIFAT "+str(e)+"\n")
-	print("OFFSET\t\t\t\t\t0 1 2 3 4 5 6 7 8 9 A B C D E F 0 1 2 3 4 5 6 7 8 9 A B C D E F\n\n")
+	print("\n\nOFFSET\t\t\t\t\t0 1 2 3 4 5 6 7 8 9 A B C D E F 0 1 2 3 4 5 6 7 8 9 A B C D E F\n\n")
 	print("Signature\t\t\t\t"+sig+\
 		"\nCLSID\t\t\t\t\t"+clsid+\
 		"\nMinor Version\t\t\t\t"+minVersion+\
@@ -48,10 +49,10 @@ def header(inFile):
 		"\nDIFAT Start Sector Loccation\t\t"+DIFATStartSectLoc+\
 		"\nNumber of DIFAT sectors\t\t\t"+nDIFATSect)	
 
-def seekAndRead(inFile, hexOffset, hexLength):
+def seekAndRead(inFile, bOffset, bLength):
 	f = open(inFile, 'r')
-	f.seek(hexOffset)
-	out = f.read(hexLength).encode("hex")
+	f.seek(bOffset)
+	out = f.read(bLength).encode("hex")
 	f.close()
 	return out 
 
