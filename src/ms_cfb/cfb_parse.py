@@ -19,29 +19,39 @@ def header(inFile):
 	DIFATStartSectLoc=seekAndRead(inFile,0x0044,4) 	# DIFAT start sector location
 	nDIFATSect=seekAndRead(inFile,0x0048,4) 	# Number of DIFAT sectors
 	DIFAT=109*[None]				# DIFAT list
-	###POPULATE DIFAT[]###
-	c = 0	
-	for i in range(0, len(DIFAT)):
-		offset = hex(int(DIFATStartSectLoc,16)+c)	
-		DIFAT[i]=seekAndRead(inFile,offset,20)
-		c += 32
-	print("Signature\t\t"+sig+"\nCLSID\t\t"+clsid+"\nMinor Version\t\t"+minVersion+\
-		"\nMajor Version\t\t"+majVersion+"\nByte Order\t\t"+byteOrder+\
-		"\nSector Size\t\t"+sectSize+"\nMini Stream Sector Size\t\t"+mStreamSectSize+\
-		"\nReserved\t\t"+res+"\nNumber of Directory sectors\t\t"+nDirSect+\
-		"\nNumber of FAT sectors\t\t"+nFATSect+\
+	###POPULATE DIFAT
+	try:
+		c = 0	
+		for i in range(0, len(DIFAT)):
+			offset = hex(int(DIFATStartSectLoc,16)+c)
+			print offset
+			#DIFAT[i]=seekAndRead(inFile,offset,20)
+			c += 32
+	except Exception, e:
+		print("ERROR PARSING DIFAT "+str(e)+"\n")
+	print("OFFSET\t\t\t\t\t0 1 2 3 4 5 6 7 8 9 A B C D E F 0 1 2 3 4 5 6 7 8 9 A B C D E F\n\n")
+	print("Signature\t\t\t\t"+sig+\
+		"\nCLSID\t\t\t\t\t"+clsid+\
+		"\nMinor Version\t\t\t\t"+minVersion+\
+		"\nMajor Version\t\t\t\t"+majVersion+\
+		"\nByte Order\t\t\t\t"+byteOrder+\
+		"\nSector Size\t\t\t\t"+sectSize+\
+		"\nMini Stream Sector Size\t\t\t"+mStreamSectSize+\
+		"\nReserved\t\t\t\t"+res+\
+		"\nNumber of Directory sectors\t\t"+nDirSect+\
+		"\nNumber of FAT sectors\t\t\t"+nFATSect+\
 		"\nDirectory start sector location\t\t"+dirStartSectLoc+\
-		"\nTransaction signature\t\t"+tSig+\
-		"\nMini stream size cutoff\t\t"+mStreamSizeCutoff+\
+		"\nTransaction signature\t\t\t"+tSig+\
+		"\nMini stream size cutoff\t\t\t"+mStreamSizeCutoff+\
 		"\nMini FAT start sector location\t\t"+mFATStartSectLoc+\
 		"\nNumber of mini FAT sectors\t\t"+nMFATSect+\
 		"\nDIFAT Start Sector Loccation\t\t"+DIFATStartSectLoc+\
-		"\nNumber of DIFAT sectors\t\t"+nDIFATSect)	
+		"\nNumber of DIFAT sectors\t\t\t"+nDIFATSect)	
 
 def seekAndRead(inFile, hexOffset, hexLength):
 	f = open(inFile, 'r')
-	f.seek(int(str(hexOffset),16))
-	out = f.read(int(str(hexLength),16)).encode("hex")
+	f.seek(hexOffset)
+	out = f.read(hexLength).encode("hex")
 	f.close()
 	return out 
 
@@ -65,7 +75,7 @@ def main():
 		print ("Error: " + str(e))
 	if outFile == None:
 		try:
-			print("WOOT")
+			print("HEX DUMP SQUELCHED FOR TESTING")
 			#print(inFile+" Hex Dump:\n"+binascii.hexlify(content)+"\n")
 		except Exception, e:
 			print("Error: " + str(e))
