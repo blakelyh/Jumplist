@@ -26,7 +26,7 @@ def header(inFile):
 		for i in range(0, len(DIFAT)):
 			offset = int(DIFATStartSectLoc,16)+c
 			DIFAT[i]=seekAndRead(inFile,offset,32)
-			print (offset+"\t"+DIFAT[i])
+			print (str(hex(offset))+"\t"+str(DIFAT[i]))
 			c += 32
 	except Exception, e:
 		print("ERROR PARSING DIFAT "+str(e)+"\n")
