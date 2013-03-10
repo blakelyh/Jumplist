@@ -56,8 +56,8 @@ def header(inFile):
 	#	"\nDIFAT Start Sector Loccation\t\t"+DIFATStartSectLoc+\
 	#	"\nNumber of DIFAT sectors\t\t\t"+nDIFATSect)	
 	#	
-	#if (str(byteOrder) == "feff"):
-	#	print("Byte Order = Little Endian, must flip bytes\n\n")
+	if (str(byteOrder) == "feff"):
+		print("\tByte Order = Little Endian, must flip bytes")
 
 def fat(inFile, version, nFATSect, sectSize):
 	print("IN FAT SECTOR FUNCTION")
@@ -111,12 +111,23 @@ def dir(inFile, version, dirStartSectLoc, sectSize, nDirSect):
 		sSectLoc=seekAndRead(inFile,start,4)
 		#print("sSectLoc\t"+str(sSectLoc))
 	# FOR TESTING
+	print("\tmust iterate through all dir sectors")
 
-def mFAT(inFile, mSSectSize, mSSCutoff, mFATStartSectLoc, nMFATSect):
+def mFAT(inFile, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect):
 	print("IN MINI FAT SECTOR FUNCTION")
 	if(nMFATSect>0):
-		print("SOMETHING TO DO")
-			
+		sSize=2**(int(sectSize))
+		start=int(mFATStartSectLoc)*sSize+sSize
+		end=start+sSize
+		stepL=0x04	
+		nxtSect=int(sSize)/int(stepL)*[None]
+		c=0
+		for i in range(start,end,stepL):
+			nxtSect[c]=seekAndRead(inFile,i,stepL)
+			#print("Offset "+str(hex(i))+"\tVal "+str(nxtSect[c]))
+			c+=1
+		print("\tMUST ITERATE FOR EACH MINI FAT SECTOR")
+
 def seekAndRead(inFile, bOffset, bLength):
 	try:
 		f = open(inFile, 'r')
@@ -167,7 +178,7 @@ def main():
 	fat(inFile, 0x0003, 0x000001, 0x0200)
 	# dir(inFile, version, dirstartSectLoc, sectSize, nDirSect)
 	dir(inFile, 0x0003, 0x00000001, 0x0009, 0x2800)
-	# mFAT(iFile, mSSectSize, mSSCutoff, mFATStartSectLoc, nMFATSect)
-	mFAT(inFile, 0x0006, 0x00001000, 0x00000002, 0x00000001)
+	# mFAT(iFile, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect)
+	mFAT(inFile, 0x0009, 0x00001000, 0x00000002, 0x00000001)
 if __name__ == '__main__':
 	main()
