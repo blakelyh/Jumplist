@@ -36,26 +36,26 @@ def header(inFile):
 	
 	# TESTING PURPOSES
 	print("IN HEADER FUNCTION")
-	#print("\n\nOFFSET\t\t\t\t\t0 1 2 3 4 5 6 7 8 9 "+\
-	#"A B C D E F 0 1 2 3 4 5 6 7 8 9 A B C D E F\n\n"+\
-	#	"\nSignature\t\t\t\t"+sig+\
-	#	"\nCLSID\t\t\t\t\t"+clsid+\
-	#	"\nMinor Version\t\t\t\t"+minVersion+\
-	#	"\nMajor Version\t\t\t\t"+majVersion+\
-	#	"\nByte Order\t\t\t\t"+byteOrder+\
-	#	"\nSector Size\t\t\t\t"+sectSize+\
-	#	"\nMini Stream Sector Size\t\t\t"+mStreamSectSize+\
-	#	"\nReserved\t\t\t\t"+res+\
-	#	"\nNumber of Directory sectors\t\t"+nDirSect+\
-	#	"\nNumber of FAT sectors\t\t\t"+nFATSect+\
-	#	"\nDirectory start sector location\t\t"+dirStartSectLoc+\
-	#	"\nTransaction signature\t\t\t"+tSig+\
-	#	"\nMini stream size cutoff\t\t\t"+mStreamSizeCutoff+\
-	#	"\nMini FAT start sector location\t\t"+mFATStartSectLoc+\
-	#	"\nNumber of mini FAT sectors\t\t"+nMFATSect+\
-	#	"\nDIFAT Start Sector Loccation\t\t"+DIFATStartSectLoc+\
-	#	"\nNumber of DIFAT sectors\t\t\t"+nDIFATSect)	
-	#	
+	print("\n\nOFFSET\t\t\t\t\t0 1 2 3 4 5 6 7 8 9 "+\
+	"A B C D E F 0 1 2 3 4 5 6 7 8 9 A B C D E F\n\n"+\
+		"\nSignature\t\t\t\t"+sig+\
+		"\nCLSID\t\t\t\t\t"+clsid+\
+		"\nMinor Version\t\t\t\t"+minVersion+\
+		"\nMajor Version\t\t\t\t"+majVersion+\
+		"\nByte Order\t\t\t\t"+byteOrder+\
+		"\nSector Size\t\t\t\t"+sectSize+\
+		"\nMini Stream Sector Size\t\t\t"+mStreamSectSize+\
+		"\nReserved\t\t\t\t"+res+\
+		"\nNumber of Directory sectors\t\t"+nDirSect+\
+		"\nNumber of FAT sectors\t\t\t"+nFATSect+\
+		"\nDirectory start sector location\t\t"+dirStartSectLoc+\
+		"\nTransaction signature\t\t\t"+tSig+\
+		"\nMini stream size cutoff\t\t\t"+mStreamSizeCutoff+\
+		"\nMini FAT start sector location\t\t"+mFATStartSectLoc+\
+		"\nNumber of mini FAT sectors\t\t"+nMFATSect+\
+		"\nDIFAT Start Sector Loccation\t\t"+DIFATStartSectLoc+\
+		"\nNumber of DIFAT sectors\t\t\t"+nDIFATSect)	
+		
 	if (str(byteOrder) == "feff"):
 		print("\tByte Order = Little Endian, must flip bytes")
 
