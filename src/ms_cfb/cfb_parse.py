@@ -21,35 +21,35 @@ def header(inFile):
 	head[15]=seekAndRead(inFile,0x0044,0x04)	# DIFAT start sector location
 	head[16]=seekAndRead(inFile,0x0048,0x04)	# Number of DIFAT sectors
 	DIFAT=109*[None]
-	if (int(head[7],16)!=0):
+	if (int(head[7],16)!=0):			# Verify inFIle is Jump List
 		print (str(inFile)+" IS NOT A JUMP LIST!")
-		exit(0)			
-	if (str(head[4]) == "feff"):
+		exit(0)					
+	if (str(head[4]) == "feff"):			# Determine Byte Order
 		for index, object in enumerate(head):
 			if (type(object)== str):
 				try:
-					head[index]=hex(revByteOrd(long(object,16)))		
+					head[index]=hex(revByteOrd(long(object,16)))
 				except Exception, e:
 					print e
-	if(int(head[15],16)<int("0xfffffffa",16)):
+	if(int(head[15],16)<int("0xfffffffa",16)):	# DIFAT REG_SECT check
 		c = 0	
 		for i in range(0, len(DIFAT)):
 			offset = int(head[15],16)+c
 			DIFAT[i]=seekAndRead(inFile,offset,32)
 			c += 32
-	if (str(head[4]) == "0xfffe"):
+	if (str(head[4]) == "0xfffe"):			# DIFAT bSwap if Little Endian
 		for i, o in enumerate(DIFAT):
 			if (o!="")and(o!=None):
 				DIFAT[i]=hex(revByteOrd(long(o,16)))
 	head[17]=DIFAT					# DIFAT Array
-	return head
+	return head					
 
 def fat(inFile, version, nFATSect, sectSize):
-	if (nFATSect>0):
-		start=sectSize
-		stepL=0x04
-		end=int(start)+(int(nFATSect)*int(sectSize))
-		nxtSect=int(nFATSect)*(int(sectSize)/int(stepL))*[None]
+	if (nFATSect>0):						# Check # of FAT > 0
+		start=sectSize						# Start offset
+		stepL=0x04						# Step length
+		end=int(start)+(int(nFATSect)*int(sectSize))		# End of FAT
+		nxtSect=int(nFATSect)*(int(sectSize)/int(stepL))*[None]	# nxtSect Array
 		c = 0
 		for i in range (start,end,stepL):
 			nxtSect[c]=seekAndRead(inFile,i,stepL)
@@ -57,37 +57,43 @@ def fat(inFile, version, nFATSect, sectSize):
 		return nxtSect		
 
 def dir(inFile, version, dirStartSectLoc, sectSize, nDirSect):
-	sectSize = 2**(int(sectSize))
-	start = int(dirStartSectLoc)*sectSize+sectSize
-	d=12*[None]
+	sectSize = 2**(int(sectSize))				# size is 2^sectSize
+	start = int(dirStartSectLoc)*sectSize+sectSize		# start location 
+	
+
+
+	# MUST LOOP THIS SECTION
+	# for each sector:
+	# Fill Array[index] with fully populated d[].
+	d=12*[None]						# return d Array
 	if(nDirSect>0):
-		d[0]=dirEntryName=seekAndRead(inFile,start,64) 
-		start +=64;  
-		d[1]=dirEntryNameLen=seekAndRead(inFile,start,2)
+		d[0]=seekAndRead(inFile,start,64)	# Dir Entry Name
+		start +=64;  					
+		d[1]=seekAndRead(inFile,start,2)	# Dir Entry Name Length
 		start +=2; 
-		d[2]=objType=seekAndRead(inFile,start,1)
+		d[2]=seekAndRead(inFile,start,1)	# objType
 		start +=1; 
-		d[3]=cFlag=seekAndRead(inFile,start,1)
+		d[3]=seekAndRead(inFile,start,1)	# cFlag
 		start +=1; 
-		d[4]=lSID=seekAndRead(inFile,start,4)
+		d[4]=seekAndRead(inFile,start,4)	# lSID
 		start +=4; 
-		d[5]=rSID=seekAndRead(inFile,start,4)
+		d[5]=seekAndRead(inFile,start,4)	# rSID
 		start +=4; 
-		d[6]=childID=seekAndRead(inFile,start,4)
+		d[6]=seekAndRead(inFile,start,4)	# childID
 		start +=4; 
-		d[7]=clsid=seekAndRead(inFile,start,16)
+		d[7]=seekAndRead(inFile,start,16)	# clsid
 		start +=16; 
-		d[8]=sFlags=seekAndRead(inFile,start,4)
+		d[8]=seekAndRead(inFile,start,4)	# sFlags
 		start +=4; 
-		d[9]=cTime=seekAndRead(inFile,start,8)
+		d[9]=seekAndRead(inFile,start,8)	# cTime
 		start +=8; 
-		d[10]=modTime=seekAndRead(inFile,start,8)
+		d[10]=seekAndRead(inFile,start,8)	# modTime
 		start +=8; 
-		d[11]=sSectLoc=seekAndRead(inFile,start,4)
-	print("\tMUST ITERATE FOR EACH DIRECTORY SECTOR")
+		d[11]=seekAndRead(inFile,start,4)	# sSectLoc
 	return d
 
 def mFAT(inFile, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect):
+	# 
 	if(nMFATSect>0):
 		sSize=2**(int(sectSize))
 		start=int(mFATStartSectLoc)*sSize+sSize
@@ -98,7 +104,6 @@ def mFAT(inFile, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect):
 		for i in range(start,end,stepL):
 			nxtSect[c]=seekAndRead(inFile,i,stepL)
 			c+=1
-		print("\tMUST ITERATE FOR EACH MINI FAT SECTOR")
 		return nxtSect
 
 def seekAndRead(inFile, bOffset, bLength):
@@ -130,14 +135,18 @@ def revByteOrd(data):
 	else:
 		while(data > 0):
 			d = data & 0xFF     # extract the least significant(LS) byte
-			seq.append('%02x'%d)# convert to appropriate string, append to sequence
+			seq.append('%02x'%d)# convert string, append to sequence
 			data >>= 8          # push next higher byte to LS position
 			revD = int(''.join(seq),16)
 	return revD
 
 def main():
-	parser = optparse.OptionParser('usage%prog '+\
-		'-i <INPUT FILE> -o <OUTPUT FILE>')
+	parser = optparse.OptionParser('\n\n\t\tusage%prog '+\
+		'-i <INPUT FILE> -o <OUTPUT FILE>'+\
+		#'\n\n\t\t* If no input file is specified:'+\
+		#'\n\t\t\t1) All jump list files will be selected.'+\
+		#'\n\t\t\t2) An output file must be specified.')
+		'\n\n')
 	parser.add_option('-i', dest='iFile', type='string',\
 		help='Specify an input file: -i inputFileName')
 	parser.add_option('-o', dest='oFile', type='string',\
@@ -145,9 +154,10 @@ def main():
 	(options, args)=parser.parse_args()
 	inFile = options.iFile
 	outFile = options.oFile
-	if inFile == None:
-		print parser.usage
+	if inFile == None and outFile == None:
+		print parser.usage	
 		exit(0)
+	
 	try:			
 		with open(inFile, 'rb') as f:
 			content = f.read()
