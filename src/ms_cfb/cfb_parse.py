@@ -225,8 +225,7 @@ def main():
 	f = fat(inFile, h[3], h[9], h[5])
 	# dir(inFile, version, dirstartSectLoc, sectSize, nDirSect)
 	d = dir(inFile, h[3], h[10], h[5], h[8])
-	# mFAT(iFile, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect)
-	#m = mFAT(inFile, 0x0009, 0x00001000, 0x00000002, 0x00000001)
+	# mFAT(iFile, version, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect)
 	m = mFAT(inFile, h[3], h[5], h[12], h[13], h[14])
 
 if __name__ == '__main__':
