@@ -41,22 +41,22 @@ def header(inFile):
 		for i, o in enumerate(DIFAT):
 			if (o!="")and(o!=None):
 				DIFAT[i]=revByteOrd(long(o,16))
-	head[17]=DIFAT										# DIFAT Array
+	head[17]=DIFAT								# DIFAT Array
 	return head					
 
 def fat(inFile, version, sectSize, nFATSect):
-	stepL=0x04                              			# Step length  
-	start=sSize=2**(int(str(sectSize),16))				# sSize offset
-	end=start+sSize	         							# End of FAT
-	f=int(nFATSect,16)*[None]							# FAT sectors Array
+	stepL=0x04                              	# Step length  
+	start=sSize=2**(int(str(sectSize),16))		# sSize offset
+	end=start+sSize	         					# End of FAT
+	f=int(nFATSect,16)*[None]					# FAT sectors Array
 	for index in range(0,int(nFATSect,16)):
-		nxtSect=sSize/int(stepL)*[None] 				# nxtSect Array
-		c = 0 											# index for nxtSect
-		if(int(version,16) == 3):						# Version 3, revByteOrd
+		nxtSect=sSize/int(stepL)*[None] 		# nxtSect Array
+		c = 0 									# index for nxtSect
+		if(int(version,16) == 3):				# Version 3, revByteOrd
 			for i in range (start,end,stepL):
 				nxtSect[c]=revByteOrd(long(seekAndRead(inFile,i,stepL),16))
 				c += 1
-		else:											# Not version 3
+		else:									# Not version 3
 			for i in range (start,end,stepL):
 				nxtSect[c]=seekAndRead(inFile,i,stepL)
 				c += 1
@@ -71,7 +71,7 @@ def dir(inFile, version, sectSize, dirStartSectLoc, nDirSect):
 			print str(inFile)+" is corrupt, or is not a jump list."
 			exit(0)
 	elif (int(version,16)==3):
-		number = 1 							# number is nDirSect
+		number = 1 									# number is nDirSect
 	else:
 		number = int(nDirSect,16)
 	di=number*[None]
