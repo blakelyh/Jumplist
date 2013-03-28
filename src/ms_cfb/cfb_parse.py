@@ -44,7 +44,7 @@ def header(inFile):
 	head[17]=DIFAT										# DIFAT Array
 	return head					
 
-def fat(inFile, version, nFATSect, sectSize):
+def fat(inFile, version, sectSize, nFATSect):
 	stepL=0x04                              			# Step length  
 	start=sSize=2**(int(str(sectSize),16))				# sSize offset
 	end=start+sSize	         							# End of FAT
@@ -63,68 +63,35 @@ def fat(inFile, version, nFATSect, sectSize):
 	f[index]=nxtSect
  	return f
 
-def dir(inFile, version, dirStartSectLoc, sectSize, nDirSect):
-	sSize = 2**(int(sectSize,16))						# size is 2^sectSize
+def dir(inFile, version, sectSize, dirStartSectLoc, nDirSect):
+	sSize = 2**(int(sectSize,16))					# size is 2^sectSize
 	start = int(dirStartSectLoc,16)*sSize+sSize		# start location 
 	# Fill Array[index] with fully populated d[].
 	if (int(version,16)==3 and int(nDirSect)!=0):
 			print str(inFile)+" is corrupt, or is not a jump list."
 			exit(0)
 	elif (int(version,16)==3):
-		number = 1 								# number is nDirSect
+		number = 1 							# number is nDirSect
 	else:
 		number = int(nDirSect,16)
 	di=number*[None]
 	for index in range(0,number):
-		d=12*[None]								# return d Array
-		if int(version,16)==3:
-			d[0]=revByteOrd(long(seekAndRead(inFile,start,64),16))	# Dir Entry Name
-			start +=64;  					
-			d[1]=revByteOrd(long(seekAndRead(inFile,start,2),16))	# Dir Entry Name Length
-			start +=2; 
-			d[2]=revByteOrd(long(seekAndRead(inFile,start,1),16))	# objType
-			start +=1; 
-			d[3]=revByteOrd(long(seekAndRead(inFile,start,1),16))	# cFlag
-			start +=1; 
-			d[4]=revByteOrd(long(seekAndRead(inFile,start,4),16))	# lSID
-			start +=4; 
-			d[5]=revByteOrd(long(seekAndRead(inFile,start,4),16))	# rSID
-			start +=4; 
-			d[6]=revByteOrd(long(seekAndRead(inFile,start,4),16))	# childID
-			start +=4; 
-			d[7]=revByteOrd(long(seekAndRead(inFile,start,16),16))	# clsid
-			start +=16; 
-			d[8]=revByteOrd(long(seekAndRead(inFile,start,4),16))	# sFlags
-			start +=4; 
-			d[9]=revByteOrd(long(seekAndRead(inFile,start,8),16))	# cTime
-			start +=8; 
-			d[10]=revByteOrd(long(seekAndRead(inFile,start,8),16))	# modTime
-			start +=8; 
-			d[11]=revByteOrd(long(seekAndRead(inFile,start,4),16))	# sSectLoc
-		else:
-			d[0]=seekAndRead(inFile,start,64)	# Dir Entry Name
-			start +=64;  					
-			d[1]=seekAndRead(inFile,start,2)	# Dir Entry Name Length
-			start +=2; 
-			d[2]=seekAndRead(inFile,start,1)	# objType
-			start +=1; 
-			d[3]=seekAndRead(inFile,start,1)	# cFlag
-			start +=1; 
-			d[4]=seekAndRead(inFile,start,4)	# lSID
-			start +=4; 
-			d[5]=seekAndRead(inFile,start,4)	# rSID
-			start +=4; 
-			d[6]=seekAndRead(inFile,start,4)	# childID
-			start +=4; 
-			d[7]=seekAndRead(inFile,start,16)	# clsid
-			start +=16; 
-			d[8]=seekAndRead(inFile,start,4)	# sFlags
-			start +=4; 
-			d[9]=seekAndRead(inFile,start,8)	# cTime
-			start +=8; 
-			d[10]=seekAndRead(inFile,start,8)	# modTime
-			start +=8; 
-			d[11]=seekAndRead(inFile,start,4)	# sSectLoc
+		d=12*[None]										# Dir Array
+		d[0]=seekAndRead(inFile,start,64);start +=64  	# Dir Entry Name
+		d[1]=seekAndRead(inFile,start,2);start +=2		# Dir Entry Name Length
+		d[2]=seekAndRead(inFile,start,1);start +=1		# objType
+		d[3]=seekAndRead(inFile,start,1);start +=1		# cFlag
+		d[4]=seekAndRead(inFile,start,4);start +=4		# lSID
+		d[5]=seekAndRead(inFile,start,4);start +=4		# rSID
+		d[6]=seekAndRead(inFile,start,4);start +=4		# childID
+		d[7]=seekAndRead(inFile,start,16);start +=16	# clsid
+		d[8]=seekAndRead(inFile,start,4);start +=4		# sFlags
+		d[9]=seekAndRead(inFile,start,8);start +=8		# cTime
+		d[10]=seekAndRead(inFile,start,8);start +=8		# modTime
+		d[11]=seekAndRead(inFile,start,4)				# sSectLoc
+		if (int(version,16)==3):
+			for i in range (len(d)):
+				d[i]=revByteOrd(long(d[i],16))
 		di[index]=d
 	return di
 
@@ -221,12 +188,11 @@ def main():
 			print("Error: " + str(e))
 	# header(inFile)
 	h = header(inFile)
-	# fat(inFile, version, nFATSect, sectSize)
-	f = fat(inFile, h[3], h[9], h[5])
-	# dir(inFile, version, dirstartSectLoc, sectSize, nDirSect)
-	d = dir(inFile, h[3], h[10], h[5], h[8])
+	# fat(inFile, version, sectSize, nFATSect)
+	f = fat(inFile, h[3], h[5], h[9])
+	# dir(inFile, version, sectSize, dirstartSectLoc, nDirSect)
+	d = dir(inFile, h[3], h[5], h[10], h[8])
 	# mFAT(iFile, version, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect)
 	m = mFAT(inFile, h[3], h[5], h[12], h[13], h[14])
-
 if __name__ == '__main__':
 	main()
