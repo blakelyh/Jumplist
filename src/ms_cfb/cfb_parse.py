@@ -150,6 +150,15 @@ def revByteOrd(data):
 			revD = int(''.join(seq),16)
 	return hex(revD)
 
+
+
+
+
+def progMatch(data):
+	# switch statement to match the programs to the list.
+	
+
+
 def main():
 	parser = optparse.OptionParser('\n\n\t\tusage%prog '+\
 		'-i <INPUT FILE> -o <OUTPUT FILE>'+\
@@ -162,12 +171,21 @@ def main():
 	parser.add_option('-o', dest='oFile', type='string',\
 		help='Specify an output file: -o outputFileName')
 	(options, args)=parser.parse_args()
+
+	# Input file to read can be specific file: 1b4dd67f29cb1962.jumplist
+	# Input file can be a string with program names, or a file with program names
 	inFile = options.iFile
+
+	# Output file should probably be a csv.
 	outFile = options.oFile
+
+
 	if inFile == None and outFile == None:
 		print parser.usage	
 		exit(0)
-	
+	elif inFile == None:
+		# Search for all jump list files
+		print"All Jump List Files shall be parsed."
 	try:			
 		with open(inFile, 'rb') as f:
 			content = f.read()
@@ -186,13 +204,11 @@ def main():
 			hexDumpFile.close()
 		except Exception, e:
 			print("Error: " + str(e))
-	# header(inFile)
+
+	# for each 
 	h = header(inFile)
-	# fat(inFile, version, sectSize, nFATSect)
 	f = fat(inFile, h[3], h[5], h[9])
-	# dir(inFile, version, sectSize, dirstartSectLoc, nDirSect)
 	d = dir(inFile, h[3], h[5], h[10], h[8])
-	# mFAT(iFile, version, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect)
 	m = mFAT(inFile, h[3], h[5], h[12], h[13], h[14])
 if __name__ == '__main__':
 	main()
