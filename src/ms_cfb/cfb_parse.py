@@ -151,36 +151,46 @@ def revByteOrd(data):
 	return hex(revD)
 
 
-
-
-
-def progMatch(data):
-	# switch statement to match the programs to the list.
+def progMatch(file):
+	# for each line in file switch statement to match the programs to the list.
+	# create array of file names that match the associated program.	
+	# parse for each matched file.
 	print "progMatch"	
 
 
+def parse(data):
+	# for each program/input file.
+	h = header(inFile)
+	f = fat(inFile, h[3], h[5], h[9])
+	d = dir(inFile, h[3], h[5], h[10], h[8])
+	m = mFAT(inFile, h[3], h[5], h[12], h[13], h[14])
+
 def main():
-	parser = optparse.OptionParser('\n\n\t\tusage%prog '+\
-		'-i <INPUT FILE> -o <OUTPUT FILE>'+\
+	parser = optparse.OptionParser('\n\tusage%prog '+\
+		'[-i <INPUT FILE>] [-p <PROGRAMS FILE>] [-o <OUTPUT FILE>]'+\
 		#'\n\n\t\t* If no input file is specified:'+\
 		#'\n\t\t\t1) All jump list files will be selected.'+\
 		#'\n\t\t\t2) An output file must be specified.')
-		'\n\n')
+		'\n')
 	parser.add_option('-i', dest='iFile', type='string',\
 		help='Specify an input file: -i inputFileName')
 	parser.add_option('-o', dest='oFile', type='string',\
 		help='Specify an output file: -o outputFileName')
+	parser.add_option('-p', dest='pFile', type='string',\
+		help='Specify an input file: -p programsFile')
 	(options, args)=parser.parse_args()
+
 
 	# Input file to read can be specific file: 1b4dd67f29cb1962.jumplist
 	# Input file can be a string with program names, or a file with program names
+	pFile = options.pFile
 	inFile = options.iFile
-
 	# Output file should probably be a csv.
 	outFile = options.oFile
 
-
-	if inFile == None and outFile == None:
+	if pFile != None:
+		progMatch(pFile)
+	elif inFile == None and outFile == None:
 		print parser.usage	
 		exit(0)
 	elif inFile == None:
@@ -193,8 +203,7 @@ def main():
 		print ("Error: " + str(e))
 	if outFile == None:
 		try:
-			print("HEX DUMP SQUELCHED FOR TESTING")
-			#print(inFile+" Hex Dump:\n"+binascii.hexlify(content)+"\n")
+			print(inFile+" Hex Dump:\n"+binascii.hexlify(content)+"\n")
 		except Exception, e:
 			print("Error: " + str(e))
 	elif outFile != None:
@@ -204,11 +213,5 @@ def main():
 			hexDumpFile.close()
 		except Exception, e:
 			print("Error: " + str(e))
-
-	# for each program/input file.
-	h = header(inFile)
-	f = fat(inFile, h[3], h[5], h[9])
-	d = dir(inFile, h[3], h[5], h[10], h[8])
-	m = mFAT(inFile, h[3], h[5], h[12], h[13], h[14])
 if __name__ == '__main__':
 	main()
