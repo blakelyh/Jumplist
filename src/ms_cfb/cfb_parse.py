@@ -156,7 +156,7 @@ def revByteOrd(data):
 
 def progMatch(data):
 	# switch statement to match the programs to the list.
-	
+	print "progMatch"	
 
 
 def main():
@@ -205,7 +205,7 @@ def main():
 		except Exception, e:
 			print("Error: " + str(e))
 
-	# for each 
+	# for each program/input file.
 	h = header(inFile)
 	f = fat(inFile, h[3], h[5], h[9])
 	d = dir(inFile, h[3], h[5], h[10], h[8])
