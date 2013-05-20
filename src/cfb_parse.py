@@ -151,27 +151,31 @@ def revByteOrd(data):
 	return hex(revD)
 
 
-def progMatch(file):
+def progMatch(inFile):
 	# for each line in file switch statement to match the programs to the list.
 	# create array of file names that match the associated program.	
 	# parse for each matched file.
+	print "in progMatch"
 	try:
 		with open(inFile, 'rb') as f:
 			content = f.read()				
 	except Exception, e:
 		print("Error: " + str(e))		
-	
+	print "after trying to read pFile"
 	# for each line in content, if string does not match ^: fill progs.
-	progs = len(file)*[None]
+	# progs = len(file)*[None]
 	# fill progs with the appropriate file names corresponding to the program name
-	return progs
 
-def parseCFB(data):
+def parseCFB(inFile):
 	# for each program/input file.
 	h = header(inFile)
 	f = fat(inFile, h[3], h[5], h[9])
 	d = dir(inFile, h[3], h[5], h[10], h[8])
 	m = mFAT(inFile, h[3], h[5], h[12], h[13], h[14])
+	print "header \n"+str(h)
+	print "FAT \n"+str(f)
+	print "directory \n"+str(d)
+	print "mFAT \n"+str(m)
 
 def parseSHLLINK(data):
 	print "write the code to parse shell-link"
@@ -187,36 +191,50 @@ def main():
 		help='Specify an input file: -i inputFileName')
 	parser.add_option('-o', dest='oFile', type='string',\
 		help='Specify an output file: -o outputFileName')
-	parser.add_option('-p', dest='pFile', type='string',\
-		help='Specify an input file: -p programsFile')
+	parser.add_option('-p', dest='pF', type='string',\
+		help='Specify an input file: -p programsConfigFile')
 	(options, args)=parser.parse_args()
 
 
 	# Input file to read can be specific file: 1b4dd67f29cb1962.jumplist
 	# Input file can be a string with program names, or a file with program names
-	pFile = options.pFile
+	pFile = options.pF
 	inFile = options.iFile
-	# Output file should probably be a csv.
 	outFile = options.oFile
 
 	if pFile != None:
-		progs = progMatch(pFile)
+		#	progMatch(pFiled)
+		try:
+			with open(pFile, 'rb'):
+				progMatch(pFile)
+		except Exception, e:
+			print "prog file does not exist"
+		print "write pFile matching"
 	elif inFile == None and outFile == None:
 		print parser.usage	
 		exit(0)
 	elif inFile == None:
 		# Search for all jump list files
 		print"All Jump List Files shall be parsed."
+	
+
+	################# GET CONTENT FROM inFile #################
 	try:			
 		with open(inFile, 'rb') as f:
 			content = f.read()
 	except Exception, e:
 		print ("Error: " + str(e))
+	
+
+	############## PRINT OUTPUT TO OUTPUT FILE ###############	
 	if outFile == None:
 		try:
-			print(inFile+" Hex Dump:\n"+binascii.hexlify(content)+"\n")
+			parseCFB(inFile)
+			#parseSHLLINK(inFile)
+			print "No Output File"
 		except Exception, e:
 			print("Error: " + str(e))
+	######## Output file should probably be a csv. ##########
 	elif outFile != None:
 		try:
 			hexDumpFile = open(outFile, 'w+')
