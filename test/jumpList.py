@@ -1,7 +1,6 @@
 import binascii
 import optparse
-
-def header(inFile):
+def header_CFB(inFile):
 	head=18*[None]
 	head[0]=seekAndRead(inFile, 0x0000,0x08) 	# Header signature
 	head[1]=seekAndRead(inFile, 0x0008,0x10)	# Header CLSID
@@ -42,9 +41,9 @@ def header(inFile):
 			if (o!="")and(o!=None):
 				DIFAT[i]=revByteOrd(long(o,16))
 	head[17]=DIFAT						# DIFAT Array
-	return head					
-
-def fat(inFile, version, sectSize, nFATSect):
+	return head				
+	
+def fat_CFB(inFile, version, sectSize, nFATSect):
 	stepL=0x04                              	# Step length  
 	start=sSize=2**(int(str(sectSize),16))		# sSize offset
 	end=start+sSize	         			# End of FAT
@@ -63,7 +62,7 @@ def fat(inFile, version, sectSize, nFATSect):
 	f[index]=nxtSect
  	return f
 
-def dir(inFile, version, sectSize, dirStartSectLoc, nDirSect):
+def dir_CFB(inFile, version, sectSize, dirStartSectLoc, nDirSect):
 	sSize = 2**(int(sectSize,16))				# size is 2^sectSize
 	start = int(dirStartSectLoc,16)*sSize+sSize		# start location 
 	# Fill Array[index] with fully populated d[].
@@ -76,7 +75,7 @@ def dir(inFile, version, sectSize, dirStartSectLoc, nDirSect):
 		number = int(nDirSect,16)
 	di=number*[None]
 	for index in range(0,number):
-		d=12*[None]										# Dir Array
+		d=12*[None]					# Dir Array
 		d[0]=seekAndRead(inFile,start,64);start +=64  	# Dir Entry Name
 		d[1]=seekAndRead(inFile,start,2);start +=2	# Dir Entry Name Length
 		d[2]=seekAndRead(inFile,start,1);start +=1	# objType
@@ -95,7 +94,7 @@ def dir(inFile, version, sectSize, dirStartSectLoc, nDirSect):
 		di[index]=d
 	return di
 
-def mFAT(inFile, version, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect):
+def mFAT_CFB(inFile, version, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect):
 	if(nMFATSect>0):
 		stepL=0x04	
 		start=sSize=2**(int(sectSize,16))
@@ -150,17 +149,17 @@ def revByteOrd(data):
 			revD = int(''.join(seq),16)
 	return hex(revD)
 
-
 def progMatch(inFile):
 	# for each line in file switch statement to match the programs to the list.
 	# create array of file names that match the associated program.	
 	# parse for each matched file.
 	print "in progMatch"
-	try:
-		with open(inFile, 'rb') as f:
-			content = f.read()				
-	except Exception, e:
-		print("Error: " + str(e))		
+	if inFile != None: 
+		try:
+			with open(inFile, 'rb') as f:
+				content = f.read()				
+		except Exception, e:
+			print("Error: " + str(e))		
 	print "after trying to read pFile"
 	# for each line in content, if string does not match ^: fill progs.
 	# progs = len(file)*[None]
@@ -168,24 +167,25 @@ def progMatch(inFile):
 
 def parseCFB(inFile):
 	# for each program/input file.
-	h = header(inFile)
-	f = fat(inFile, h[3], h[5], h[9])
-	d = dir(inFile, h[3], h[5], h[10], h[8])
-	m = mFAT(inFile, h[3], h[5], h[12], h[13], h[14])
+	h = header_CFB(inFile)
+	f = fat_CFB(inFile, h[3], h[5], h[9])
+	d = dir_CFB(inFile, h[3], h[5], h[10], h[8])
+	m = mFAT_CFB(inFile, h[3], h[5], h[12], h[13], h[14])
 	print "header \n"+str(h)
 	print "FAT \n"+str(f)
 	print "directory \n"+str(d)
 	print "mFAT \n"+str(m)
 
-def parseSHLLINK(data):
+def parseSHLLINK(inFile):
 	print "write the code to parse shell-link"
 
 def main():
-	parser = optparse.OptionParser('\n\tusage%prog '+\
-		'[-i <INPUT FILE>] [-p <PROGRAMS FILE>] [-o <OUTPUT FILE>]'+\
-		#'\n\n\t\t* If no input file is specified:'+\
-		#'\n\t\t\t1) All jump list files will be selected.'+\
-		#'\n\t\t\t2) An output file must be specified.')
+	parser = optparse.OptionParser('\n\t%prog '+\
+		'[-i <INPUT FILE>] [-p <PROGRAMS FILE>] -o <OUTPUT FILE>'+\
+		'\n\n\t\t* An OUPUT FILE is required.'+\
+		'\n\n\t\t* If no INPUT/PROGRAMS FILE exists but OUTPUT '+\
+		'FILE does exist:'+\
+		'\n\t\t\tAll jump list files will be selected.'+\
 		'\n')
 	parser.add_option('-i', dest='iFile', type='string',\
 		help='Specify an input file: -i inputFileName')
@@ -194,53 +194,46 @@ def main():
 	parser.add_option('-p', dest='pF', type='string',\
 		help='Specify an input file: -p programsConfigFile')
 	(options, args)=parser.parse_args()
-
-
 	# Input file to read can be specific file: 1b4dd67f29cb1962.jumplist
 	# Input file can be a string with program names, or a file with program names
 	pFile = options.pF
 	inFile = options.iFile
 	outFile = options.oFile
-
-	if pFile != None:
-		#	progMatch(pFiled)
-		try:
-			with open(pFile, 'rb'):
-				progMatch(pFile)
-		except Exception, e:
-			print "prog file does not exist"
-		print "write pFile matching"
-	elif inFile == None and outFile == None:
+	content = None
+	out = None
+	################ must have OUTPUT FILE ########## #########
+	if outFile == None:
 		print parser.usage	
 		exit(0)
-	elif inFile == None:
+	################## if pFile exists get content ############
+	if pFile != None:
+		try:
+			with open(pFile, 'rb') as f:
+				pF = f.read()
+		except Exception, e:
+			print "error reading program file"
+		try:
+			print "read pF line by line, if : is not at "+\
+			"beginning, send line to progMatch"
+		except Exception, e:
+			print "error matching programs"
+		print pF
+	################## if inFile exists parse it #############
+	if inFile != None:	
+		try:
+			parseCFB(inFile)			
+			#with open(inFile, 'rb') as f:
+			#	content = f.read()
+		except Exception, e:
+			print ("Error: " + str(e))
+	############## if ! inFile/pFile, parse all jumplists ####
+	elif inFile == None and pFile == None:
 		# Search for all jump list files
 		print"All Jump List Files shall be parsed."
-	
-
-	################# GET CONTENT FROM inFile #################
-	try:			
-		with open(inFile, 'rb') as f:
-			content = f.read()
-	except Exception, e:
-		print ("Error: " + str(e))
-	
-
+	################### PARSE SHELLINK #######################
+	print "WRITE THE SHELL LINK PARSER!"
 	############## PRINT OUTPUT TO OUTPUT FILE ###############	
-	if outFile == None:
-		try:
-			parseCFB(inFile)
-			#parseSHLLINK(inFile)
-			print "No Output File"
-		except Exception, e:
-			print("Error: " + str(e))
-	######## Output file should probably be a csv. ##########
-	elif outFile != None:
-		try:
-			hexDumpFile = open(outFile, 'w+')
-			hexDumpFile.write(binascii.hexlify(content))
-			hexDumpFile.close()
-		except Exception, e:
-			print("Error: " + str(e))
+	print "WRITE TO THE OUTPUT FILE: "+outFile
+	
 if __name__ == '__main__':
 	main()
