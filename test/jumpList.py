@@ -160,7 +160,10 @@ def progMatch(inFile):
 		print "error reading program file"
 	print List
 	try:
-		print "SOMETHING"	
+		for p in List:
+			if not p.startswith(':'):
+				# cut text from ^ to \t
+				print "cut text from ^ to \\t\n"+str(p)
 	except Exception, e:
 		print "error parsing program file"
 
