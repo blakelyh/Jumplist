@@ -151,23 +151,18 @@ def revByteOrd(data):
 	return hex(revD)
 
 def progMatch(inFile):
-	# for each line in file switch statement to match the programs to the list.
-	# create array of file names that match the associated program.	
-	# parse for each matched file.
-	try:
-		with open(inFile, 'rb') as f:
-			content = f.read()
-	except Exception, e:
-		print "error reading program file"
-	try:
-		print 'read pF line by line, if : is not at '+\
-		'beginning, send line to progMatch'
-	except Exception, e:
-		print "error matching programs"
-
-	# for line in content	
+	# for line in List	
 		# if line.charAt(0) != ':'
 			# if corresponding file exists return filename
+	try:
+		List = open(str(inFile)).readlines()
+	except Exception, e:
+		print "error reading program file"
+	print List
+	try:
+		print "SOMETHING"	
+	except Exception, e:
+		print "error parsing program file"
 
 def parseCFB(inFile):
 	# for each program/input file.
