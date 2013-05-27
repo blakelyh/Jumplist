@@ -119,21 +119,53 @@ def cfb_mFAT(inFile, version, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect):
 
 def shellLink_header(inFile):
 	head=14*[None]
-	head[0]=seekAndRead(inFile, 0x0000,0x08) 	# HeaderSize 
-	head[1]=seekAndRead(inFile, 0x0008,0x10)	# LinkCLSID
-	head[2]=seekAndRead(inFile,0x0018,0x02)		# LinkFlags
-	head[3]=seekAndRead(inFile,0x001A,0x02) 	# FileAttributes
-	head[4]=seekAndRead(inFile,0x001C,0x02) 	# CreationTime
-	head[5]=seekAndRead(inFile,0x001E,0x02) 	# AccessTime
-	head[6]=seekAndRead(inFile,0x0020,0x02) 	# WriteTime
-	head[7]=seekAndRead(inFile,0x0022,0x06) 	# FileSize
-	head[8]=seekAndRead(inFile,0x0028,0x04) 	# IconIndex
-	head[9]=seekAndRead(inFile,0x002c,0x04)		# ShowCommand
-	head[10]=seekAndRead(inFile,0x0030,0x04)	# HotKey
-	head[11]=seekAndRead(inFile,0x0034,0x04)	# Reserved1
-	head[12]=seekAndRead(inFile,0x0038,0x04)	# Reserved2
-	head[13]=seekAndRead(inFile,0x003C,0x04)	# Reserved3
-	print "fix shellLink_header"
+	head[0]=seekAndRead(inFile, 0x0000,0x04) 	# HeaderSize 
+	head[1]=seekAndRead(inFile, 0x0004,0x10)	# LinkCLSID
+	head[2]=seekAndRead(inFile,0x0014,0x04)		# LinkFlags
+	head[3]=seekAndRead(inFile,0x0018,0x04) 	# FileAttributes
+	head[4]=seekAndRead(inFile,0x001C,0x08) 	# CreationTime
+	head[5]=seekAndRead(inFile,0x0024,0x08) 	# AccessTime
+	head[6]=seekAndRead(inFile,0x002c,0x08) 	# WriteTime
+	head[7]=seekAndRead(inFile,0x0034,0x04) 	# FileSize
+	head[8]=seekAndRead(inFile,0x0038,0x04) 	# IconIndex
+	head[9]=seekAndRead(inFile,0x003c,0x04)		# ShowCommand
+	head[10]=seekAndRead(inFile,0x0040,0x02)	# HotKey
+	head[11]=seekAndRead(inFile,0x0042,0x02)	# Reserved1
+	head[12]=seekAndRead(inFile,0x0044,0x04)	# Reserved2
+	head[13]=seekAndRead(inFile,0x0048,0x04)	# Reserved3
+	# Header check
+	if head[0] != 0x0000004C:
+		print "INVALID FILE... Shell Link header: "+str(head[0])+\
+		" must be: 0x0000004C"
+	# LinkCLSID check
+	#if str(head[1]) != "00021401-0000-0000-C000-000000000046":
+	#	print "INVALID FILE... Shell Link LinkCLSID"+str(head[1]+\
+	#	" must be: 00021401-0000-0000-C000-000000000046"
+	# Filesize check: MUST MAKE THE COMPARISON BETWEEN UNSIGNED VALUES!
+	#if head[7] > 0xFFFFFFFF:
+	#	print "Shell Link File size: "+str(head[7])+"represents the least"+\
+	#	"significant 32 bits of the link target file size."
+	# ShowCommand is a 32-bit unsigned int that specifies expected window size
+	# of an application launched by the link. This value should be one of the following:
+	SW_SHOWNORMAL = 0x00000001
+	SW_SHOWMAXIMIZED = 0x00000003
+	SW_SHOWMINNOACTIVE = 0x00000007
+	# ALL OTHER VALUES MUST BE TREATED AS SHOW NORMAL
+	if head[9] == SW_SHOWNORMAL:
+		print "Shell Link application opens in normal fashion: "+\
+		str(SW_SHOWNORMAL)
+	elif head[9] == SW_SHOWMAXIMIZED:
+		print "Shell Link application is given keyboard focus upon opening,"+\
+		"but the window is not shown: "+str(SW_SHOWMAXIMIZED)
+	elif head[9] == SW_SHOWMINNOACTIVE:
+		print "Shell Link application is open, but window is not shown."+\
+		"It is not given the keybaord focus: "+str(SW_SHOWMINNOACTIVE)
+	else:
+		print "ShowCommand option: "+str(head[9])+" is inappropriate"+\
+		", chaning the value to SW_SHOWNORMAL (0x00000001)."
+		head[9] = SW_SHOWNORMAL
+	
+
 	return head				
 
 
