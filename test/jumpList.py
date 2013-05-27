@@ -158,12 +158,12 @@ def progMatch(inFile):
 		List = open(str(inFile)).readlines()
 	except Exception, e:
 		print "error reading program file"
-	print List
 	try:
 		for p in List:
-			if not p.startswith(':'):
-				# cut text from ^ to \t
-				print "cut text from ^ to \\t\n"+str(p)
+			if p[0] != ':' and p[0] != '\n' and p != None:
+				s = p.split()
+				print "UUID for "+str(s[1])+" "+str(s[2])+" "+str(s[3])+\
+				" is: "+str(s[0])	
 	except Exception, e:
 		print "error parsing program file"
 
