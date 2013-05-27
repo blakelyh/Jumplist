@@ -1,3 +1,5 @@
+import glob
+import re
 import binascii
 import optparse
 def header_CFB(inFile):
@@ -150,20 +152,32 @@ def revByteOrd(data):
 	return hex(revD)
 
 def progMatch(inFile):
-	# for each line in file switch statement to match the programs to the list.
-	# create array of file names that match the associated program.	
-	# parse for each matched file.
-	print "in progMatch"
-	if inFile != None: 
-		try:
-			with open(inFile, 'rb') as f:
-				content = f.read()				
-		except Exception, e:
-			print("Error: " + str(e))		
-	print "after trying to read pFile"
-	# for each line in content, if string does not match ^: fill progs.
-	# progs = len(file)*[None]
-	# fill progs with the appropriate file names corresponding to the program name
+	path1 = "./path1/"
+	path2 = "./path2/"
+	try:
+		List = open(str(inFile)).readlines()
+	except Exception, e:
+		print "error reading program file"
+	retArray = len(List)*[None]
+	count = 0
+	try:
+		for p in List:
+			if p[0] != ':' and p[0] != '\n' and p != None:
+				s = p.split()
+				pSt = ""
+				for num in range(1,len(s)):
+					pSt = pSt+s[num]+" "
+				print "UUID for "+pSt+"is: "+str(s[0])
+				try:
+					matchedFile = glob.glob(path1+str(s[0])+"*")
+				except Exception, e:
+					print "file not found"
+				if matchedFile != None:
+					retArray[count]=matchedFile
+				count = count + 1
+	except Exception, e:
+		print "error parsing program file: "+str(e)
+	return retArray
 
 def parseCFB(inFile):
 	# for each program/input file.
@@ -205,19 +219,10 @@ def main():
 	if outFile == None:
 		print parser.usage	
 		exit(0)
-	################## if pFile exists get content ############
+	################# if pFile exists Match Progs ############
 	if pFile != None:
-		try:
-			with open(pFile, 'rb') as f:
-				pF = f.read()
-		except Exception, e:
-			print "error reading program file"
-		try:
-			print "read pF line by line, if : is not at "+\
-			"beginning, send line to progMatch"
-		except Exception, e:
-			print "error matching programs"
-		print pF
+		progArray = progMatch(pFile)
+		print progArray
 	################## if inFile exists parse it #############
 	if inFile != None:	
 		try:

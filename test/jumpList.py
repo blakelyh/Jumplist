@@ -1,3 +1,4 @@
+import glob
 import re
 import binascii
 import optparse
@@ -151,21 +152,32 @@ def revByteOrd(data):
 	return hex(revD)
 
 def progMatch(inFile):
-	# for line in List	
-		# if line.charAt(0) != ':'
-			# if corresponding file exists return filename
+	path1 = "./path1/"
+	path2 = "./path2/"
 	try:
 		List = open(str(inFile)).readlines()
 	except Exception, e:
 		print "error reading program file"
+	retArray = len(List)*[None]
+	count = 0
 	try:
 		for p in List:
 			if p[0] != ':' and p[0] != '\n' and p != None:
 				s = p.split()
-				print "UUID for "+str(s[1])+" "+str(s[2])+" "+str(s[3])+\
-				" is: "+str(s[0])	
+				pSt = ""
+				for num in range(1,len(s)):
+					pSt = pSt+s[num]+" "
+				print "UUID for "+pSt+"is: "+str(s[0])
+				try:
+					matchedFile = glob.glob(path1+str(s[0])+"*")
+				except Exception, e:
+					print "file not found"
+				if matchedFile != None:
+					retArray[count]=matchedFile
+				count = count + 1
 	except Exception, e:
-		print "error parsing program file"
+		print "error parsing program file: "+str(e)
+	return retArray
 
 def parseCFB(inFile):
 	# for each program/input file.
@@ -209,7 +221,8 @@ def main():
 		exit(0)
 	################# if pFile exists Match Progs ############
 	if pFile != None:
-		progMatch(pFile)
+		progArray = progMatch(pFile)
+		print progArray
 	################## if inFile exists parse it #############
 	if inFile != None:	
 		try:
