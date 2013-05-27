@@ -167,28 +167,28 @@ def progMatch(inFile):
 				pSt = ""
 				for num in range(1,len(s)):
 					pSt = pSt+s[num]+" "
-				print "UUID for "+pSt+"is: "+str(s[0])
+				#print "UUID for "+pSt+"is: "+str(s[0])
 				try:
 					matchedFile = glob.glob(path1+str(s[0])+"*")
 				except Exception, e:
 					print "file not found"
-				if matchedFile != None:
-					retArray[count]=matchedFile
+				if str(matchedFile[0]) != 'file not found':
+					retArray[count]=matchedFile[0]
+					#print retArray
 				count = count + 1
 	except Exception, e:
 		print "error parsing program file: "+str(e)
 	return retArray
 
 def parseCFB(inFile):
-	# for each program/input file.
 	h = header_CFB(inFile)
 	f = fat_CFB(inFile, h[3], h[5], h[9])
 	d = dir_CFB(inFile, h[3], h[5], h[10], h[8])
 	m = mFAT_CFB(inFile, h[3], h[5], h[12], h[13], h[14])
-	print "header \n"+str(h)
-	print "FAT \n"+str(f)
-	print "directory \n"+str(d)
-	print "mFAT \n"+str(m)
+	#print "header \n"+str(h)
+	#print "FAT \n"+str(f)
+	#print "directory \n"+str(d)
+	#print "mFAT \n"+str(m)
 
 def parseSHLLINK(inFile):
 	print "write the code to parse shell-link"
@@ -208,13 +208,10 @@ def main():
 	parser.add_option('-p', dest='pF', type='string',\
 		help='Specify an input file: -p programsConfigFile')
 	(options, args)=parser.parse_args()
-	# Input file to read can be specific file: 1b4dd67f29cb1962.jumplist
-	# Input file can be a string with program names, or a file with program names
 	pFile = options.pF
 	inFile = options.iFile
 	outFile = options.oFile
 	content = None
-	out = None
 	################ must have OUTPUT FILE ########## #########
 	if outFile == None:
 		print parser.usage	
@@ -222,13 +219,15 @@ def main():
 	################# if pFile exists Match Progs ############
 	if pFile != None:
 		progArray = progMatch(pFile)
-		print progArray
+		try: 
+			for files in progArray:
+				parseCFB(str(files))
+		except Exception, e:
+			print ("Error parsing file in progArray: "+str(e))
 	################## if inFile exists parse it #############
 	if inFile != None:	
 		try:
 			parseCFB(inFile)			
-			#with open(inFile, 'rb') as f:
-			#	content = f.read()
 		except Exception, e:
 			print ("Error: " + str(e))
 	############## if ! inFile/pFile, parse all jumplists ####
