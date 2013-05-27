@@ -2,7 +2,7 @@ import glob
 import re
 import binascii
 import optparse
-def header_CFB(inFile):
+def cfb_header(inFile):
 	head=18*[None]
 	head[0]=seekAndRead(inFile, 0x0000,0x08) 	# Header signature
 	head[1]=seekAndRead(inFile, 0x0008,0x10)	# Header CLSID
@@ -45,7 +45,7 @@ def header_CFB(inFile):
 	head[17]=DIFAT						# DIFAT Array
 	return head				
 	
-def fat_CFB(inFile, version, sectSize, nFATSect):
+def cfb_fat(inFile, version, sectSize, nFATSect):
 	stepL=0x04                              	# Step length  
 	start=sSize=2**(int(str(sectSize),16))		# sSize offset
 	end=start+sSize	         			# End of FAT
@@ -64,7 +64,7 @@ def fat_CFB(inFile, version, sectSize, nFATSect):
 	f[index]=nxtSect
  	return f
 
-def dir_CFB(inFile, version, sectSize, dirStartSectLoc, nDirSect):
+def cfb_dir(inFile, version, sectSize, dirStartSectLoc, nDirSect):
 	sSize = 2**(int(sectSize,16))				# size is 2^sectSize
 	start = int(dirStartSectLoc,16)*sSize+sSize		# start location 
 	# Fill Array[index] with fully populated d[].
@@ -96,7 +96,7 @@ def dir_CFB(inFile, version, sectSize, dirStartSectLoc, nDirSect):
 		di[index]=d
 	return di
 
-def mFAT_CFB(inFile, version, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect):
+def cfb_mFAT(inFile, version, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect):
 	if(nMFATSect>0):
 		stepL=0x04	
 		start=sSize=2**(int(sectSize,16))
@@ -116,6 +116,39 @@ def mFAT_CFB(inFile, version, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect):
 					c+=1
 			mF[index]=nxtSect
 		return mF
+
+def shellLink_header(inFile):
+	head=14*[None]
+	head[0]=seekAndRead(inFile, 0x0000,0x08) 	# HeaderSize 
+	head[1]=seekAndRead(inFile, 0x0008,0x10)	# LinkCLSID
+	head[2]=seekAndRead(inFile,0x0018,0x02)		# LinkFlags
+	head[3]=seekAndRead(inFile,0x001A,0x02) 	# FileAttributes
+	head[4]=seekAndRead(inFile,0x001C,0x02) 	# CreationTime
+	head[5]=seekAndRead(inFile,0x001E,0x02) 	# AccessTime
+	head[6]=seekAndRead(inFile,0x0020,0x02) 	# WriteTime
+	head[7]=seekAndRead(inFile,0x0022,0x06) 	# FileSize
+	head[8]=seekAndRead(inFile,0x0028,0x04) 	# IconIndex
+	head[9]=seekAndRead(inFile,0x002c,0x04)		# ShowCommand
+	head[10]=seekAndRead(inFile,0x0030,0x04)	# HotKey
+	head[11]=seekAndRead(inFile,0x0034,0x04)	# Reserved1
+	head[12]=seekAndRead(inFile,0x0038,0x04)	# Reserved2
+	head[13]=seekAndRead(inFile,0x003C,0x04)	# Reserved3
+	print "fix shellLink_header"
+	return head				
+
+
+def shellLink_linkTargetIDLIST():
+	print "write link target ID list"
+
+def shellLink_linkInfo():
+	print "write link info"
+
+def shellLink_stringData():
+	print "write string data"
+
+def shellLink_extraData():
+	print "write extra data"
+
 
 def seekAndRead(inFile, bOffset, bLength):
 	try:
@@ -152,8 +185,8 @@ def revByteOrd(data):
 	return hex(revD)
 
 def progMatch(inFile):
-	path1 = "./path1/"
-	path2 = "./path2/"
+	path1 = "./path1/" # automatic
+	path2 = "./path2/" # custom
 	try:
 		List = open(str(inFile)).readlines()
 	except Exception, e:
@@ -181,17 +214,21 @@ def progMatch(inFile):
 	return retArray
 
 def parseCFB(inFile):
-	h = header_CFB(inFile)
-	f = fat_CFB(inFile, h[3], h[5], h[9])
-	d = dir_CFB(inFile, h[3], h[5], h[10], h[8])
-	m = mFAT_CFB(inFile, h[3], h[5], h[12], h[13], h[14])
+	h = cfb_header(inFile)
+	f = cfb_fat(inFile, h[3], h[5], h[9])
+	d = cfb_dir(inFile, h[3], h[5], h[10], h[8])
+	m = cfb_mFAT(inFile, h[3], h[5], h[12], h[13], h[14])
 	#print "header \n"+str(h)
 	#print "FAT \n"+str(f)
 	#print "directory \n"+str(d)
 	#print "mFAT \n"+str(m)
 
 def parseSHLLINK(inFile):
-	print "write the code to parse shell-link"
+	shellLink_header(inFile)
+	shellLink_linkTargetIDLIST()
+	shellLink_linkInfo()
+	shellLink_stringData()
+	shellLink_extraData()
 
 def main():
 	parser = optparse.OptionParser('\n\t%prog '+\
@@ -235,7 +272,7 @@ def main():
 		# Search for all jump list files
 		print"All Jump List Files shall be parsed."
 	################### PARSE SHELLINK #######################
-	print "WRITE THE SHELL LINK PARSER!"
+	parseSHLLINK(inFile)	
 	############## PRINT OUTPUT TO OUTPUT FILE ###############	
 	print "WRITE TO THE OUTPUT FILE: "+outFile
 	
