@@ -184,25 +184,23 @@ def shellLink_linkTargetIDLIST():
 
 def shellLink_linkInfo():
 	print "fix link info"
-	ret = 15*[None] # Return Variable
-	LinkInfoSize = 0 # 32bit unsigned int, all offsets specified must be less than this, 
-	# and all strings must fit within the extent defined by this size
-	LinkInfoHeaderSize = 0 # 32bit unsigned int, must be defined as: 
-	# 0x0000001C: Offsets to optional fields not specified 
-	#or 0x00000024 ≤ value: Offsets to optional field are specified
-	LinkInfoFlags = 0 #
-	VolumeIDOffset = 0
-	LocalBasePathOffset = 0
-	CommonNetworkRelativeLinkOffset = 0
-	CommonPathSuffixOffset = 0
-	LocalBasePathOffsetUnicode = 0# Optional
-	CommonPathSuffixOffsetUnicode = 0# Optional
-	VolumeID = 6*[None]
-	LocalBasePath = 0 
-	CommonNetworkRelativeLink = 11*[None]
-	CommonPathSuffix = 0
-	LocalBasePathUnicode = 0 
-	CommonPathSuffixUnicode = 0
+	ret = 15*[None] 	# Return Variable
+	# LINK INFO STRUCTURE
+	LIS = 0 		# LinkInfoSize 
+	LIHS = 0		# LinkInfoHeaderSize
+	LIF = 0 		# LinkInfoFlags
+	VolIDOff = 0		# VolumeIDOffset
+	LBPOff = 0		# LocalBasePathOffset
+	CNetRelLOff = 0		# CommonNetworkRelativeLinkOffset
+	CPSufOff = 0		# CommonPathSuffixOffset
+	LBPOffU = 0		# LocalBasePathOffsetUnicode 
+	CPSuffOffU = 0		# CommonPathSuffixOffsetUnicode
+	VolumeID = 6*[None]	# VolumeID
+	LBPath = 0 		# LocalBasePath
+	CNetRelLink = 11*[None]	# CommonNetworkRelativeLink
+	CPSuff = 0		# CommonPathSuffix
+	LBPU = 0 		# LocalBasePathUnicode
+	CPSuffU = 0		# CommonPathSuffixUnicode
 	
 	# VOLUMEID STRUCTURE
 	VolIDS = 0 	# VolumeIDSize
@@ -211,23 +209,23 @@ def shellLink_linkInfo():
 	VolLOff = 0 	# VolumeLabelOffset
 	VolLOffUni = 0 	# VolumeLabelOffsetUnicode 
 	vData = 0 	# Data
-	VolumeID = [VolIDS, DType, DSerNum, VolumeLabelOffset, VolumeLabelOffsetUnicode, vData]	
+	VolumeID = [VolIDS,DType,DSerNum,VolLOff,VolLOffUni,vData]	
 
 	# CommonNetworkRelativeLink STRUCTURE
-	CommonNetworkRelativeLinkSize = 0 	# CommonNetworkRelativeLinkSize
-	CommonNetworkRelativeLinkFlags = 0 	# CommonNetworkRelativeLinkFlags
-	NetNameOffset = 0 	# NetNameOffset
-	DeviceNameOffset = 0	# DeviceNameOffset
-	NetworkProviderType = 0	# NetworkProviderType
-	NetNameOffsetUnicode = 0 	# NetNameOffsetUnicode 
-	DeviceNameOffsetUnicode = 0	# DeviceNameOffsetUnicode
-	NetName = 0 	# NetName
-	DeviceName = 0 	# DeviceName
-	NetNameUnicode = 0 	# NetNameUnicode
-	DeviceNameUnicode = 0	# DeviceNameUnicode
-	# FILL CommonNetworkRelativeLink[]
-	
-	# FILL ret 
+	CNRelLinkS = 0 		# CommonNetworkRelativeLinkSize
+	CNetRelLinkF = 0 	# CommonNetworkRelativeLinkFlags
+	NetNOff = 0 		# NetNameOffset
+	DNOff = 0		# DeviceNameOffset
+	NetPT = 0		# NetworkProviderType
+	NetNOffU = 0 		# NetNameOffsetUnicode 
+	DNOffU = 0		# DeviceNameOffsetUnicode
+	NetN = 0 		# NetName
+	DN = 0 			# DeviceName
+	NetNU = 0 		# NetNameUnicode
+	DNU = 0			# DeviceNameUnicode
+	NETRelLink=[CNRelLinkS,CNetRelLinkF,NetNOff,DNOff,NetPT,NetNOffU,DNOffU,NetN,DN,NetNU,DNU]
+
+	ret=[LIS,LIHS,LIF,VolIDOff,CPSufOff,LBPOffU,CPSuffOffU,VolumeID,LBPath,CNetRelLink,CPSuff,LBPU,CPSuffU]	
 	return ret
 
 def shellLink_stringData():
@@ -334,13 +332,17 @@ def parseCFB(inFile):
 	#print "FAT \n"+str(f)
 	#print "directory \n"+str(d)
 	#print "mFAT \n"+str(m)
+	ret=[h,f,d,m]
+	return ret
 
 def parseSHLLINK(inFile):
-	shellLink_header(inFile)
-	shellLink_linkTargetIDLIST()
-	shellLink_linkInfo()
-	shellLink_stringData()
-	shellLink_extraData()
+	h = shellLink_header(inFile)
+	idL = shellLink_linkTargetIDLIST()
+	lI = shellLink_linkInfo()
+	sD = shellLink_stringData()
+	eD = shellLink_extraData()
+	ret = [h,idL,lI,sD,eD]
+	return ret
 
 def main():
 	parser = optparse.OptionParser('\n\t%prog '+\

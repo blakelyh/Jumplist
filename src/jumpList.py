@@ -164,23 +164,101 @@ def shellLink_header(inFile):
 		print "ShowCommand option: "+str(head[9])+" is inappropriate"+\
 		", chaning the value to SW_SHOWNORMAL (0x00000001)."
 		head[9] = SW_SHOWNORMAL
-	
-
+	print "In shell link header, must write link flags section."
+	print "In shell link header, must write file attributes flags section."
+	print "In shell link header, must write hotkey flags section."
 	return head				
 
-
 def shellLink_linkTargetIDLIST():
-	print "write link target ID list"
+	print "Fix link target ID list"
+	IDListSize = 0 # 2 bytes, size in bytes of the IDList Field
+	IDList ='' # A stored IDList structure which contains the item ID list.
+	# IDList structure conforms to the following ABNF [RFC5234]
+	numIDList = 0 # CHANGE THIS NUMBER !!!!!!!
+	ItemIDList = numIDList*[None] # an array of zero or more ItemID structures
+	TerminalID = 0 # A 16-bit, unsigned int that indicates the end of the item IDs. # MUST BE 0
+	ItemID = 2*[None] # element in IDList. contains ItemIDSize and Data
+	ItemIDSize = 0	# Stored in ItemID, 16-bit unsigned int, specifies size in bytes of id struct
+	data = '' # Stored in ItemID, shell data source- defined data specifies an item
+	return ItemIDList
 
 def shellLink_linkInfo():
-	print "write link info"
+	print "fix link info"
+	ret = 15*[None] 	# Return Variable
+	# LINK INFO STRUCTURE
+	LIS = 0 		# LinkInfoSize 
+	LIHS = 0		# LinkInfoHeaderSize
+	LIF = 0 		# LinkInfoFlags
+	VolIDOff = 0		# VolumeIDOffset
+	LBPOff = 0		# LocalBasePathOffset
+	CNetRelLOff = 0		# CommonNetworkRelativeLinkOffset
+	CPSufOff = 0		# CommonPathSuffixOffset
+	LBPOffU = 0		# LocalBasePathOffsetUnicode 
+	CPSuffOffU = 0		# CommonPathSuffixOffsetUnicode
+	VolumeID = 6*[None]	# VolumeID
+	LBPath = 0 		# LocalBasePath
+	CNetRelLink = 11*[None]	# CommonNetworkRelativeLink
+	CPSuff = 0		# CommonPathSuffix
+	LBPU = 0 		# LocalBasePathUnicode
+	CPSuffU = 0		# CommonPathSuffixUnicode
+	
+	# VOLUMEID STRUCTURE
+	VolIDS = 0 	# VolumeIDSize
+	DType = 0 	# DriveType can be: 0x1,0x2,0x3,0x4,0x5 or 0x6 
+	DSerNum = 0 	# DriveSerialNumber
+	VolLOff = 0 	# VolumeLabelOffset
+	VolLOffUni = 0 	# VolumeLabelOffsetUnicode 
+	vData = 0 	# Data
+	VolumeID = [VolIDS,DType,DSerNum,VolLOff,VolLOffUni,vData]	
+
+	# CommonNetworkRelativeLink STRUCTURE
+	CNRelLinkS = 0 		# CommonNetworkRelativeLinkSize
+	CNetRelLinkF = 0 	# CommonNetworkRelativeLinkFlags
+	NetNOff = 0 		# NetNameOffset
+	DNOff = 0		# DeviceNameOffset
+	NetPT = 0		# NetworkProviderType
+	NetNOffU = 0 		# NetNameOffsetUnicode 
+	DNOffU = 0		# DeviceNameOffsetUnicode
+	NetN = 0 		# NetName
+	DN = 0 			# DeviceName
+	NetNU = 0 		# NetNameUnicode
+	DNU = 0			# DeviceNameUnicode
+	NETRelLink=[CNRelLinkS,CNetRelLinkF,NetNOff,DNOff,NetPT,NetNOffU,DNOffU,NetN,DN,NetNU,DNU]
+
+	ret=[LIS,LIHS,LIF,VolIDOff,CPSufOff,LBPOffU,CPSuffOffU,VolumeID,LBPath,CNetRelLink,CPSuff,LBPU,CPSuffU]	
+	return ret
 
 def shellLink_stringData():
-	print "write string data"
+	print "fix string data"
+	# STRING_DATA = [NAMESTRING] [RELATIVEPATH] [WORKINGDIR] [COMMANDLINEARGUMENTS] [ICONLOCATION]
+	NAME_STRING = 1*[None] 	# Must be present if HasName flag is set
+	RELATIVE_PATH = 1*[None] 	# Must be present if HasRelativePath flag is set
+	WORKING_DIR = 1*[None] # Must be present if HasWorkingDir flag is set	
+	COMMAND_LINE_ARGUMENTS = 1*[None] 	# Must be present if HasArguments flag is set
+	ICON_LOCATION = 1*[None] 	# Must be present if HasIconLocation flag is set
+	CountCharacters = 0
+	String = '' # MUST NOT BE NULL-TERMINATED!
+	ret = [CountCharacters, String]
+	return ret
 
 def shellLink_extraData():
-	print "write extra data"
-
+	print "fix extra data"
+	EXTRA_DATA = 0
+	EXTRA_DATA_BLOCK = 0
+	CONSOLE_PROPS = 0
+	CONSOLE_FE_PROPS = 0
+	DARWIN_PROPS = 0
+	ENVIRONMENT_PROPS = 0
+	ICON_ENVIRONMENT_PROPS = 0
+	KNOWN_FOLDER_PROPS = 0
+	PROPERTY_STORE_PROPS = 0
+	SHIM_PROPS = 0
+	SPECIAL_FOLDER_PROPS = 0
+	TRACKER_PROPS = 0
+	VISTA_AND_ABOVE_IDLIST_PROPS = 0
+	TERMINAL_BLOCK = 0
+	ret = 14*[None]
+	return ret
 
 def seekAndRead(inFile, bOffset, bLength):
 	try:
@@ -254,13 +332,17 @@ def parseCFB(inFile):
 	#print "FAT \n"+str(f)
 	#print "directory \n"+str(d)
 	#print "mFAT \n"+str(m)
+	ret=[h,f,d,m]
+	return ret
 
 def parseSHLLINK(inFile):
-	shellLink_header(inFile)
-	shellLink_linkTargetIDLIST()
-	shellLink_linkInfo()
-	shellLink_stringData()
-	shellLink_extraData()
+	h = shellLink_header(inFile)
+	idL = shellLink_linkTargetIDLIST()
+	lI = shellLink_linkInfo()
+	sD = shellLink_stringData()
+	eD = shellLink_extraData()
+	ret = [h,idL,lI,sD,eD]
+	return ret
 
 def main():
 	parser = optparse.OptionParser('\n\t%prog '+\
