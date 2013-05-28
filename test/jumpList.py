@@ -244,53 +244,124 @@ def shellLink_stringData():
 
 def shellLink_extraData():
 	print "fix extra data"
-	ret = 15*[None]	# return variable
-	
-	ed = 0	# EXTRA_DATA
-	edb = 0	# EXTRA_DATA_BLOCK
-	cp = 0	# CONSOLE_PROPS
-	cfp = 0	# CONSOLE_FE_PROPS
-	dp = 0	# DARWIN_PROPS
-	ep = 0	# ENVIRONMENT_PROPS
-	iep = 0	# ICON_ENVIRONMENT_PROPS
-	kfp = 0	# KNOWN_FOLDER_PROPS
-	psp = 0	# PROPERTY_STORE_PROPS
-	sp = 0	# SHIM_PROPS
-	sfp = 0	# SPECIAL_FOLDER_PROPS
-	tp = 0	# TRACKER_PROPS
-	vaaip = 0	# VISTA_AND_ABOVE_IDLIST_PROPS
-	tb = 0	# TERMINAL_BLOCK
-	cdb = 25*[None]	# ConsoleDataBlock
-	
+	ret = 24*[None]	# return variable
+
 	# ConsoleDataBlock structure
-	cdb[0] = bSize = 0	# Block Size
-	cdb[1] = bSig = 0	# Block Signature
-	cdb[2] = fA = 0		# FillAttributes
-	cdb[3] = popFA = 0 	# PopupFillAttributes
-	cdb[4] = sBufSX = 0	# ScreenBufferSizeX
-	cdb[5] = sBufSY = 0	# ScreenBufferSizeY
-	cdb[6] = wSX = 0		# WindowSizeX
-	cdb[7] = wSY = 0		# WindowSizeY
-	cdb[8] = wOX = 0		# WindowOriginX
-	cdb[9] = wOY = 0		# WindowOriginY
-	cdb[10] = u1 = 0		# Unused1
-	cdb[11] = u2 = 0		# Unused2
-	cdb[12] = fS = 0		# FontSize
-	cdb[13] = fF = 0		# FontFamily
-	cdb[14] = fW = 0		# FontWeight
-	cdb[15] = fN = 0		# Face Name
-	cdb[16] = cS = 0		# CursorSize
-	cdb[17] = fS = 0		# FullScreen
-	cdb[18] = qe = 0		# QuickEdit
-	cdb[19] = iM = 0		# InsertMode
-	cdb[20] = aP = 0		# AutoPosition
-	cdb[21] = hBS = 0		# HistoryBufferSize
-	cdb[22] = nOHB = 0	# NumberOfHistoryBuffers
-	cdb[23] = hND = 0		# HistoryNoDup
-	cdb[24] = cT = 0		# ColorTable
+	cdb = 25*[None]	# ConsoleDataBlock
+	cdb[0] =  0	# Block Size
+	cdb[1] =  0	# Block Signature
+	cdb[2] =  0	# FillAttributes
+	cdb[3] =  0 	# PopupFillAttributes
+	cdb[4] =  0	# ScreenBufferSizeX
+	cdb[5] =  0	# ScreenBufferSizeY
+	cdb[6] =  0	# WindowSizeX
+	cdb[7] =  0	# WindowSizeY
+	cdb[8] =  0	# WindowOriginX
+	cdb[9] =  0	# WindowOriginY
+	cdb[10] =  0	# Unused1
+	cdb[11] =  0	# Unused2
+	cdb[12] =  0	# FontSize
+	cdb[13] =  0	# FontFamily
+	cdb[14] =  0	# FontWeight
+	cdb[15] =  0	# Face Name
+	cdb[16] =  0	# CursorSize
+	cdb[17] =  0	# FullScreen
+	cdb[18] =  0	# QuickEdit
+	cdb[19] =  0	# InsertMode
+	cdb[20] =  0	# AutoPosition
+	cdb[21] =  0	# HistoryBufferSize
+	cdb[22] =  0	# NumberOfHistoryBuffers
+	cdb[23] =  0	# HistoryNoDup
+	cdb[24] =  0	# ColorTable
+
+	# Darwin Data Block
+	ddb = 4*[None]
+	ddb[0] = 0	# BlockSize
+	ddb[1] = 0	# BlockSignature
+	ddb[2] = 0 	# DarwinDataAnsi
+	ddb[3] = 0	# DarwinDataUnicode
 	
-	ret = [ed,edb,cp,cfp,dp,ep,iep,kfp,psp,sp,sfp,tp,vaaip,tb,cdb]
-		
+	#EnvironmentVariable Data Block
+	evdb = 4*[None]
+	evdb[0] = 0	# Blocksize
+	evdb[1] = 0     # Block Signature
+	evdb[2] = 0     # TargetAnsi
+	evdb[3] = 0     # TargetUnicode
+
+	# IconEnvironmentDataBlock
+	iedb = 4*[None]
+	iedb[0] = 0	# Blocksize
+	iedb[1] = 0     # BlockSignature
+	iedb[2] = 0     # TargetAnsi
+	iedb[3] = 0     # TargetUnicode
+
+	# KnownFolderDataBlock
+	kfdb = 4*[None]
+	kfdb[0] = 0	# Blocksize
+	kfdb[1] = 0	# Block Signature
+	kfdb[2] = 0	# KnownFolderID
+	kfdb[3] = 0	# offset
+	
+	# PropertyStoreDataBlock
+	psdb = 3*[None]
+	psdb[0] = 0	# Blocksize
+	psdb[1] = 0	# BlockSignature
+	psdb[2] = 0	# PropertyStore
+	
+	# ShimDataBlock
+	sdb = 3*[None]
+	sdb[0] = 0	# BlockSize
+	sdb[1] = 0	# BlockSignature
+	sdb[2] = 0	# LayerName
+
+	# SpecialFolderDataBlock
+	sfdb = 4*[None]
+	sfdb[0] = 0	# BlockSize
+	sfdb[1] = 0     # BlockSignature
+	sfdb[2] = 0     # SpecialFolderID
+	sfdb[3] = 0     # Offset
+
+	# TrackerDataBlock
+	tdb = 7*[None]
+	tdb[0] = 0	# BlockSize
+	tdb[1] = 0      # BlockSignature
+	tdb[2] = 0      # Length
+	tdb[3] = 0      # Version
+	tdb[4] = 0      # MachineID
+	tdb[5] = 0      # Droid
+	tdb[6] = 0      # DroidBirth
+
+	# VistaAndAboveIDListDataBlock	
+	vaaildb = 3*[None]
+	vaaildb[0] = 0	# BlockSize
+	vaaildb[1] = 0  # BlockSignature
+	vaaildb[2] = 0  # IDList
+
+	ret[0] = 0	# EXTRA_DATA
+	ret[1] = 0	# EXTRA_DATA_BLOCK
+	ret[2] = 0	# CONSOLE_PROPS
+	ret[3] = 0	# CONSOLE_FE_PROPS
+	ret[4] = 0	# DARWIN_PROPS
+	ret[5] = 0	# ENVIRONMENT_PROPS
+	ret[6] = 0	# ICON_ENVIRONMENT_PROPS
+	ret[7] = 0	# KNOWN_FOLDER_PROPS
+	ret[8] = 0	# PROPERTY_STORE_PROPS
+	ret[9] = 0	# SHIM_PROPS
+	ret[10] = 0	# SPECIAL_FOLDER_PROPS
+	ret[11] = 0	# TRACKER_PROPS
+	ret[12] = 0	# VISTA_AND_ABOVE_IDLIST_PROPS
+	ret[13] = 0	# TERMINAL_BLOCK
+	ret[14] = cdb	# ConsoleDataBlock
+	ret[15] = ddb	# DarwinDataBlock
+	ret[16] = evdb	# EnvironmentVariable Data Block
+	ret[17] = iedb	# IconEnvironmentDataBlock
+	ret[18] = kfdb	# KnownFolderDataBlock
+	ret[19] = psdb	# PropertyStoreDataBlock
+	ret[20] = sdb	# ShimDataBlock
+	ret[21] = sfdb	# SpecialFolderDataBlock
+	ret[22] = tdb	# TrackerDataBlock
+	ret[23] = vaaildb	# VistaAndAboveIDListDataBlock
+
 	return ret
 
 def seekAndRead(inFile, bOffset, bLength):
@@ -381,10 +452,14 @@ def main():
 	parser = optparse.OptionParser('\n\t%prog '+\
 		'[-i <INPUT FILE>] [-p <PROGRAMS FILE>] -o <OUTPUT FILE>'+\
 		'\n\n\t\t* An OUPUT FILE is required.'+\
-		'\n\n\t\t* If no INPUT/PROGRAMS FILE exists but OUTPUT '+\
-		'FILE does exist:'+\
-		'\n\t\t\tAll jump list files will be selected.'+\
-		'\n')
+		'\n\n\t\t* Select all jumplist files:'+\
+		'\n\t\t\tjumpList.py -o output.csv\n\n'+\
+		'\n\t\t* Select all jump list files in config file:'+\
+		'\n\t\t\tjumplist.py -p config -o output.csv\n\n'+\
+		'\n\t\t* Select specific input file:'+\
+		'\n\t\t\tjumplist.py -i 134235234.jumplistFile -o ouput.csv\n\n'+\
+		'\n\t\t* Select config and input file:'+\
+		'\n\t\t\tjumplist.py -i 12345234.jumplistFile -p config -o output.csv\n\n')
 	parser.add_option('-i', dest='iFile', type='string',\
 		help='Specify an input file: -i inputFileName')
 	parser.add_option('-o', dest='oFile', type='string',\
