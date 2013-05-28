@@ -3,24 +3,25 @@ import re
 import binascii
 import optparse
 def cfb_header(inFile):
+	offset = 0
 	head=18*[None]
-	head[0]=seekAndRead(inFile, 0x0000,0x08) 	# Header signature
-	head[1]=seekAndRead(inFile, 0x0008,0x10)	# Header CLSID
-	head[2]=seekAndRead(inFile,0x0018,0x02)		# Minor version
-	head[3]=seekAndRead(inFile,0x001A,0x02) 	# Major version
-	head[4]=seekAndRead(inFile,0x001C,0x02) 	# Byte order (little/big endian)
-	head[5]=seekAndRead(inFile,0x001E,0x02) 	# Sector Size
-	head[6]=seekAndRead(inFile,0x0020,0x02) 	# Mini stream sector size
-	head[7]=seekAndRead(inFile,0x0022,0x06) 	# Reserved
-	head[8]=seekAndRead(inFile,0x0028,0x04) 	# Number of directory sectors
-	head[9]=seekAndRead(inFile,0x002c,0x04)		# Number of FAT sectors
-	head[10]=seekAndRead(inFile,0x0030,0x04)	# Directory start sector location
-	head[11]=seekAndRead(inFile,0x0034,0x04)	# Transaction signature
-	head[12]=seekAndRead(inFile,0x0038,0x04)	# Mini stream size cutoff
-	head[13]=seekAndRead(inFile,0x003C,0x04)	# Mini FAT start sector location
-	head[14]=seekAndRead(inFile,0x0040,0x04)	# Number of mini FAT sectors
-	head[15]=seekAndRead(inFile,0x0044,0x04)	# DIFAT start sector location
-	head[16]=seekAndRead(inFile,0x0048,0x04)	# Number of DIFAT sectors
+	head[0]=seekAndRead(inFile,offset,0x08);offset+=0x8 	# Header signature
+	head[1]=seekAndRead(inFile,offset,0x10);offset+=0x10	# Header CLSID
+	head[2]=seekAndRead(inFile,offset,0x02);offset+=0x02	# Minor version
+	head[3]=seekAndRead(inFile,offset,0x02);offset+=0x02 	# Major version
+	head[4]=seekAndRead(inFile,offset,0x02);offset+=0x02 	# Byte order (little/big endian)
+	head[5]=seekAndRead(inFile,offset,0x02);offset+=0x02 	# Sector Size
+	head[6]=seekAndRead(inFile,offset,0x02);offset+=0x02 	# Mini stream sector size
+	head[7]=seekAndRead(inFile,offset,0x06);offset+=0x06 	# Reserved
+	head[8]=seekAndRead(inFile,offset,0x04);offset+=0x04 	# Number of directory sectors
+	head[9]=seekAndRead(inFile,offset,0x04);offset+=0x04	# Number of FAT sectors
+	head[10]=seekAndRead(inFile,offset,0x04);offset+=0x04	# Directory start sector location
+	head[11]=seekAndRead(inFile,offset,0x04);offset+=0x04	# Transaction signature
+	head[12]=seekAndRead(inFile,offset,0x04);offset+=0x04	# Mini stream size cutoff
+	head[13]=seekAndRead(inFile,offset,0x04);offset+=0x04	# Mini FAT start sector location
+	head[14]=seekAndRead(inFile,offset,0x04);offset+=0x04	# Number of mini FAT sectors
+	head[15]=seekAndRead(inFile,offset,0x04);offset+=0x04	# DIFAT start sector location
+	head[16]=seekAndRead(inFile,offset,0x04);offset+=0x04	# Number of DIFAT sectors
 	DIFAT=109*[None]
 	if (int(head[7],16)!=0):				# Verify inFIle is Jump List
 		print (str(inFile)+" IS NOT A JUMP LIST!")
@@ -118,21 +119,22 @@ def cfb_mFAT(inFile, version, sectSize, mSSCutoff, mFATStartSectLoc, nMFATSect):
 		return mF
 
 def shellLink_header(inFile):
+	offset = 0
 	head=14*[None]
-	head[0]=seekAndRead(inFile, 0x0000,0x04) 	# HeaderSize 
-	head[1]=seekAndRead(inFile, 0x0004,0x10)	# LinkCLSID
-	head[2]=seekAndRead(inFile,0x0014,0x04)		# LinkFlags
-	head[3]=seekAndRead(inFile,0x0018,0x04) 	# FileAttributes
-	head[4]=seekAndRead(inFile,0x001C,0x08) 	# CreationTime
-	head[5]=seekAndRead(inFile,0x0024,0x08) 	# AccessTime
-	head[6]=seekAndRead(inFile,0x002c,0x08) 	# WriteTime
-	head[7]=seekAndRead(inFile,0x0034,0x04) 	# FileSize
-	head[8]=seekAndRead(inFile,0x0038,0x04) 	# IconIndex
-	head[9]=seekAndRead(inFile,0x003c,0x04)		# ShowCommand
-	head[10]=seekAndRead(inFile,0x0040,0x02)	# HotKey
-	head[11]=seekAndRead(inFile,0x0042,0x02)	# Reserved1
-	head[12]=seekAndRead(inFile,0x0044,0x04)	# Reserved2
-	head[13]=seekAndRead(inFile,0x0048,0x04)	# Reserved3
+	head[0]=seekAndRead(inFile,offset,0x04); offset+=0x4 	# HeaderSize 
+	head[1]=seekAndRead(inFile,offset,0x10); offset+=0x10	# LinkCLSID
+	head[2]=seekAndRead(inFile,offset,0x04); offset+=0x4	# LinkFlags
+	head[3]=seekAndRead(inFile,offset,0x04); offset+=0x4	# FileAttributes
+	head[4]=seekAndRead(inFile,offset,0x08); offset+=0x8 	# CreationTime
+	head[5]=seekAndRead(inFile,offset,0x08); offset+=0x8 	# AccessTime
+	head[6]=seekAndRead(inFile,offset,0x08); offset+=0x8 	# WriteTime
+	head[7]=seekAndRead(inFile,offset,0x04); offset+=0x4 	# FileSize
+	head[8]=seekAndRead(inFile,offset,0x04); offset+=0x4 	# IconIndex
+	head[9]=seekAndRead(inFile,offset,0x04); offset+=0x4	# ShowCommand
+	head[10]=seekAndRead(inFile,offset,0x02); offset+=0x2	# HotKey
+	head[11]=seekAndRead(inFile,offset,0x02); offset+=0x2	# Reserved1
+	head[12]=seekAndRead(inFile,offset,0x04); offset+=0x4	# Reserved2
+	head[13]=seekAndRead(inFile,offset,0x04); offset+=0x4	# Reserved3
 	# Header check
 	if head[0] != 0x0000004C:
 		print "INVALID FILE... Shell Link header: "+str(head[0])+\
