@@ -231,33 +231,66 @@ def shellLink_linkInfo():
 def shellLink_stringData():
 	print "fix string data"
 	# STRING_DATA = [NAMESTRING] [RELATIVEPATH] [WORKINGDIR] [COMMANDLINEARGUMENTS] [ICONLOCATION]
-	NAME_STRING = 1*[None] 	# Must be present if HasName flag is set
-	RELATIVE_PATH = 1*[None] 	# Must be present if HasRelativePath flag is set
-	WORKING_DIR = 1*[None] # Must be present if HasWorkingDir flag is set	
-	COMMAND_LINE_ARGUMENTS = 1*[None] 	# Must be present if HasArguments flag is set
-	ICON_LOCATION = 1*[None] 	# Must be present if HasIconLocation flag is set
-	CountCharacters = 0
-	String = '' # MUST NOT BE NULL-TERMINATED!
+	# If corresponding flag is set, these variables are required.
+	NAME_STRING = 1*[None] 		# NAME_STRING
+	RELATIVE_PATH = 1*[None] 	# RELATIVE_PATH 
+	WORKING_DIR = 1*[None] 		# WORKING_DIR
+	COMMAND_LINE_ARGUMENTS = 1*[None] 	# COMMAND_LINE_ARGUMENTS 
+	ICON_LOCATION = 1*[None] 	# ICON_LOCATION
+	CountCharacters = 0		# CountCharacters
+	String = '' 			# String MUST NOT BE NULL-TERMINATED!
 	ret = [CountCharacters, String]
 	return ret
 
 def shellLink_extraData():
 	print "fix extra data"
-	EXTRA_DATA = 0
-	EXTRA_DATA_BLOCK = 0
-	CONSOLE_PROPS = 0
-	CONSOLE_FE_PROPS = 0
-	DARWIN_PROPS = 0
-	ENVIRONMENT_PROPS = 0
-	ICON_ENVIRONMENT_PROPS = 0
-	KNOWN_FOLDER_PROPS = 0
-	PROPERTY_STORE_PROPS = 0
-	SHIM_PROPS = 0
-	SPECIAL_FOLDER_PROPS = 0
-	TRACKER_PROPS = 0
-	VISTA_AND_ABOVE_IDLIST_PROPS = 0
-	TERMINAL_BLOCK = 0
-	ret = 14*[None]
+	ret = 15*[None]	# return variable
+	
+	ed = 0	# EXTRA_DATA
+	edb = 0	# EXTRA_DATA_BLOCK
+	cp = 0	# CONSOLE_PROPS
+	cfp = 0	# CONSOLE_FE_PROPS
+	dp = 0	# DARWIN_PROPS
+	ep = 0	# ENVIRONMENT_PROPS
+	iep = 0	# ICON_ENVIRONMENT_PROPS
+	kfp = 0	# KNOWN_FOLDER_PROPS
+	psp = 0	# PROPERTY_STORE_PROPS
+	sp = 0	# SHIM_PROPS
+	sfp = 0	# SPECIAL_FOLDER_PROPS
+	tp = 0	# TRACKER_PROPS
+	vaaip = 0	# VISTA_AND_ABOVE_IDLIST_PROPS
+	tb = 0	# TERMINAL_BLOCK
+	cdb = 25*[None]	# ConsoleDataBlock
+	
+	# ConsoleDataBlock structure
+	cdb[0] = bSize = 0	# Block Size
+	cdb[1] = bSig = 0	# Block Signature
+	cdb[2] = fA = 0		# FillAttributes
+	cdb[3] = popFA = 0 	# PopupFillAttributes
+	cdb[4] = sBufSX = 0	# ScreenBufferSizeX
+	cdb[5] = sBufSY = 0	# ScreenBufferSizeY
+	cdb[6] = wSX = 0		# WindowSizeX
+	cdb[7] = wSY = 0		# WindowSizeY
+	cdb[8] = wOX = 0		# WindowOriginX
+	cdb[9] = wOY = 0		# WindowOriginY
+	cdb[10] = u1 = 0		# Unused1
+	cdb[11] = u2 = 0		# Unused2
+	cdb[12] = fS = 0		# FontSize
+	cdb[13] = fF = 0		# FontFamily
+	cdb[14] = fW = 0		# FontWeight
+	cdb[15] = fN = 0		# Face Name
+	cdb[16] = cS = 0		# CursorSize
+	cdb[17] = fS = 0		# FullScreen
+	cdb[18] = qe = 0		# QuickEdit
+	cdb[19] = iM = 0		# InsertMode
+	cdb[20] = aP = 0		# AutoPosition
+	cdb[21] = hBS = 0		# HistoryBufferSize
+	cdb[22] = nOHB = 0	# NumberOfHistoryBuffers
+	cdb[23] = hND = 0		# HistoryNoDup
+	cdb[24] = cT = 0		# ColorTable
+	
+	ret = [ed,edb,cp,cfp,dp,ep,iep,kfp,psp,sp,sfp,tp,vaaip,tb,cdb]
+		
 	return ret
 
 def seekAndRead(inFile, bOffset, bLength):
